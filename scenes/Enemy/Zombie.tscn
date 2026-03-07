@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cini2lae5ub2n"]
+
+[ext_resource type="Script" uid="uid://b4lnl1hrp1tlh" path="res://scripts/enemies/zombie.gd" id="1_1e0c3"]
+[ext_resource type="Script" uid="uid://b5al85djmhb8a" path="res://scripts/state_machine/state_machine.gd" id="2_uuhgg"]
+[ext_resource type="Script" uid="uid://c51d66cl3k13m" path="res://scripts/enemies/states/state_chase.gd" id="3_0hohf"]
+[ext_resource type="Script" uid="uid://48vw3fdxm2mb" path="res://scripts/enemies/states/state_enemy_patrol.gd" id="4_8q0s5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jdbhd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdbhd"]
+albedo_color = Color(0.8347697, 0, 0.062170424, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1e0c3"]
+radius = 0.4
+height = 1.95
+
+[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine")]
+script = ExtResource("1_1e0c3")
+state_machine = NodePath("StateMachine")
+metadata/_custom_type_script = "uid://b4lnl1hrp1tlh"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_jdbhd")
+surface_material_override/0 = SubResource("StandardMaterial3D_jdbhd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.001709, 0)
+shape = SubResource("CapsuleShape3D_1e0c3")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.7
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_uuhgg")
+initial_state = NodePath("StateEnemyPatrol")
+metadata/_custom_type_script = "uid://b5al85djmhb8a"
+
+[node name="StateEnemyChase" type="Node" parent="StateMachine"]
+script = ExtResource("3_0hohf")
+metadata/_custom_type_script = "uid://c51d66cl3k13m"
+
+[node name="StateEnemyPatrol" type="Node" parent="StateMachine"]
+script = ExtResource("4_8q0s5")
+metadata/_custom_type_script = "uid://48vw3fdxm2mb"

@@ -50,13 +50,13 @@ func handle_grapple(delta: float) -> void:
         var damping = -damping_power * velocity_dot * target_direction
 
 
-        print("spring_force: ", spring_force)  
-        print("damping: ", damping)
+        # print("spring_force: ", spring_force)  
+        # print("damping: ", damping)
         force = spring_force + damping
 
-    print("force: ", force)
+    # print("force: ", force)
 
-    print("force * delta = ", (force * delta))
+    # print("force * delta = ", (force * delta))
     player.velocity += (force * delta)
 
 func update_rope() -> void:
