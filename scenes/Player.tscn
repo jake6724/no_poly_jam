@@ -9,8 +9,9 @@
 radius = 0.34765625
 height = 1.53125
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "grapple_raycast", "grapple_controller", "_skin")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "_skin")]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_v6fml")
 zoom_sensitivity = 6.0
 zoom_max = 17.0
@@ -19,6 +20,7 @@ jump_coyote_time = 0.3
 _camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
 _camera_pivot = NodePath("CameraPivot")
 _spring_arm = NodePath("CameraPivot/SpringArm3D")
+_capsule_collider = NodePath("CapsuleCollider")
 grapple_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/GrappleRaycast")
 grapple_controller = NodePath("GrappleController")
 _skin = NodePath("SophiaSkin")
@@ -28,7 +30,7 @@ _skin = NodePath("SophiaSkin")
 [node name="GrappleRope" parent="SophiaSkin" instance=ExtResource("3_mdl7e")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.684342e-14, 0.6414819, 0.35283482)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CapsuleCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765625, 0)
 shape = SubResource("CapsuleShape3D_p0vlq")
 
@@ -40,6 +42,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+visible = false
 current = true
 
 [node name="GrappleRaycast" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D"]

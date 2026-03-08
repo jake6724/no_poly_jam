@@ -21,10 +21,11 @@ var move_speed_base: float
 @export var jump_power: float = 12.0
 @export_range(0,1,.1) var jump_coyote_time: float = 0.5
 @export var gravity: float = -30
-
+@export_group("Nodes")
 @export var _camera: Camera3D
 @export var _camera_pivot: Node3D
 @export var _spring_arm: SpringArm3D
+@export var _capsule_collider: CollisionShape3D
 var _camera_input_direction: Vector2 = Vector2.ZERO
 var _last_movement_direction: Vector3 = Vector3.BACK
 var _rotate_camera: bool = false

@@ -32,6 +32,7 @@ func initialize(_parent_character: CharacterBody3D):
 	# Configure current state
 	if initial_state:
 		current_state = initial_state
+		current_state.enter_state()
 	else:
 		push_error("initial_state not set; assign in the editor.")
 
@@ -49,6 +50,9 @@ func transition(prev_state, new_state):
 		else:
 			push_error(str("State '" + new_state + "' does not exist as state machine child"))
 
+func force_transition(new_state_name: String) -> void:
+	transition(current_state, new_state_name)
+		
 func on_update_velocity_requested(_new_velocity: Vector3) -> void:
 	update_velocity_requested.emit(_new_velocity)
 

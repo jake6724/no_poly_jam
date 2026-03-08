@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfbpxodaug1w2"]
+[gd_scene load_steps=15 format=3 uid="uid://bfbpxodaug1w2"]
 
 [ext_resource type="Material" uid="uid://41avpc24wsls" path="res://materials/TestLevelTerrainShaderMaterial.tres" id="1_dojpo"]
 [ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/Player.tscn" id="2_1fpmp"]
@@ -36,6 +36,12 @@ ambient_light_source = 2
 ambient_light_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
 ambient_light_energy = 1.5
 reflected_light_source = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_i6x8u"]
+size = Vector3(4, 8, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8xg12"]
+points = PackedVector3Array(-2, -4, -0.5, -2, -4, 0.5, -2, 4, -0.5, 2, -4, -0.5, 2, -4, 0.5, -2, 4, 0.5, 2, 4, -0.5, 2, 4, 0.5)
 
 [node name="TestLevel" type="Node3D"]
 
@@ -81,141 +87,152 @@ shadow_enabled = true
 directional_shadow_mode = 1
 
 [node name="ZombieSpawner" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065631986, 11)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner2" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5605429, 11)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner3" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5605429, 11)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner4" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5605429, 2)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner5" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5605429, 2)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner6" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5605429, 2)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner7" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5605429, -9)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner8" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5605429, -9)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner9" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5605429, -9)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner10" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5605429, -1)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner11" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5605429, 5)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner12" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.5605429, -22)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner13" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5605429, -22)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner14" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5605429, -31)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner15" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5605429, -31)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner16" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5605429, -36)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner17" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5605429, -36)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner18" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5605429, -17)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner19" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5605429, -17)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="ZombieSpawner20" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5605429, -17)
 script = ExtResource("5_8xg12")
 player = NodePath("../Player")
 spawn_amount = 1
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 7)
+mesh = SubResource("BoxMesh_i6x8u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 7)
+shape = SubResource("ConvexPolygonShape3D_8xg12")
