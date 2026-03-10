@@ -90,7 +90,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom_target += zoom_step
 
 func _physics_process(delta: float) -> void:
-	# print(velocity)	
 	if _rotate_camera:
 		# Set X and Y camera rotation. Clamp X axis so player cannot look fully up or down
 		_camera_pivot.rotation.x += _camera_input_direction.y * delta
@@ -125,12 +124,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# Ensure that character look direction does not update when there is no input
-	if move_direction.length() > MOVE_DIRECTION_THRESHOLD:
-		_last_movement_direction = move_direction
-
-	var target_angle: float = Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
-	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, target_angle, rotation_speed * delta)
+	# Rotate skin with camera
+	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y, rotation_speed * delta)
 
 	# Animate
 	if not is_on_floor() and velocity.y <= 0:

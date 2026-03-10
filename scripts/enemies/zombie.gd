@@ -7,7 +7,9 @@ var move_speed_max: float = 7.0
 var move_speed: float 
 var movement_target_position: Vector3
 var line_of_sight_angle: float = 70.0
-@export var prey: Node3D
+var rotation_speed: float = TAU * 2
+var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
+@export var prey: Node3D 
 @export_group("Nodes")
 @export var state_machine: StateMachine
 @export var sight_area_player: Area3D
@@ -15,8 +17,9 @@ var line_of_sight_angle: float = 70.0
 @export var raycast_sight: RayCast3D
 @export var chase_area: Area3D
 @export var chase_area_collider: CollisionShape3D
-
-@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@export var alert_area: Area3D
+@export var alert_area_collider: CollisionShape3D
+@export var navigation_agent: NavigationAgent3D
 
 var patrol_position: Vector3
 var is_player_in_sight_range: bool = false
@@ -37,8 +40,6 @@ func _ready():
 	sight_area_player.body_entered.connect(on_body_entered_sight_area_player)
 	sight_area_player.body_exited.connect(on_body_exited_sight_area_player)
 
-	
-
 	# Configure Chasing
 	chase_area.body_exited.connect(on_chase_area_body_exited)
 	chase_timer.one_shot = true
@@ -57,14 +58,14 @@ func configure_state_machine() -> void:
 	state_machine.update_patrol_position_requested.connect(update_patrol_position)
 	state_machine.update_move_target_to_patrol_position_requested.connect(set_move_target_to_patrol_position)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	# Face move direction (maybe use this? -global_transform.basis.z.normalized())
 	var target_position: Vector3 = global_position + velocity
-	target_position.y = global_position.y
-	if target_position != global_position:
-		look_at(target_position, Vector3.UP)
+	var _move_direction = target_position - global_position
+	if _move_direction:
+		rotation.y = rotate_toward(rotation.y, Vector2(_move_direction.x, -_move_direction.z).angle() - rotation_offset, rotation_speed * delta)
 
-	if is_player_in_sight_range and not player_spotted:
+	if is_player_in_sight_range and prey and not player_spotted:
 		look_for_player(prey)
 
 	move_and_slide()
@@ -106,10 +107,22 @@ func look_for_player(player: Player) -> void:
 		raycast_sight.target_position = raycast_sight.to_local(player._capsule_collider.global_position)
 		raycast_sight.force_raycast_update()
 		if raycast_sight.get_collider() is Player:
-			player_spotted = true
-			state_machine.force_transition("stateenemychase")
+			start_chasing(player)
+			alert_nearby_zombies()
+
+func start_chasing(_prey: Player) -> void:
+	player_spotted = true
+	state_machine.force_transition("stateenemychase")
+	prey = _prey # Set again here to ensure that alerted zombies (which may not have seen player yet) have a reference
 
 func on_chase_timer_timeout() -> void:
 	player_spotted = false
 	state_machine.force_transition("stateenemypatrol")
 	prey = null
+
+func alert_nearby_zombies() -> void:
+	var bodies: Array[Node3D] = alert_area.get_overlapping_bodies()
+	for body: Node3D in bodies:
+		var zombie: Zombie = body as Zombie
+		if zombie:
+			zombie.start_chasing(prey)

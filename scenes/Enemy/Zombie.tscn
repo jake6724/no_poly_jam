@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cini2lae5ub2n"]
+[gd_scene load_steps=13 format=3 uid="uid://cini2lae5ub2n"]
 
 [ext_resource type="Script" uid="uid://b4lnl1hrp1tlh" path="res://scripts/enemies/zombie.gd" id="1_1e0c3"]
 [ext_resource type="Script" uid="uid://b5al85djmhb8a" path="res://scripts/state_machine/state_machine.gd" id="2_uuhgg"]
@@ -25,8 +25,12 @@ albedo_color = Color(1, 0.29870674, 0.24872321, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_74thq"]
 radius = 17.0
 
-[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider")]
-collision_layer = 4
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0pthk"]
+radius = 11.0
+
+[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "navigation_agent")]
+transform = Transform3D(0.9999999, 0, -2.0464786e-07, 0, 1, 0, 2.0464786e-07, 0, 0.9999999, 0, 0, 0)
+collision_layer = 2
 collision_mask = 7
 safe_margin = 0.01
 script = ExtResource("1_1e0c3")
@@ -36,10 +40,13 @@ sight_area_player_collider = NodePath("SightAreaPlayer/SightAreaPlayerCollider")
 raycast_sight = NodePath("RayCastSight")
 chase_area = NodePath("ChaseArea")
 chase_area_collider = NodePath("ChaseArea/ChaseAreaCollider")
+alert_area = NodePath("AlertArea")
+alert_area_collider = NodePath("AlertArea/AlertAreaCollider")
+navigation_agent = NodePath("NavigationAgent3D")
 metadata/_custom_type_script = "uid://b4lnl1hrp1tlh"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_jdbhd")
 surface_material_override/0 = SubResource("StandardMaterial3D_jdbhd")
 
@@ -57,7 +64,6 @@ metadata/_custom_type_script = "uid://b5al85djmhb8a"
 
 [node name="StateEnemyChase" type="Node" parent="StateMachine"]
 script = ExtResource("3_0hohf")
-metadata/_custom_type_script = "uid://c51d66cl3k13m"
 
 [node name="StateEnemyPatrol" type="Node" parent="StateMachine"]
 script = ExtResource("4_8q0s5")
@@ -65,7 +71,6 @@ metadata/_custom_type_script = "uid://48vw3fdxm2mb"
 
 [node name="SightAreaPlayer" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 2
 
 [node name="SightAreaPlayerCollider" type="CollisionShape3D" parent="SightAreaPlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -84,9 +89,17 @@ hit_from_inside = true
 
 [node name="ChaseArea" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 2
 
 [node name="ChaseAreaCollider" type="CollisionShape3D" parent="ChaseArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_74thq")
 debug_color = Color(0.45902508, 0.44709027, 1, 0.41960785)
+
+[node name="AlertArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AlertAreaCollider" type="CollisionShape3D" parent="AlertArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_0pthk")
+debug_color = Color(0.9784439, 0, 0.3999081, 0.41960785)
