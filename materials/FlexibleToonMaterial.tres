@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bb43ngplsfis2"]
 
-[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://materials/flexible_toon_shader/flexible_toon.gdshader" id="1_1lxli"]
+[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_1lxli"]
 
 [resource]
 render_priority = 0

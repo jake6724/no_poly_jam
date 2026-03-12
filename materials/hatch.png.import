@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3r75iwfdyw57"
-path.s3tc="res://.godot/imported/hatch.png-4f50fb2648742188bc66ec1f99a8316a.s3tc.ctex"
+path.s3tc="res://.godot/imported/hatch.png-7ce9f7ba9148627bf359646d8714d925.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://materials/flexible_toon_shader/hatch.png"
-dest_files=["res://.godot/imported/hatch.png-4f50fb2648742188bc66ec1f99a8316a.s3tc.ctex"]
+source_file="res://materials/hatch.png"
+dest_files=["res://.godot/imported/hatch.png-7ce9f7ba9148627bf359646d8714d925.s3tc.ctex"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dfm5opvmc0u6e"
-path="res://.godot/imported/Domine-VariableFont_wght.ttf-66d5c448319ae131f3e409e65d27dd97.fontdata"
+path="res://.godot/imported/Domine-VariableFont_wght.ttf-43832e59e042618dbada40e3ac0cc080.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Domine-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/Domine-VariableFont_wght.ttf-66d5c448319ae131f3e409e65d27dd97.fontdata"]
+source_file="res://fonts/Domine-VariableFont_wght.ttf"
+dest_files=["res://.godot/imported/Domine-VariableFont_wght.ttf-43832e59e042618dbada40e3ac0cc080.fontdata"]
 
 [params]
 

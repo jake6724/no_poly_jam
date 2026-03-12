@@ -1,7 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cjsnejeqav5af"]
 
-[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://materials/flexible_toon_shader/flexible_toon.gdshader" id="1_j8x7e"]
+[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_j8x7e"]
 [ext_resource type="Texture2D" uid="uid://bonlq6aua0u45" path="res://assets/environment/TEX_Environment.png" id="2_1gg3i"]
+
 
 [resource]
 render_priority = 0
