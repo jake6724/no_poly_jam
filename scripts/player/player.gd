@@ -111,13 +111,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	was_grounded = is_grounded
 	is_grounded = is_on_floor()
-	
-	# print(velocity)	
+
 	if _rotate_camera:
 		# Set X and Y camera rotation. Clamp X axis so player cannot look fully up or down
 		_camera_pivot.rotation.x += _camera_input_direction.y * delta
 		_camera_pivot.rotation.y -= _camera_input_direction.x  * delta
-		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, (-PI / 6.0), (PI / 3.0))
+		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, (-PI / 4.0), (PI / 6.0))
 
 	# Reset _camera_input_direction for the next time _unhandled_input() is triggered
 	# If this is not reset, the camera will keep rotating until new input comes in
@@ -140,7 +139,6 @@ func _physics_process(delta: float) -> void:
 	velocity.y = 0.0
 	velocity = velocity.move_toward((move_direction * move_speed), acceleration * delta)
 	velocity.y = (y_velocity + (gravity * delta))
-	print(velocity.y)
 
 	if prev_is_on_floor != is_on_floor() and not is_on_floor():
 		coyote_jump_timer.start(jump_coyote_time)
@@ -158,12 +156,8 @@ func _physics_process(delta: float) -> void:
 	if get_real_velocity().y >= 0:
 		acceleration = 70.0
 
-	# Ensure that character look direction does not update when there is no input
-	# if move_direction.length() > MOVE_DIRECTION_THRESHOLD:
-	# 	_last_movement_direction = move_direction
-
-	# var target_angle: float = Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
-	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y, rotation_speed * delta)
+	# Offset camera rotation with PI so that character faces away from camera
+	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y + PI, rotation_speed * delta)
 
 	# Animate
 	if not is_on_floor() and velocity.y <= 0:
