@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://c06ri4cfofikf"]
+
+[ext_resource type="Script" uid="uid://cj61yp1qq0a3u" path="res://scripts/player/player_ui.gd" id="1_f7lci"]
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("scrap_value", "steel_value", "titanium_value", "blood_value")]
+script = ExtResource("1_f7lci")
+scrap_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/ScrapValue")
+steel_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/SteelValue")
+titanium_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/TitaniumValue")
+blood_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/BloodValue")
+metadata/_custom_type_script = "uid://cj61yp1qq0a3u"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Scrap -"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Steel -"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Titanium -"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Blood -"
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScrapValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "1000"
+vertical_alignment = 1
+
+[node name="SteelValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "1000"
+vertical_alignment = 1
+
+[node name="TitaniumValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "1000"
+vertical_alignment = 1
+
+[node name="BloodValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "1000"
+vertical_alignment = 1

@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvr2kvvvboiwv"]
+[gd_scene load_steps=7 format=3 uid="uid://dvr2kvvvboiwv"]
 
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://scenes/SophiaSkin.tscn" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player/player.gd" id="1_v6fml"]
 [ext_resource type="Script" uid="uid://b8lo4pmy8o03" path="res://scripts/grapple_controller.gd" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://dk2mbyl6bue78" path="res://scenes/GrappleRope.tscn" id="3_mdl7e"]
+[ext_resource type="PackedScene" uid="uid://c06ri4cfofikf" path="res://scenes/player/PlayerUI.tscn" id="5_qu4a1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p0vlq"]
 radius = 0.34765625
 height = 1.53125
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "_skin")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "interact_raycast", "_skin")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
-collision_layer = 2
-collision_mask = 5
+collision_mask = 14
 script = ExtResource("1_v6fml")
 zoom_sensitivity = 6.0
 zoom_max = 17.0
@@ -24,6 +24,7 @@ _spring_arm = NodePath("CameraPivot/SpringArm3D")
 _capsule_collider = NodePath("CapsuleCollider")
 grapple_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/GrappleRaycast")
 grapple_controller = NodePath("GrappleController")
+interact_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/InteractRaycast")
 _skin = NodePath("SophiaSkin")
 
 [node name="SophiaSkin" parent="." instance=ExtResource("1_p0vlq")]
@@ -40,15 +41,25 @@ shape = SubResource("CapsuleShape3D_p0vlq")
 transform = Transform3D(-3.7855163e-08, 0.5, -0.8660252, 2.1855687e-08, 0.86602527, 0.49999994, 0.99999976, -2.379867e-16, -4.3711374e-08, 0, 1.1704572, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+collision_mask = 4
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
 current = true
 
 [node name="GrappleRaycast" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D"]
-transform = Transform3D(-1, 4.371138e-08, 8.742279e-08, -4.3711395e-08, -1.0000002, -2.0861626e-07, 8.742276e-08, -3.5762787e-07, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, -1, -30)
 collision_mask = 4
+debug_shape_custom_color = Color(0.9416656, 1.0588765e-06, 0.51095104, 1)
+
+[node name="InteractRaycast" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D"]
+transform = Transform3D(1, 3.5527137e-15, 0, 3.5527137e-15, 1, 0, 0, 0, 1, 8.655995e-09, 0.34299123, 0.19802612)
+target_position = Vector3(0, -1, -10)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 0.8345436, 0.5228345, 1)
 
 [node name="GrappleController" type="Node" parent="." node_paths=PackedStringArray("player", "grapple_raycast", "grapple_rope")]
 script = ExtResource("3_3li8b")
@@ -56,3 +67,5 @@ player = NodePath("..")
 grapple_raycast = NodePath("../CameraPivot/SpringArm3D/Camera3D/GrappleRaycast")
 grapple_rope = NodePath("../SophiaSkin/GrappleRope")
 metadata/_custom_type_script = "uid://b8lo4pmy8o03"
+
+[node name="PlayerUI" parent="." instance=ExtResource("5_qu4a1")]

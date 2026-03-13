@@ -42,6 +42,8 @@ var _rotate_camera: bool = false
 @export var grapple_raycast: RayCast3D
 @export var grapple_controller: GrappleController
 
+@export var interact_raycast: RayCast3D
+
 # Stairs
 const MAX_STEP_DOWN = -.5
 const MAX_STEP_UP = .5
@@ -57,6 +59,8 @@ var coyote_jump_available: bool = true
 var coyote_jump_timer: Timer = Timer.new()
 var prev_is_on_floor: bool = true
 
+var prev_interactable: Node3D
+
 func _ready():
 	zoom_target = _spring_arm.spring_length 
 	move_speed_base = move_speed
@@ -70,6 +74,16 @@ func _process(delta):
 	if not is_equal_approx(_spring_arm.spring_length, zoom_target):
 		zoom_target = clamp(zoom_target, zoom_min, zoom_max)
 		_spring_arm.spring_length = lerp(_spring_arm.spring_length, zoom_target, zoom_sensitivity * delta)
+
+	if interact_raycast.is_colliding():
+		var chest: Chest = interact_raycast.get_collider().owner as Chest
+		if chest:
+			prev_interactable = chest
+			chest.show_interact_hint()
+	else:
+		if prev_interactable:
+			prev_interactable.hide_interact_hint()
+			prev_interactable = null
 
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"):
@@ -92,11 +106,12 @@ func _input(_event):
 			acceleration = 1.0
 			slide_multiplier = 1 - prev_floor_angle
 			velocity *= (1 + slide_multiplier)
-
 	if Input.is_action_just_released("control"):
 		# Put in a func
 		is_sliding = false
 		acceleration = 70.0
+	if Input.is_action_just_pressed("interact"):
+		interact()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Check mouse has moved
@@ -187,6 +202,10 @@ func jump() -> void:
 func on_coyote_jump_timer_timeout() -> void:
 	can_stair_step = true
 	coyote_jump_available = false
+
+func interact() -> void:
+	if interact_raycast.is_colliding():
+		print("Interact hit!")
 
 func stair_step_down():
 	if is_on_floor():
