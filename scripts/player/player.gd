@@ -28,6 +28,7 @@ var was_grounded: bool = false
 var move_direction: Vector3
 @export_range(20,100,1) var acceleration: float = 20.0
 @export var jump_power: float = 12.0
+var can_stair_step: bool = true # Disabled when jumping until jump coyote time goes off, or grounded. Prevents player from snapping back to ground when jumping
 @export_range(0,1,.1) var jump_coyote_time: float = 0.5
 @export var gravity: float = -30
 @export_group("Nodes")
@@ -36,7 +37,6 @@ var move_direction: Vector3
 @export var _spring_arm: SpringArm3D
 @export var _capsule_collider: CollisionShape3D
 var _camera_input_direction: Vector2 = Vector2.ZERO
-var _last_movement_direction: Vector3 = Vector3.BACK
 var _rotate_camera: bool = false
 
 @export var grapple_raycast: RayCast3D
@@ -84,6 +84,7 @@ func _input(_event):
 		_skin.animation_tree.set("parameters/TimeScale/scale", 1.0)
 	if Input.is_action_just_pressed("jump"):
 		jump()
+		can_stair_step = false
 	if Input.is_action_pressed("control"):
 		# TODO: Put in a func
 		if not is_sliding and prev_floor_angle < 0.99 and get_real_velocity().y < 0:
@@ -143,7 +144,9 @@ func _physics_process(delta: float) -> void:
 	if prev_is_on_floor != is_on_floor() and not is_on_floor():
 		coyote_jump_timer.start(jump_coyote_time)
 
-	stair_step_up()
+	if can_stair_step:
+		stair_step_up()
+
 	move_and_slide()
 	# stair_step_down()
 
@@ -163,6 +166,7 @@ func _physics_process(delta: float) -> void:
 		_skin.fall()
 		
 	elif is_on_floor():
+		can_stair_step = true
 		coyote_jump_available = true
 		coyote_jump_timer.stop()
 		var ground_speed: float = velocity.length()
@@ -181,6 +185,7 @@ func jump() -> void:
 		_skin.jump()
 
 func on_coyote_jump_timer_timeout() -> void:
+	can_stair_step = true
 	coyote_jump_available = false
 
 func stair_step_down():
