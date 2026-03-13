@@ -180,119 +180,161 @@ shape = SubResource("ConvexPolygonShape3D_i6x8u")
 transform = Transform3D(3, 0, 0, 0, 0.454, 0, 0, 0, 28.767, 84.128204, -7.3259745, -13.997885)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(30, 2, 2)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(3, 0, 0, 0, -1.984497e-08, -28.73241, 0, 0.45454654, -1.2574455e-06, 84.128204, 2.2080245, 14.184)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(30, 2, 2)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(3, 0, 0, 0, -1.984497e-08, -28.73241, 0, 0.45454654, -1.2574455e-06, 84.128204, 2.2080264, -42.634315)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(30, 2, 2)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 53.615383, -4.337188, -22.179722)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 height = 1.730957
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 58.61538, -3.928, -26.270641)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 51.342655, -3.928, -26.270641)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 49.52447, -3.928, -22.179722)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 54.069927, -3.928, -6.270593)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 58.61538, -3.928, -0.8160353)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 51.7972, -3.928, -0.8160353)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 54.069927, 0.37255335, -14.452432)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 height = 4.8276367
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 49.52447, 0.37180996, -14.452432)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 height = 4.8271484
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 3.0418, 0, 0, 0, 0.45454654, 49.52447, -3.928, -6.270593)
 material_override = ExtResource("3_8xg12")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 11.700029, 87.70629, -1.8849998, 10.093082)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(240, 1, 1)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 11.700029, 87.70629, -1.8849998, -36.968155)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(240, 1, 1)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 8.394549, 87.70629, 14.077011, -38.964355)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(240, 1, 1)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 8.394549, 87.70629, 14.077011, 10.288801)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(240, 1, 1)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(4.99909, 0, 0, 0, 0.454, 0, 0, 0, 22.818237, 51.819622, -1.8579578, -14.279909)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 1, 0.7046509)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(5.275282, 0, 11.682177, 0, 0.454, 0, -3.1440828, 0, 19.60097, 55.16848, -1.8579578, -0.89912796)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 1, 0.7046509)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(5.2750072, 0, -11.6838875, 0, 0.454, 0, 3.144543, 0, 19.599949, 55.386723, -1.8579578, -25.859188)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 1, 0.7046509)
 
 [node name="CSGCylinder3D11" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(-0.45454547, 0, 3.973763e-08, 0, 3.0418, 0, -3.973772e-08, 0, -0.45454654, 103.58425, -4.3785596, -3.99786)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 
 [node name="CSGCylinder3D12" type="CSGCylinder3D" parent="NavigationRegion3D/StaticBody3D/CSGCylinder3D11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -9)
@@ -392,173 +434,231 @@ size = Vector3(1.0078125, 1, 6)
 transform = Transform3D(1.9336417, 0.17740388, 0, -0.6658062, 0.5152183, 0, 0, 0, 5.4245586, 66.50135, 4.7082925, -13.997886)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(8.6197815, 1, 1)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(-1.9336417, -0.1774039, -4.7422998e-07, -0.6658062, 0.5152184, 0, 1.6904433e-07, 1.550914e-08, -5.4245586, 90.82125, 4.793916, -13.997886)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(8.653809, 1, 1)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(-2.0454488, 0, -4.742299e-07, 0, 0.5448015, 0, 1.7881881e-07, 0, -5.4245577, 103.634346, 7.6735473, -13.997885)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(4.4553986, 1, 1)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(2.0454485, 0, 0, 0, 0.5448015, 0, 0, 0, 5.424558, 53.06096, 7.5698924, -13.997885)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(5.098877, 1, 1)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 48.615383, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 42.251747, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 56.797203, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 65.43356, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 74.97902, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 82.25175, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 92.7063, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 102.25175, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 108.61539, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 114.524475, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 120.43356, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 128.61539, -4.1549997, 9.8658085)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 18)
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 128.61539, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D29" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 114.97902, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 98.16084, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D31" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 82.25175, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D32" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 82.25175, -4.1549997, -36.725212)
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D33" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 70.43356, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D34" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 59.06993, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D35" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 48.615383, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D36" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.454, 0, 0, 0, 0.45454654, 41.797203, -4.1549997, -36.725212)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(1, 11, 25)
 
 [node name="CSGBox3D37" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.42932272, 0.1479662, 0, -0.14782766, 0.42972508, 49.751747, 10.830791, -3.0803003)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(8, 1, 43.25934)
 
 [node name="CSGBox3D40" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(0.45454547, 0, 0, 0, 0.42932272, 0.14796619, 0, -0.14782766, 0.42972505, 106.10441, 10.785826, -2.2681274)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(9, 1, 42)
 
 [node name="CSGBox3D38" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(-0.45454544, -1.2923504e-08, 3.756776e-08, 0, 0.42932272, 0.14796619, -3.9737625e-08, 0.14782766, -0.42972505, 49.751747, 10.786743, -25.420912)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(8, 1, 44)
 
 [node name="CSGBox3D39" type="CSGBox3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(-0.45454547, -1.2923505e-08, 3.756776e-08, 0, 0.42932275, 0.14796619, -3.973763e-08, 0.14782767, -0.42972505, 106.18479, 10.881233, -25.962877)
 material_override = ExtResource("1_dojpo")
 use_collision = true
+collision_layer = 4
+collision_mask = 0
 size = Vector3(9, 1, 43.25934)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
