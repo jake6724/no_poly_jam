@@ -145,7 +145,7 @@ func _physics_process(delta: float) -> void:
 
 	stair_step_up()
 	move_and_slide()
-	stair_step_down()
+	# stair_step_down()
 
 	# Handle sliding
 	prev_floor_angle = get_floor_angle()
@@ -156,8 +156,7 @@ func _physics_process(delta: float) -> void:
 	if get_real_velocity().y >= 0:
 		acceleration = 70.0
 
-	# Offset camera rotation with PI so that character faces away from camera
-	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y + PI, rotation_speed * delta)
+	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y , rotation_speed * delta)
 
 	# Animate
 	if not is_on_floor() and velocity.y <= 0:
