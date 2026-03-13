@@ -26,6 +26,7 @@ grapple_controller = NodePath("GrappleController")
 _skin = NodePath("SophiaSkin")
 
 [node name="SophiaSkin" parent="." instance=ExtResource("1_p0vlq")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
 
 [node name="GrappleRope" parent="SophiaSkin" instance=ExtResource("3_mdl7e")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.684342e-14, 0.6414819, 0.35283482)

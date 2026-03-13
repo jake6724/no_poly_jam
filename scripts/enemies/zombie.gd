@@ -37,9 +37,7 @@ func _ready():
 
 	# Configure SightArea
 	sight_area_player.body_entered.connect(on_body_entered_sight_area_player)
-	sight_area_player.body_exited.connect(on_body_exited_sight_area_player)
-
-	
+	sight_area_player.body_exited.connect(on_body_exited_sight_area_player)	
 
 	# Configure Chasing
 	chase_area.body_exited.connect(on_chase_area_body_exited)

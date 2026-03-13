@@ -145,33 +145,25 @@ func _physics_process(delta: float) -> void:
 	if prev_is_on_floor != is_on_floor() and not is_on_floor():
 		coyote_jump_timer.start(jump_coyote_time)
 
-	# Stair step up
 	stair_step_up()
-
 	move_and_slide()
-
-	# Stair step down
 	stair_step_down()
-
-	# print("Floot normal: ", get_floor_angle())
 
 	# Handle sliding
 	prev_floor_angle = get_floor_angle()
-	# print(prev_floor_angle)
 	if prev_floor_angle == 0.0:
-		# is_sliding = false
 		acceleration = 70.0
-	print("Velocity.y: ", velocity.y)
+
+	# Stop slide if moving up
 	if get_real_velocity().y >= 0:
-		print("Stop slide")
 		acceleration = 70.0
 
 	# Ensure that character look direction does not update when there is no input
-	if move_direction.length() > MOVE_DIRECTION_THRESHOLD:
-		_last_movement_direction = move_direction
+	# if move_direction.length() > MOVE_DIRECTION_THRESHOLD:
+	# 	_last_movement_direction = move_direction
 
-	var target_angle: float = Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
-	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, target_angle, rotation_speed * delta)
+	# var target_angle: float = Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
+	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y, rotation_speed * delta)
 
 	# Animate
 	if not is_on_floor() and velocity.y <= 0:
@@ -204,8 +196,6 @@ func stair_step_down():
 
 	# If we're falling from a step
 	if velocity.y <= 0 and was_grounded:
-		# _debug_stair_step_down("SSD_ENTER", null)													## DEBUG
-
 		# Initialize body test variables
 		var body_test_result = PhysicsTestMotionResult3D.new()
 		var body_test_params = PhysicsTestMotionParameters3D.new()
@@ -219,7 +209,6 @@ func stair_step_down():
 			position.y += body_test_result.get_travel().y
 			apply_floor_snap()
 			is_grounded = true
-			# _debug_stair_step_down("SSD_APPLIED", body_test_result.get_travel().y)					## DEBUG
 
 func stair_step_up():
 	if move_direction == Vector3.ZERO:
