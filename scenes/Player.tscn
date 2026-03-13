@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvr2kvvvboiwv"]
 
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://scenes/SophiaSkin.tscn" id="1_p0vlq"]
-[ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player.gd" id="1_v6fml"]
+[ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player/player.gd" id="1_v6fml"]
 [ext_resource type="Script" uid="uid://b8lo4pmy8o03" path="res://scripts/grapple_controller.gd" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://dk2mbyl6bue78" path="res://scenes/GrappleRope.tscn" id="3_mdl7e"]
 
@@ -10,7 +10,9 @@ radius = 0.34765625
 height = 1.53125
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "_skin")]
-collision_mask = 6
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_v6fml")
 zoom_sensitivity = 6.0
 zoom_max = 17.0
@@ -25,6 +27,7 @@ grapple_controller = NodePath("GrappleController")
 _skin = NodePath("SophiaSkin")
 
 [node name="SophiaSkin" parent="." instance=ExtResource("1_p0vlq")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
 
 [node name="GrappleRope" parent="SophiaSkin" instance=ExtResource("3_mdl7e")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.684342e-14, 0.6414819, 0.35283482)
@@ -34,18 +37,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765625, 0)
 shape = SubResource("CapsuleShape3D_p0vlq")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 1.1704572, 0)
+transform = Transform3D(-3.7855163e-08, 0.5, -0.8660252, 2.1855687e-08, 0.86602527, 0.49999994, 0.99999976, -2.379867e-16, -4.3711374e-08, 0, 1.1704572, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-collision_mask = 4
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
-visible = false
 current = true
 
 [node name="GrappleRaycast" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D"]
+visible = false
 target_position = Vector3(0, 0, -30)
 collision_mask = 4
 

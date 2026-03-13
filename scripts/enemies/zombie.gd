@@ -28,6 +28,8 @@ var chase_timer: Timer = Timer.new()
 var chase_duration_min: float = 5.0 # Duration after player has escaped zombie chase range that zombie will keep chasing
 var chase_duration_max: float = 10.0
 
+@export var gravity: float = -30
+
 func _ready():
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
@@ -38,7 +40,7 @@ func _ready():
 
 	# Configure SightArea
 	sight_area_player.body_entered.connect(on_body_entered_sight_area_player)
-	sight_area_player.body_exited.connect(on_body_exited_sight_area_player)
+	sight_area_player.body_exited.connect(on_body_exited_sight_area_player)	
 
 	# Configure Chasing
 	chase_area.body_exited.connect(on_chase_area_body_exited)
@@ -59,6 +61,8 @@ func configure_state_machine() -> void:
 	state_machine.update_move_target_to_patrol_position_requested.connect(set_move_target_to_patrol_position)
 
 func _physics_process(delta):
+	# Gravity 
+	velocity.y = (velocity.y + (gravity * delta))
 	# Face move direction (maybe use this? -global_transform.basis.z.normalized())
 	var target_position: Vector3 = global_position + velocity
 	var _move_direction = target_position - global_position

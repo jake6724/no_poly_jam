@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dflvc4h8xd513"]
+
+[ext_resource type="Script" uid="uid://bn0xghdogb6qh" path="res://scripts/player/player_spawn_point.gd" id="1_o7juy"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_o7juy"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7juy"]
+albedo_color = Color(0.17901805, 0.4028213, 1, 1)
+
+[node name="PlayerSpawnPoint" type="Node3D"]
+script = ExtResource("1_o7juy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_o7juy")
+surface_material_override/0 = SubResource("StandardMaterial3D_o7juy")
