@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvr2kvvvboiwv"]
 
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://scenes/SophiaSkin.tscn" id="1_p0vlq"]
-[ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player.gd" id="1_v6fml"]
+[ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player/player.gd" id="1_v6fml"]
 [ext_resource type="Script" uid="uid://b8lo4pmy8o03" path="res://scripts/grapple_controller.gd" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://dk2mbyl6bue78" path="res://scenes/GrappleRope.tscn" id="3_mdl7e"]
 
