@@ -7,7 +7,10 @@ extends CanvasLayer
 @export var blood_value: Label
 
 func _ready():
-    scrap_value.text = str(PlayerInventory.scrap)
-    steel_value.text = str(PlayerInventory.steel)
-    titanium_value.text = str(PlayerInventory.titanium)
-    blood_value.text = str(PlayerInventory.blood)
+	update()
+
+func update() -> void:
+	scrap_value.text = str(PlayerInventory.player_currency[PlayerInventory.Currency.SCRAP])
+	steel_value.text = str(PlayerInventory.player_currency[PlayerInventory.Currency.STEEL])
+	titanium_value.text = str(PlayerInventory.player_currency[PlayerInventory.Currency.TITANIUM])
+	blood_value.text = str(PlayerInventory.player_currency[PlayerInventory.Currency.BLOOD])

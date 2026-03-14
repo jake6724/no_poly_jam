@@ -1,14 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg4wpxnq64sam"]
+[gd_scene load_steps=6 format=3 uid="uid://bg4wpxnq64sam"]
+
+[ext_resource type="Script" uid="uid://dsqobh2o0sgns" path="res://scripts/environment/pickup.gd" id="1_c20rq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3kdxx"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kdxx"]
 albedo_color = Color(0.8821422, 0.4432065, 9.62615e-07, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3kdxx"]
-radius = 0.8678173
+radius = 0.28102216
 
-[node name="Pickup" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_c20rq"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Pickup" type="CharacterBody3D" node_paths=PackedStringArray("mesh")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_c20rq")
+mesh = NodePath("MeshInstance3D")
+metadata/_custom_type_script = "uid://dsqobh2o0sgns"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -22,3 +33,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_3kdxx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_c20rq")

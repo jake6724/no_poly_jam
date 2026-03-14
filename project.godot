@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 LevelManager="*res://scripts/singletons/level_manager.gd"
 PlayerInventory="*res://scripts/singletons/player_inventory.gd"
+PickupManager="*res://scripts/singletons/pickup_manager.gd"
 
 [debug]
 

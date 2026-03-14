@@ -12,7 +12,7 @@ albedo_color = Color(0.36693713, 0.10492299, 0, 1)
 data = PackedVector3Array(-1, 0.5, 0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, 1, 0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, -1, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, 0.5, -1, -0.5, 0.5, -1, -0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, 0.5, 1, 0.5, -0.5, -1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, 0.5, 1, -0.5, 0.5, -1, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, -1, -0.5, -0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_425qx"]
-size = Vector3(2, 1, 1)
+size = Vector3(2.4074707, 1.3696289, 1.6777344)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_425qx"]
 viewport_path = NodePath("Sprite3D/SubViewport")
@@ -38,6 +38,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018676758, 0.18481445, 0.033203125)
 shape = SubResource("BoxShape3D_425qx")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

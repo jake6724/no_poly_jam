@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvr2kvvvboiwv"]
+[gd_scene load_steps=8 format=3 uid="uid://dvr2kvvvboiwv"]
 
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://scenes/SophiaSkin.tscn" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player/player.gd" id="1_v6fml"]
@@ -10,9 +10,12 @@
 radius = 0.34765625
 height = 1.53125
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "interact_raycast", "_skin")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_qu4a1"]
+radius = 0.7536849
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "interact_raycast", "pickup_collect_area", "pickup_collect_collider", "player_ui", "_skin")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
-collision_mask = 14
+collision_mask = 6
 script = ExtResource("1_v6fml")
 zoom_sensitivity = 6.0
 zoom_max = 17.0
@@ -25,6 +28,9 @@ _capsule_collider = NodePath("CapsuleCollider")
 grapple_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/GrappleRaycast")
 grapple_controller = NodePath("GrappleController")
 interact_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/InteractRaycast")
+pickup_collect_area = NodePath("PickupCollectArea")
+pickup_collect_collider = NodePath("PickupCollectArea/PickupCollectCollider")
+player_ui = NodePath("PlayerUI")
 _skin = NodePath("SophiaSkin")
 
 [node name="SophiaSkin" parent="." instance=ExtResource("1_p0vlq")]
@@ -69,3 +75,13 @@ grapple_rope = NodePath("../SophiaSkin/GrappleRope")
 metadata/_custom_type_script = "uid://b8lo4pmy8o03"
 
 [node name="PlayerUI" parent="." instance=ExtResource("5_qu4a1")]
+
+[node name="PickupCollectArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="PickupCollectCollider" type="CollisionShape3D" parent="PickupCollectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67137563, 0)
+shape = SubResource("SphereShape3D_qu4a1")
+debug_color = Color(0.8817232, 0.32950577, 0.018827017, 0.41960785)

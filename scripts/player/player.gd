@@ -44,6 +44,9 @@ var _rotate_camera: bool = false
 
 @export var interact_raycast: RayCast3D
 
+@export var pickup_collect_area: Area3D
+@export var pickup_collect_collider: CollisionShape3D
+
 # Stairs
 const MAX_STEP_DOWN = -.5
 const MAX_STEP_UP = .5
@@ -53,6 +56,7 @@ var zoom_target: float
 
 const MOVE_DIRECTION_THRESHOLD: float = 0.2
 
+@export var player_ui: PlayerUI
 @export var _skin: Node3D
 
 var coyote_jump_available: bool = true
@@ -69,6 +73,8 @@ func _ready():
 	add_child(coyote_jump_timer)
 	coyote_jump_timer.timeout.connect(on_coyote_jump_timer_timeout)
 	_rotate_camera = not right_click_to_rotate_camera
+
+	pickup_collect_area.area_entered.connect(on_pickup_collect_area_entered)
 
 func _process(delta):
 	if not is_equal_approx(_spring_arm.spring_length, zoom_target):
@@ -205,7 +211,16 @@ func on_coyote_jump_timer_timeout() -> void:
 
 func interact() -> void:
 	if interact_raycast.is_colliding():
-		print("Interact hit!")
+		var interact_target: Node3D = interact_raycast.get_collider()
+		if interact_target.owner is Chest:
+			interact_target.owner.open_chest()
+
+func on_pickup_collect_area_entered(_intruder) -> void:
+	var pickup: Pickup = _intruder.owner as Pickup
+	if pickup:
+		PlayerInventory.add_currency(pickup.currency)
+		PickupManager.remove_pickup(pickup)
+		player_ui.update()
 
 func stair_step_down():
 	if is_on_floor():
