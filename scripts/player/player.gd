@@ -130,7 +130,7 @@ func _physics_process(delta: float) -> void:
 
 	if _rotate_camera:
 		# Set X and Y camera rotation. Clamp X axis so player cannot look fully up or down
-		_camera_pivot.rotation.x += _camera_input_direction.y * delta
+		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
 		_camera_pivot.rotation.y -= _camera_input_direction.x  * delta
 		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, (-PI / 4.0), (PI / 6.0))
 
