@@ -13,7 +13,7 @@ config_version=5
 config/name="no_poly_jam"
 run/main_scene="uid://bfbpxodaug1w2"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bex6b6c1ov7sf"
 
 [autoload]
 
