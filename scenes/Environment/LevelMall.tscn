@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://bn0xghdogb6qh" path="res://scripts/player/player_spawn_point.gd" id="5_oy6l1"]
 [ext_resource type="PackedScene" uid="uid://dflvc4h8xd513" path="res://scenes/player/PlayerSpawnPoint.tscn" id="6_x3v7i"]
 [ext_resource type="PackedScene" uid="uid://chau0up8pre2u" path="res://scenes/Environment/Extract.tscn" id="7_x3v7i"]
-[ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/player/Player.tscn" id="8_n54m0"]
 [ext_resource type="Texture2D" uid="uid://bt213508s4cqg" path="res://assets/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="9_miff6"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="10_nc5sf"]
 [ext_resource type="PackedScene" uid="uid://bqn01a3vepfqw" path="res://scenes/Environment/Chest.tscn" id="10_q51kh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skqn4"]
@@ -239,9 +239,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 19, 244)
 [node name="Extract" parent="Extracts" instance=ExtResource("7_x3v7i")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 47.813477, 15.499997, 242.86588)
 
-[node name="Player" parent="." instance=ExtResource("8_n54m0")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 74.627426, 47.016068, 221.99046)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nc5sf")
 
@@ -249,3 +246,5 @@ environment = SubResource("Environment_nc5sf")
 
 [node name="Chest" parent="Chests" instance=ExtResource("10_q51kh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 15.499997, 247)
+
+[node name="Player" parent="." instance=ExtResource("10_nc5sf")]
