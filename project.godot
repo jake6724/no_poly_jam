@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="no_poly_jam"
-run/main_scene="uid://bfbpxodaug1w2"
+run/main_scene="uid://b3j3f5opa3pcm"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bex6b6c1ov7sf"
 

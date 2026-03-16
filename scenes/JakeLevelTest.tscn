@@ -1,7 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cugfto7ukp035"]
 
 [ext_resource type="Material" uid="uid://b61qefm0aunyh" path="res://materials/TestLevelTerrainShaderMaterialBackup.tres" id="1_qj7bx"]
-[ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/Player.tscn" id="2_luc8q"]
+[ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/player/Player.tscn" id="2_luc8q"]
+
 
 [sub_resource type="BoxMesh" id="BoxMesh_qj7bx"]
 

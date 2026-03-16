@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba1kwvkuq1n3p"]
+
+[ext_resource type="Script" uid="uid://csqil2ksl4gs2" path="res://scripts/enemies/zombie_spawner.gd" id="1_nj58e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nj58e"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjr7x"]
+albedo_color = Color(0.7573987, 0, 0.11058595, 1)
+
+[node name="ZombieSpawner" type="Node3D" node_paths=PackedStringArray("editor_mesh")]
+script = ExtResource("1_nj58e")
+spawn_amount = 1
+editor_mesh = NodePath("MeshInstance3D")
+metadata/_custom_type_script = "uid://csqil2ksl4gs2"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_nj58e")
+surface_material_override/0 = SubResource("StandardMaterial3D_yjr7x")

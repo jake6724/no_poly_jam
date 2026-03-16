@@ -1,15 +1,15 @@
 [remap]
 
-importer="scene"
+importer="animation_library"
 importer_version=1
-type="PackedScene"
-uid="uid://ddu5ftuaijs36"
-path="res://.godot/imported/char_rex.glb-b385af193cfafd0bc7cbe36e238278af.scn"
+type="AnimationLibrary"
+uid="uid://c36l3ubgl7na4"
+path="res://.godot/imported/char_rex_animations.glb-6a4209ea6fcae3387f5e62d04b39d659.res"
 
 [deps]
 
-source_file="res://assets/character/char_rex.glb"
-dest_files=["res://.godot/imported/char_rex.glb-b385af193cfafd0bc7cbe36e238278af.scn"]
+source_file="res://assets/character/char_rex_animations.glb"
+dest_files=["res://.godot/imported/char_rex_animations.glb-6a4209ea6fcae3387f5e62d04b39d659.res"]
 
 [params]
 
@@ -39,12 +39,12 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "animations": {
-"Rex_Idle": {
-"save_to_file/enabled": false,
+"Rex_Walk": {
+"save_to_file/enabled": true,
 "save_to_file/fallback_path": "",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",
-"settings/loop_mode": 1,
+"settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -2096,16 +2096,11 @@ _subresources={
 "slices/amount": 0
 }
 },
-"materials": {
-"Body": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://assets/character/mat_char_rex_outline.tres",
-"use_external/path": "uid://d1qx235qhrdv3"
-},
-"Outline": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://assets/character/mat_char_rex.tres",
-"use_external/path": "uid://c2twpwh545pam"
+"nodes": {
+"PATH:AnimationPlayer": {
+"import_tracks/position": 0,
+"import_tracks/rotation": 0,
+"import_tracks/scale": 0
 }
 }
 }

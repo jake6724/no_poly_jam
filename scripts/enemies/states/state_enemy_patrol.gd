@@ -6,7 +6,7 @@ var patrol_delay_min: float = 1
 var patrol_delay_max: float = 5
 var waiting_at_patrol: bool = true
 
-var max_search_offset: float = 20.0
+var max_search_offset: float = 10.0
 
 var patrol_started: bool = false
 

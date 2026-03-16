@@ -20,6 +20,7 @@ extends CharacterBody3D
 @export var move_speed: float = 8.0
 @export var move_speed_sprint: float = 10.0
 var move_speed_base: float 
+var is_sprinting: bool = false
 var is_sliding: bool = false
 var prev_floor_angle: float 
 var slide_multiplier: float
@@ -82,10 +83,13 @@ func _process(delta):
 		_spring_arm.spring_length = lerp(_spring_arm.spring_length, zoom_target, zoom_sensitivity * delta)
 
 	if interact_raycast.is_colliding():
-		var chest: Chest = interact_raycast.get_collider().owner as Chest
-		if chest:
-			prev_interactable = chest
-			chest.show_interact_hint()
+
+		# TODO: Put a lil mesh where it is colliding so I can see how it looks
+
+		var interactable: Interactable = interact_raycast.get_collider().owner as Interactable
+		if interactable:
+			interactable.show_interact_hint()
+			prev_interactable = interactable
 	else:
 		if prev_interactable:
 			prev_interactable.hide_interact_hint()
@@ -98,9 +102,11 @@ func _input(_event):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if Input.is_action_just_pressed("sprint"):
 		move_speed = move_speed_sprint
+		is_sprinting = true
 		_skin.animation_tree.set("parameters/TimeScale/scale", 1.25)
 	if Input.is_action_just_released("sprint"):
 		move_speed = move_speed_base
+		is_sprinting = false
 		_skin.animation_tree.set("parameters/TimeScale/scale", 1.0)
 	if Input.is_action_just_pressed("jump"):
 		jump()
@@ -180,7 +186,7 @@ func _physics_process(delta: float) -> void:
 	if get_real_velocity().y >= 0:
 		acceleration = 70.0
 
-	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y , rotation_speed * delta)
+	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y + PI , rotation_speed * delta)
 
 	# Animate
 	if not is_on_floor() and velocity.y <= 0:
@@ -198,6 +204,16 @@ func _physics_process(delta: float) -> void:
 
 	prev_is_on_floor = is_on_floor()
 
+	_skin.player_velocity = velocity
+	_skin.player_is_grounded = is_grounded
+
+	# _skin.player_move_direction.x = get_real_velocity().x
+	# _skin.player_move_direction.y = get_real_velocity().y
+	# # _skin.player_move_direction = _skin.player_move_direction.normalized()
+
+	_skin.player_input.y = lerp(_skin.player_input.y, raw_input.y, delta * 10)
+	_skin.player_input.x = lerp(_skin.player_input.x, raw_input.x, delta * 8)
+
 func jump() -> void:
 	if is_on_floor() or grapple_controller.launched or coyote_jump_available:
 		grapple_controller.launched = false
@@ -211,9 +227,9 @@ func on_coyote_jump_timer_timeout() -> void:
 
 func interact() -> void:
 	if interact_raycast.is_colliding():
-		var interact_target: Node3D = interact_raycast.get_collider()
-		if interact_target.owner is Chest:
-			interact_target.owner.open_chest()
+		var interactable: Interactable = interact_raycast.get_collider().owner as Interactable
+		if interactable:
+			interactable.interact()
 
 func on_pickup_collect_area_entered(_intruder) -> void:
 	var pickup: Pickup = _intruder.owner as Pickup

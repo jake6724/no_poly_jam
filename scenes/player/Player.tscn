@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvr2kvvvboiwv"]
+[gd_scene load_steps=9 format=3 uid="uid://dvr2kvvvboiwv"]
 
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://scenes/SophiaSkin.tscn" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player/player.gd" id="1_v6fml"]
 [ext_resource type="Script" uid="uid://b8lo4pmy8o03" path="res://scripts/grapple_controller.gd" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://dk2mbyl6bue78" path="res://scenes/GrappleRope.tscn" id="3_mdl7e"]
 [ext_resource type="PackedScene" uid="uid://c06ri4cfofikf" path="res://scenes/player/PlayerUI.tscn" id="5_qu4a1"]
+[ext_resource type="PackedScene" uid="uid://bm4xtw1uee0is" path="res://scenes/player/RexSkin.tscn" id="7_khinc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p0vlq"]
 radius = 0.34765625
@@ -19,6 +20,7 @@ collision_mask = 6
 script = ExtResource("1_v6fml")
 zoom_sensitivity = 6.0
 zoom_max = 17.0
+move_speed = 5.0
 acceleration = 70.0
 jump_coyote_time = 0.3
 _camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
@@ -31,10 +33,13 @@ interact_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/InteractRaycast")
 pickup_collect_area = NodePath("PickupCollectArea")
 pickup_collect_collider = NodePath("PickupCollectArea/PickupCollectCollider")
 player_ui = NodePath("PlayerUI")
-_skin = NodePath("SophiaSkin")
+_skin = NodePath("RexSkin")
+
+[node name="RexSkin" parent="." instance=ExtResource("7_khinc")]
 
 [node name="SophiaSkin" parent="." instance=ExtResource("1_p0vlq")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
+visible = false
 
 [node name="GrappleRope" parent="SophiaSkin" instance=ExtResource("3_mdl7e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.684342e-14, 0.6414819, -0.1482873)

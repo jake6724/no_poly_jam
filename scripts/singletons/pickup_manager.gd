@@ -28,7 +28,7 @@ func spawn_pickup(spawn_amount, spawn_global_position: Vector3, forward_directio
 
 func get_launch_velocity(forward_direction: Vector3) -> Vector3:
 	var launch_velocity: Vector3 = forward_direction
-	launch_velocity.z = randf_range(4, 8)
+	launch_velocity.z = -randf_range(4, 8)
 	launch_velocity.x = randf_range(-2, 2)
 	launch_velocity.y = randf_range(9, 12)
 	return launch_velocity

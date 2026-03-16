@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqjq02mntnjn8"]
+
+[ext_resource type="Script" uid="uid://bi2ygwocv1qgy" path="res://scripts/ui/main_menu.gd" id="1_vjtqc"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("button_new_game", "button_settings")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_vjtqc")
+button_new_game = NodePath("VBoxContainer/ButtonNewGame")
+button_settings = NodePath("VBoxContainer/ButtonSettings")
+metadata/_custom_type_script = "uid://bi2ygwocv1qgy"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.41654477, 0.0007292952, 1.92523e-07, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -33.0
+offset_right = 46.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ButtonNewGame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="ButtonSettings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
