@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 LevelManager="*res://scripts/singletons/level_manager.gd"
 PlayerInventory="*res://scripts/singletons/player_inventory.gd"
 PickupManager="*res://scripts/singletons/pickup_manager.gd"
+AudioManager="*res://scenes/AudioManager.tscn"
+SceneTransition="*res://scenes/SceneTransition.tscn"
 
 [debug]
 
@@ -101,6 +103,11 @@ control={
 interact={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+]
+}
+x={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
 ]
 }
 
