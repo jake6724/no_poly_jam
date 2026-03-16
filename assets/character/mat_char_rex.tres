@@ -1,7 +1,15 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c2twpwh545pam"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c2twpwh545pam"]
 
 [ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_175it"]
 [ext_resource type="Texture2D" uid="uid://d4nqf6pgshp52" path="res://assets/character/char_rex_TEX_Rex.png" id="2_3er6w"]
+
+[sub_resource type="Gradient" id="Gradient_8wefp"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.29651162, 0.7267442)
+colors = PackedColorArray(0, 0, 0, 1, 0.52312034, 0.5231203, 0.5231203, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7l5nm"]
+gradient = SubResource("Gradient_8wefp")
 
 [resource]
 render_priority = 0
@@ -9,16 +17,17 @@ shader = ExtResource("1_175it")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture = ExtResource("2_3er6w")
 shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
+shader_parameter/cuts = 1
 shader_parameter/wrap = 0.0
 shader_parameter/steepness = 1.0
 shader_parameter/use_attenuation = true
 shader_parameter/use_specular = true
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
+shader_parameter/specular_strength = 0.010000000475
+shader_parameter/specular_shininess = 3.50000016625
 shader_parameter/use_rim = true
-shader_parameter/rim_width = 8.0
+shader_parameter/rim_width = 11.3600005396
 shader_parameter/rim_color = Color(1, 1, 1, 1)
 shader_parameter/use_ramp = false
+shader_parameter/ramp = SubResource("GradientTexture1D_7l5nm")
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01

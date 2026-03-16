@@ -1,22 +1,16 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d1qx235qhrdv3"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d1qx235qhrdv3"]
 
-[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_eq5kb"]
+[ext_resource type="Material" uid="uid://c2twpwh545pam" path="res://assets/character/mat_char_rex.tres" id="1_175it"]
+[ext_resource type="Shader" uid="uid://cpn6h4x5vmdl" path="res://shaders/outline.gdshader" id="1_jm44x"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_eq5kb")
-shader_parameter/albedo = Color(0, 0, 0, 1)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 1
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = false
-shader_parameter/use_specular = false
-shader_parameter/specular_strength = 0.0
-shader_parameter/specular_shininess = 0.0
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+next_pass = ExtResource("1_175it")
+shader = ExtResource("1_jm44x")
+shader_parameter/scale = 6.0
+shader_parameter/outline_spread = 1.0
+shader_parameter/_Color = Color(0, 0, 0, 1)
+shader_parameter/_DepthNormalThreshold = 0.1
+shader_parameter/_DepthNormalThresholdScale = 3.0
+shader_parameter/_DepthThreshold = 1.5
+shader_parameter/_NormalThreshold = 2.0
