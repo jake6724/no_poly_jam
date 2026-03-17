@@ -21,6 +21,9 @@ extends CharacterBody3D
 @export var move_speed_sprint: float = 10.0
 var move_speed_base: float 
 var is_sprinting: bool = false
+@export var slide_timer: Timer
+@export_range(.1, 5, .1) var slide_cooldown: float
+var can_slide: bool = true
 var is_sliding: bool = false
 var prev_floor_angle: float 
 var slide_multiplier: float
@@ -34,8 +37,9 @@ var can_stair_step: bool = true # Disabled when jumping until jump coyote time g
 @export var gravity: float = -30
 @export_group("Combat")
 @export_range(.1, 3, .1) var bite_cooldown: float
-@export var bite_timer: Timer
 var can_bite: bool = true
+@export var bite_area: Area3D
+@export var bite_collider: CollisionShape3D
 
 @export_group("Nodes")
 @export var _camera: Camera3D
@@ -84,8 +88,15 @@ func _ready():
 
 	_skin.bite_finished.connect(on_bite_finished)
 
-	# # BiteTimer
-	# bite_timer.timeout.connect(on_bite_timer_timeout)
+	# BiteArea
+	bite_area.body_entered.connect(on_bite_body_entered)
+
+	# SlideTimer
+	slide_timer.timeout.connect(on_slide_timer_timeout)
+
+func on_bite_body_entered(intruder) -> void:
+	print(intruder)
+	intruder.queue_free()
 
 func _process(delta):
 	if not is_equal_approx(_spring_arm.spring_length, zoom_target):
@@ -108,36 +119,52 @@ func _process(delta):
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 	if Input.is_action_just_pressed("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 	if Input.is_action_just_pressed("sprint"):
 		move_speed = move_speed_sprint
 		is_sprinting = true
 		_skin.animation_tree.set("parameters/TimeScale/scale", 1.25)
+
 	if Input.is_action_just_released("sprint"):
 		move_speed = move_speed_base
 		is_sprinting = false
 		_skin.animation_tree.set("parameters/TimeScale/scale", 1.0)
+
 	if Input.is_action_just_pressed("jump"):
 		jump()
 		can_stair_step = false
-	if Input.is_action_pressed("control"):
-		# TODO: Put in a func
-		if not is_sliding and prev_floor_angle < 0.99 and get_real_velocity().y < 0:
-			is_sliding = true
-			acceleration = 1.0
-			slide_multiplier = 1 - prev_floor_angle
-			velocity *= (1 + slide_multiplier)
-		_skin.slide()
+
+	if Input.is_action_just_pressed("control"):
+		slide()
 
 	if Input.is_action_just_released("control"):
 		# Put in a func
 		is_sliding = false
+		slide_timer.start(slide_cooldown)
 		acceleration = 70.0
 		_skin.stop_slide()
 
 	if Input.is_action_just_pressed("interact"):
 		interact()
+
+func slide() -> void: 
+	# if not is_sliding and prev_floor_angle < 0.99 and get_real_velocity().y < 0: 
+	# old code idk this doesnt necessarily go on this line here
+	if can_slide:
+		can_slide = false
+		is_sliding = true
+		_skin.player_is_sliding = true
+
+		acceleration = 3.0
+		var floor_angle: float = get_floor_angle()
+		print("Floor angle: ", floor_angle)
+		var velocity_power_bonus: float = 23 + (floor_angle * 2)
+		velocity = velocity.normalized() * velocity_power_bonus
+
+		_skin.slide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Check mouse has moved
@@ -169,10 +196,11 @@ func _physics_process(delta: float) -> void:
 	# Reset _camera_input_direction for the next time _unhandled_input() is triggered
 	# If this is not reset, the camera will keep rotating until new input comes in
 	_camera_input_direction = Vector2.ZERO
-
-	# Get the raw 2-axis input data, forward direction of camera, and right direction of camera
-	# Forward direction is used to move back-and-forth, right direction is used to move left-and-right
-	var raw_input: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var raw_input: Vector2 = Vector2.ZERO
+	if not is_sliding:
+		# Get the raw 2-axis input data, forward direction of camera, and right direction of camera
+		# Forward direction is used to move back-and-forth, right direction is used to move left-and-right
+		raw_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	var forward_direction: Vector3 = _camera.global_basis.z
 	var right_direction: Vector3 = _camera.global_basis.x
@@ -197,14 +225,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	# stair_step_down()
 
-	# Handle sliding
-	prev_floor_angle = get_floor_angle()
-	if prev_floor_angle == 0.0:
-		acceleration = 70.0
+	# # Handle sliding
+	# prev_floor_angle = get_floor_angle()
+	# if prev_floor_angle == 0.0:
+	# 	acceleration = 70.0
 
-	# Stop slide if moving up
-	if get_real_velocity().y >= 0:
-		acceleration = 70.0
+	# # Stop slide if moving up
+	# if get_real_velocity().y >= 0:
+	# 	acceleration = 70.0
 
 	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y + PI , rotation_speed * delta)
 
@@ -226,6 +254,7 @@ func _physics_process(delta: float) -> void:
 
 	_skin.player_velocity = velocity
 	_skin.player_is_grounded = is_grounded
+	_skin.player_is_sliding = is_sliding
 
 	# _skin.player_move_direction.x = get_real_velocity().x
 	# _skin.player_move_direction.y = get_real_velocity().y
@@ -261,7 +290,8 @@ func on_pickup_collect_area_entered(_intruder) -> void:
 func on_bite_finished() -> void:
 	can_bite = true
 
-
+func on_slide_timer_timeout() -> void:
+	can_slide = true
 
 
 
