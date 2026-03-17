@@ -32,6 +32,11 @@ var move_direction: Vector3
 var can_stair_step: bool = true # Disabled when jumping until jump coyote time goes off, or grounded. Prevents player from snapping back to ground when jumping
 @export_range(0,1,.1) var jump_coyote_time: float = 0.5
 @export var gravity: float = -30
+@export_group("Combat")
+@export_range(.1, 3, .1) var bite_cooldown: float
+@export var bite_timer: Timer
+var can_bite: bool = true
+
 @export_group("Nodes")
 @export var _camera: Camera3D
 @export var _camera_pivot: Node3D
@@ -77,6 +82,11 @@ func _ready():
 
 	pickup_collect_area.area_entered.connect(on_pickup_collect_area_entered)
 
+	_skin.bite_finished.connect(on_bite_finished)
+
+	# # BiteTimer
+	# bite_timer.timeout.connect(on_bite_timer_timeout)
+
 func _process(delta):
 	if not is_equal_approx(_spring_arm.spring_length, zoom_target):
 		zoom_target = clamp(zoom_target, zoom_min, zoom_max)
@@ -118,10 +128,14 @@ func _input(_event):
 			acceleration = 1.0
 			slide_multiplier = 1 - prev_floor_angle
 			velocity *= (1 + slide_multiplier)
+		_skin.slide()
+
 	if Input.is_action_just_released("control"):
 		# Put in a func
 		is_sliding = false
 		acceleration = 70.0
+		_skin.stop_slide()
+
 	if Input.is_action_just_pressed("interact"):
 		interact()
 
@@ -137,6 +151,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom_target += zoom_step
 
 func _physics_process(delta: float) -> void:
+	#print(can_bite)
+	if Input.is_action_pressed("left_click") and can_bite:
+		can_bite = false
+		_skin.bite()
+
+
 	was_grounded = is_grounded
 	is_grounded = is_on_floor()
 
@@ -237,6 +257,13 @@ func on_pickup_collect_area_entered(_intruder) -> void:
 		PlayerInventory.add_currency(pickup.currency)
 		PickupManager.remove_pickup(pickup)
 		player_ui.update()
+
+func on_bite_finished() -> void:
+	can_bite = true
+
+
+
+
 
 func stair_step_down():
 	if is_on_floor():

@@ -12,9 +12,9 @@ var launched: bool = false
 var target: Vector3
 
 func _physics_process(delta) -> void:
-    if Input.is_action_just_pressed("left_click"):
+    if Input.is_action_just_pressed("right_click"):
         launch()
-    if Input.is_action_just_released("left_click"):
+    if Input.is_action_just_released("right_click"):
         retract()
 
     if launched:

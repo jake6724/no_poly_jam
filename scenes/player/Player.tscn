@@ -14,7 +14,7 @@ height = 1.53125
 [sub_resource type="SphereShape3D" id="SphereShape3D_qu4a1"]
 radius = 0.7536849
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "interact_raycast", "pickup_collect_area", "pickup_collect_collider", "player_ui", "_skin")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("bite_timer", "_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "interact_raycast", "pickup_collect_area", "pickup_collect_collider", "player_ui", "_skin")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
 collision_mask = 6
 script = ExtResource("1_v6fml")
@@ -23,6 +23,8 @@ zoom_max = 17.0
 move_speed = 5.0
 acceleration = 70.0
 jump_coyote_time = 0.3
+bite_cooldown = 0.9
+bite_timer = NodePath("")
 _camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
 _camera_pivot = NodePath("CameraPivot")
 _spring_arm = NodePath("CameraPivot/SpringArm3D")
@@ -52,6 +54,7 @@ shape = SubResource("CapsuleShape3D_p0vlq")
 transform = Transform3D(-4.3711378e-08, 0, 0.99999976, 0, 0.9999999, 0, -0.99999976, 0, -4.3711378e-08, 0, 1.1704572, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5912963, 0, 1.0338554e-07)
 collision_mask = 4
 spring_length = 5.0
 

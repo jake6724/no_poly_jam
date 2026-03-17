@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=7 format=3 uid="uid://wn4tsjqdptie"]
+
+[ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="1_sgam0"]
+[ext_resource type="AudioStream" uid="uid://c0h0ao44j7j6m" path="res://assets/audio/rex/bite_1.mp3" id="2_dgmht"]
+[ext_resource type="AudioStream" uid="uid://csajkf1forc1m" path="res://assets/audio/rex/bite_2.mp3" id="3_77ci3"]
+[ext_resource type="AudioStream" uid="uid://dcj6y7l3fxpub" path="res://assets/audio/rex/bite_3.mp3" id="4_lkats"]
+[ext_resource type="AudioStream" uid="uid://mejns80517hx" path="res://assets/audio/rex/bite_4.mp3" id="5_qxwi1"]
+[ext_resource type="AudioStream" uid="uid://dqj2rd0gyj726" path="res://assets/audio/rex/bite_5.mp3" id="6_xt2l1"]
+
+[resource]
+script = ExtResource("1_sgam0")
+type = 1
+sounds = Array[AudioStreamMP3]([ExtResource("2_dgmht"), ExtResource("3_77ci3"), ExtResource("4_lkats"), ExtResource("5_qxwi1"), ExtResource("6_xt2l1")])
+metadata/_custom_type_script = "uid://kppg6mfv2dlh"
