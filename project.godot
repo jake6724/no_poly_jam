@@ -33,6 +33,10 @@ window/size/viewport_height=720
 window/size/initial_position_type=0
 window/size/initial_position=Vector2i(500, 100)
 
+[gui]
+
+theme/custom="uid://c8wvjapcow44o"
+
 [input]
 
 left_click={

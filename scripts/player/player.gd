@@ -40,6 +40,8 @@ var can_stair_step: bool = true # Disabled when jumping until jump coyote time g
 var can_bite: bool = true
 @export var bite_area: Area3D
 @export var bite_collider: CollisionShape3D
+@export var base_damage: float = 50
+var damage: float
 
 @export_group("Nodes")
 @export var _camera: Camera3D
@@ -87,6 +89,7 @@ func _ready():
 	pickup_collect_area.area_entered.connect(on_pickup_collect_area_entered)
 
 	_skin.bite_finished.connect(on_bite_finished)
+	_skin.bite_collider_requested.connect(on_bite_collider_requested)
 
 	# BiteArea
 	bite_area.body_entered.connect(on_bite_body_entered)
@@ -94,9 +97,18 @@ func _ready():
 	# SlideTimer
 	slide_timer.timeout.connect(on_slide_timer_timeout)
 
+	bite_collider.disabled = true
+	
+	damage = base_damage
+
+	grapple_controller.grapple_rope = _skin.tongue
+
 func on_bite_body_entered(intruder) -> void:
 	print(intruder)
-	intruder.queue_free()
+	intruder.take_damage(damage)
+
+func on_bite_collider_requested(_value: bool) -> void:
+	bite_collider.set_deferred("disabled", _value)
 
 func _process(delta):
 	if not is_equal_approx(_spring_arm.spring_length, zoom_target):
@@ -126,7 +138,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("sprint"):
 		move_speed = move_speed_sprint
 		is_sprinting = true
-		_skin.animation_tree.set("parameters/TimeScale/scale", 1.25)
+		# _skin.animation_tree.set("parameters/TimeScale/scale", 1.25)
 
 	if Input.is_action_just_released("sprint"):
 		move_speed = move_speed_base
@@ -178,11 +190,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom_target += zoom_step
 
 func _physics_process(delta: float) -> void:
-	#print(can_bite)
 	if Input.is_action_pressed("left_click") and can_bite:
 		can_bite = false
 		_skin.bite()
-
 
 	was_grounded = is_grounded
 	is_grounded = is_on_floor()
@@ -255,6 +265,7 @@ func _physics_process(delta: float) -> void:
 	_skin.player_velocity = velocity
 	_skin.player_is_grounded = is_grounded
 	_skin.player_is_sliding = is_sliding
+	_skin.player_is_sprinting = is_sprinting
 
 	# _skin.player_move_direction.x = get_real_velocity().x
 	# _skin.player_move_direction.y = get_real_velocity().y

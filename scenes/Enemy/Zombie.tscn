@@ -8,7 +8,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jdbhd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdbhd"]
-albedo_color = Color(0.8347697, 0, 0.062170424, 1)
+resource_local_to_scene = true
+albedo_color = Color(0.84, 0, 0.070000134, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1e0c3"]
 radius = 0.4
@@ -28,7 +29,7 @@ radius = 17.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0pthk"]
 radius = 11.0
 
-[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "navigation_agent")]
+[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "navigation_agent", "skin")]
 transform = Transform3D(0.9999999, 0, -2.0464786e-07, 0, 1, 0, 2.0464786e-07, 0, 0.9999999, 0, 0, 0)
 collision_layer = 2
 collision_mask = 7
@@ -43,6 +44,7 @@ chase_area_collider = NodePath("ChaseArea/ChaseAreaCollider")
 alert_area = NodePath("AlertArea")
 alert_area_collider = NodePath("AlertArea/AlertAreaCollider")
 navigation_agent = NodePath("NavigationAgent3D")
+skin = NodePath("MeshInstance3D")
 metadata/_custom_type_script = "uid://b4lnl1hrp1tlh"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

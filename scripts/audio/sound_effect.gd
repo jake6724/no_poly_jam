@@ -6,6 +6,14 @@ extends Resource
 enum SOUND_EFFECT_TYPE {
     ABANDONED_MALL_AMBIENCE,
 	BITE,
+	FOOTSTEP,
+}
+
+enum Bus {
+	MASTER,
+	MUSIC,
+	SFX, 
+	SFX_AMBIENT,
 }
 
 enum SelectMode {
@@ -22,6 +30,7 @@ enum SelectMode {
 @export_range(0.0, 1.0,.01) var pitch_randomness: float = 0.0 ## The pitch randomness setting of the [member sound_effect].
 @export var select_mode: SelectMode = SelectMode.RANDOM
 @export var max_distance: float = 700
+@export var bus: Bus = Bus.SFX
 
 var audio_count: int = 0 ## The instances of this [AudioStreamMP3] currently playing.
 

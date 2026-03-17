@@ -12,6 +12,13 @@ var sound_effect_sequence_index_dict: Dictionary[SoundEffect, int]
 
 @export var sound_effects: Array[SoundEffect] ## Stores all possible SoundEffects that can be played.
 
+var bus_mapping: Dictionary[SoundEffect.Bus, StringName] = {
+	SoundEffect.Bus.MASTER: &"Master",
+	SoundEffect.Bus.MUSIC: &"Music",
+	SoundEffect.Bus.SFX: &"SFX",
+	SoundEffect.Bus.SFX_AMBIENT: &"SFXAmbient",
+}
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -37,6 +44,7 @@ func create_3d_audio_at_location(location: Vector3, type: SoundEffect.SOUND_EFFE
 			new_3D_audio.max_distance = sound_effect.max_distance
 			new_3D_audio.finished.connect(sound_effect.on_audio_finished)
 			new_3D_audio.finished.connect(new_3D_audio.queue_free)
+			new_3D_audio.bus = get_bus_string_name(sound_effect.bus)
 			new_3D_audio.play()
 	else:
 		push_error("Audio Manager failed to find setting for type ", type)
@@ -89,3 +97,6 @@ func select_sound(sound_effect: SoundEffect) -> AudioStreamMP3:
 
 	sound_effect_previous_sound_dict[sound_effect] = selected_sound
 	return selected_sound
+
+func get_bus_string_name(_bus: SoundEffect.Bus) -> StringName:
+	return bus_mapping[_bus]

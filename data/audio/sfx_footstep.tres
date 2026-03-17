@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=6 format=3 uid="uid://4j1wkbbv6qta"]
+
+[ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="1_lhqyp"]
+[ext_resource type="AudioStream" uid="uid://xjstn8pprwhg" path="res://assets/audio/rex/footsteps_1.mp3" id="2_smh31"]
+[ext_resource type="AudioStream" uid="uid://dw5cacnird4pq" path="res://assets/audio/rex/footsteps_2.mp3" id="3_3ssbv"]
+[ext_resource type="AudioStream" uid="uid://dw86qa2ir5h8v" path="res://assets/audio/rex/footsteps_3.mp3" id="4_cylko"]
+[ext_resource type="AudioStream" uid="uid://de07sn1h4v4xo" path="res://assets/audio/rex/footsteps_4.mp3" id="5_2tof8"]
+
+[resource]
+script = ExtResource("1_lhqyp")
+limit = 3
+type = 2
+sounds = Array[AudioStreamMP3]([ExtResource("2_smh31"), ExtResource("3_3ssbv"), ExtResource("4_cylko"), ExtResource("5_2tof8")])
+volume = -15.0
+metadata/_custom_type_script = "uid://kppg6mfv2dlh"

@@ -6,7 +6,7 @@ extends Node
 @export var rest_length: float = 2.0
 @export var stiffness: float = 10.0 # higher the stiffness, faster spring will retract
 @export var damping_power: float = -1.0 
-@export var grapple_rope: Node3D
+var grapple_rope
 
 var launched: bool = false
 var target: Vector3

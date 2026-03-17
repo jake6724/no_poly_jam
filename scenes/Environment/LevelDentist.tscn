@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fomsy6qv4m8n"]
+
+[ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/player/Player.tscn" id="2_56yr6"]
+
+[node name="LevelDentist" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("2_56yr6")]
+transform = Transform3D(0.44469765, 0, 0.8956807, 0, 1, 0, -0.8956807, 0, 0.44469765, -2.4427943, 0, 6.9048543)

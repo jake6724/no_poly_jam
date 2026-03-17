@@ -25,6 +25,7 @@ script = ExtResource("1_v6fml")
 zoom_sensitivity = 6.0
 zoom_max = 17.0
 move_speed = 5.0
+move_speed_sprint = 12.0
 slide_timer = NodePath("SliderTimer")
 slide_cooldown = 0.5
 acceleration = 70.0
@@ -47,7 +48,6 @@ _skin = NodePath("RexSkin")
 [node name="RexSkin" parent="." instance=ExtResource("7_khinc")]
 
 [node name="BiteArea" type="Area3D" parent="RexSkin"]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -97,11 +97,10 @@ collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0, 0.8345436, 0.5228345, 1)
 
-[node name="GrappleController" type="Node" parent="." node_paths=PackedStringArray("player", "grapple_raycast", "grapple_rope")]
+[node name="GrappleController" type="Node" parent="." node_paths=PackedStringArray("player", "grapple_raycast")]
 script = ExtResource("3_3li8b")
 player = NodePath("..")
 grapple_raycast = NodePath("../CameraPivot/SpringArm3D/Camera3D/GrappleRaycast")
-grapple_rope = NodePath("../SophiaSkin/GrappleRope")
 metadata/_custom_type_script = "uid://b8lo4pmy8o03"
 
 [node name="PlayerUI" parent="." instance=ExtResource("5_qu4a1")]
@@ -114,6 +113,7 @@ monitorable = false
 
 [node name="PickupCollectCollider" type="CollisionShape3D" parent="PickupCollectArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67137563, 0)
+visible = false
 shape = SubResource("SphereShape3D_qu4a1")
 debug_color = Color(0.8817232, 0.32950577, 0.018827017, 0.41960785)
 

@@ -1,13 +1,7 @@
 class_name Zombie
 extends CharacterBody3D
 
-
-var move_speed_min: float = 4.0
-var move_speed_max: float = 7.0
-var move_speed: float 
 var movement_target_position: Vector3
-var line_of_sight_angle: float = 70.0
-var rotation_speed: float = TAU * 2
 var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
 @export var prey: Node3D 
 @export_group("Nodes")
@@ -20,6 +14,7 @@ var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
 @export var alert_area: Area3D
 @export var alert_area_collider: CollisionShape3D
 @export var navigation_agent: NavigationAgent3D
+@export var skin: MeshInstance3D
 
 var patrol_position: Vector3
 var is_player_in_sight_range: bool = false
@@ -27,8 +22,16 @@ var player_spotted: bool = false
 var chase_timer: Timer = Timer.new()
 var chase_duration_min: float = 5.0 # Duration after player has escaped zombie chase range that zombie will keep chasing
 var chase_duration_max: float = 10.0
-
+@export_group("Stats")
+@export var max_health: float = 100.0
+@export var health: float
+@export var move_speed_min: float = 4.0
+@export var move_speed_max: float = 7.0
+@export var move_speed: float 
+@export var line_of_sight_angle: float = 70.0
+@export var rotation_speed: float = TAU * 2
 @export var gravity: float = -30
+var is_alive: bool = true
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
@@ -52,6 +55,9 @@ func _ready():
 	raycast_sight.debug_shape_thickness = 10
 
 	configure_state_machine()
+
+	# Configure stats
+	health = max_health
 
 func configure_state_machine() -> void:
 	state_machine.initialize(self)
@@ -130,3 +136,28 @@ func alert_nearby_zombies() -> void:
 		var zombie: Zombie = body as Zombie
 		if zombie:
 			zombie.start_chasing(prey)
+
+func take_damage(_damage_amount: float) -> void:
+	# Start chasing if ambushed
+	if not player_spotted:
+		var bodies: Array = chase_area.get_overlapping_bodies()
+		start_chasing(bodies[0])
+
+	flash_mesh()
+	health -= _damage_amount
+	if health < 0:
+		die()
+
+func die() -> void:
+	queue_free()
+
+func flash_mesh() -> void:
+	var mat = skin.get_surface_override_material(0)
+	var reset_color: Color = mat.albedo_color
+
+	var flash_tween: Tween = get_tree().create_tween()
+	flash_tween.set_parallel(true)
+	flash_tween.tween_property(mat, "albedo_color:s", 1, .3).from(15)
+	flash_tween.tween_property(mat, "albedo_color", reset_color, .3).from(Color.SALMON)
+
+	# mat.albedo_color.s = 15

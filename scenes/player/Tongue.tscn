@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl4hvggiljanw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fgkrl"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgkrl"]
+albedo_color = Color(0.88553053, 0.4003296, 0.5824798, 1)
+
+[node name="Tongue" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -1)
+mesh = SubResource("CapsuleMesh_fgkrl")
+surface_material_override/0 = SubResource("StandardMaterial3D_fgkrl")

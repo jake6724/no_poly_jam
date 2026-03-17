@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dflvc4h8xd513" path="res://scenes/player/PlayerSpawnPoint.tscn" id="6_x3v7i"]
 [ext_resource type="PackedScene" uid="uid://chau0up8pre2u" path="res://scenes/Environment/Extract.tscn" id="7_x3v7i"]
 [ext_resource type="Texture2D" uid="uid://bt213508s4cqg" path="res://assets/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="9_miff6"]
-[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="10_nc5sf"]
+[ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/player/Player.tscn" id="10_nc5sf"]
 [ext_resource type="PackedScene" uid="uid://bqn01a3vepfqw" path="res://scenes/Environment/Chest.tscn" id="10_q51kh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skqn4"]
