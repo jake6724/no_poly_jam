@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d1qx235qhrdv3"]
 
 [ext_resource type="Material" uid="uid://c2twpwh545pam" path="res://assets/character/mat_char_rex.tres" id="1_175it"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_jm44x"]
+[ext_resource type="Shader" uid="uid://cpn6h4x5vmdl" path="res://shaders/outline.gdshader" id="1_jm44x"]
 
 [resource]
 render_priority = 0
