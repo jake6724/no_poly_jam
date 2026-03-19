@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkw8u4jf51hsj"
-path.s3tc="res://.godot/imported/env_mall_TEX_Environment.png-57e46f0cba6a069876d60b081eca4ee1.s3tc.ctex"
+uid="uid://dtgh11g0vame1"
+path.s3tc="res://.godot/imported/char_zombie_TEX_Zombie.png-5742030c9e4e54c0d5dfb299c6d45767.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "0caea58a3aed70a0cf2530df9ad96db5"
+"md5": "029b463015578670746022327582005f"
 }
 
 [deps]
 
-source_file="res://assets/environment/mall/env_mall_TEX_Environment.png"
-dest_files=["res://.godot/imported/env_mall_TEX_Environment.png-57e46f0cba6a069876d60b081eca4ee1.s3tc.ctex"]
+source_file="res://assets/character/char_zombie_TEX_Zombie.png"
+dest_files=["res://.godot/imported/char_zombie_TEX_Zombie.png-5742030c9e4e54c0d5dfb299c6d45767.s3tc.ctex"]
 
 [params]
 
