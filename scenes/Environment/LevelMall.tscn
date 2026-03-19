@@ -806,7 +806,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 47.8
 environment = SubResource("Environment_nc5sf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.7649214, -0.63654125, -0.09854177, 0, -0.1529858, 0.9882284, -0.6441236, -0.7559171, -0.11702211, 0, 454.56116, 227.96664)
+transform = Transform3D(0.7660444, -0.6348739, -0.10055415, -1.3675938e-08, -0.15643449, 0.98768836, -0.6427877, -0.75661314, -0.11983577, 0, 454.56116, 227.96664)
 light_energy = 2.0
 light_bake_mode = 1
 shadow_enabled = true
