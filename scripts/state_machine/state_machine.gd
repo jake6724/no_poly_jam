@@ -18,7 +18,8 @@ func initialize(_parent_character: CharacterBody3D):
 	# Initialize and store all child states
 	var children: Array = get_children()
 	for _state in children:
-		states[_state.name.to_lower()] = _state
+		_state.state_name = _state.name.to_lower()
+		states[_state.state_name] = _state
 		_state.parent_character = parent_character
 		_state.init_state()
 

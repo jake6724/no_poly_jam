@@ -3,6 +3,8 @@ extends Node
 
 var parent_character: CharacterBody3D # Set by StateMachine
 
+var state_name: String # set by state machine
+
 var animation_1: String
 var animation_2: String
 var animation_3: String

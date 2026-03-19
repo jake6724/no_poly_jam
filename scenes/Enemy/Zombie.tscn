@@ -11,9 +11,8 @@
 resource_local_to_scene = true
 albedo_color = Color(0.84, 0, 0.070000134, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1e0c3"]
-radius = 0.4
-height = 1.95
+[sub_resource type="SphereShape3D" id="SphereShape3D_8q0s5"]
+radius = 0.68119013
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8q0s5"]
 radius = 10.0
@@ -29,10 +28,10 @@ radius = 17.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0pthk"]
 radius = 11.0
 
-[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "navigation_agent", "skin")]
+[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "navigation_agent", "skin", "ground_raycast")]
 transform = Transform3D(0.9999999, 0, -2.0464786e-07, 0, 1, 0, 2.0464786e-07, 0, 0.9999999, 0, 0, 0)
 collision_layer = 2
-collision_mask = 7
+collision_mask = 5
 safe_margin = 0.01
 script = ExtResource("1_1e0c3")
 state_machine = NodePath("StateMachine")
@@ -45,6 +44,7 @@ alert_area = NodePath("AlertArea")
 alert_area_collider = NodePath("AlertArea/AlertAreaCollider")
 navigation_agent = NodePath("NavigationAgent3D")
 skin = NodePath("MeshInstance3D")
+ground_raycast = NodePath("GroundRaycast")
 metadata/_custom_type_script = "uid://b4lnl1hrp1tlh"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -52,12 +52,17 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 1
 mesh = SubResource("CapsuleMesh_jdbhd")
 surface_material_override/0 = SubResource("StandardMaterial3D_jdbhd")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.001709, 0)
-shape = SubResource("CapsuleShape3D_1e0c3")
+[node name="BodyCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 0, 1.1182871, 0)
+shape = SubResource("SphereShape3D_8q0s5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.7
+simplify_path = true
+simplify_epsilon = 5.0
+path_search_max_polygons = 8
+neighbor_distance = 5.0
+max_neighbors = 4
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_uuhgg")
@@ -72,6 +77,7 @@ script = ExtResource("4_8q0s5")
 metadata/_custom_type_script = "uid://48vw3fdxm2mb"
 
 [node name="SightAreaPlayer" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="SightAreaPlayerCollider" type="CollisionShape3D" parent="SightAreaPlayer"]
@@ -90,6 +96,7 @@ collision_mask = 7
 hit_from_inside = true
 
 [node name="ChaseArea" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="ChaseAreaCollider" type="CollisionShape3D" parent="ChaseArea"]
@@ -98,6 +105,7 @@ shape = SubResource("CylinderShape3D_74thq")
 debug_color = Color(0.45902508, 0.44709027, 1, 0.41960785)
 
 [node name="AlertArea" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -105,3 +113,6 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_0pthk")
 debug_color = Color(0.9784439, 0, 0.3999081, 0.41960785)
+
+[node name="GroundRaycast" type="RayCast3D" parent="."]
+collision_mask = 4

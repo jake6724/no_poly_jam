@@ -24,7 +24,7 @@ func _ready():
 
 func _process(_delta):
 	animation_tree.set("parameters/StateMachine/Move/blend_position", player_input)
-	animation_tree.set("parameters/StateMachine/SprintMove/blend_position", player_input)
+	animation_tree.set("parameters/StateMachine/SpZ:rintMove/blend_position", player_input)
 
 func bite():
 	animation_tree["parameters/BiteOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

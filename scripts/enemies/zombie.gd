@@ -15,6 +15,7 @@ var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
 @export var alert_area_collider: CollisionShape3D
 @export var navigation_agent: NavigationAgent3D
 @export var skin: MeshInstance3D
+@export var ground_raycast: RayCast3D
 
 var patrol_position: Vector3
 var is_player_in_sight_range: bool = false
@@ -34,6 +35,7 @@ var chase_duration_max: float = 10.0
 var is_alive: bool = true
 
 func _ready():
+	max_slides = 2
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 0.5
@@ -68,7 +70,10 @@ func configure_state_machine() -> void:
 
 func _physics_process(delta):
 	# Gravity 
-	velocity.y = (velocity.y + (gravity * delta))
+	# velocity.y = (velocity.y + (gravity * delta))
+	
+	position.y = ground_raycast.get_collision_point().y - 1.9
+
 	# Face move direction (maybe use this? -global_transform.basis.z.normalized())
 	var target_position: Vector3 = global_position + velocity
 	var _move_direction = target_position - global_position
@@ -78,12 +83,30 @@ func _physics_process(delta):
 	if is_player_in_sight_range and prey and not player_spotted:
 		look_for_player(prey)
 
-	move_and_slide()
+	move(velocity, delta)
+
+func move(_curr_velocity: Vector3, delta) -> void:
+	# Gravity 
+	# if not is_on_floor():
+	# 	_curr_velocity.y = (_curr_velocity.y + (gravity * delta))
+	
+	var collision: KinematicCollision3D = move_and_collide(_curr_velocity * delta)
+	if collision:
+		var collider:Object = collision.get_collider()
+		if collider is CharacterBody3D:
+			print("Char")
+			velocity = _curr_velocity.slide(collision.get_normal())
+
+		elif collider is StaticBody3D:
+			#print("Ground")
+			move_and_slide()
 
 ## Can be requested by child States. Does not require the State to have access to Move Target
 func set_move_target_to_prey():
-	if prey:
-		navigation_agent.set_target_position(prey.global_position)
+	if prey and state_machine.current_state.state_name == "stateenemychase":
+		if ZombieManager.has_path_update_token_available():
+			navigation_agent.set_target_position(prey.global_position)
+			ZombieManager.path_call_count += 1
 
 func update_patrol_position(_patrol_position_offset):
 	patrol_position = global_position + _patrol_position_offset
