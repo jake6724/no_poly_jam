@@ -16,6 +16,7 @@ extends CharacterBody3D
 @export_range(3, 10, 1) var zoom_min: float = 3
 @export_range(5, 20, 1) var zoom_max: float = 10
 @export var right_click_to_rotate_camera: bool = false
+var input_enabled: bool = true
 @export_group("Movement")
 @export var move_speed: float = 8.0
 @export var move_speed_sprint: float = 10.0
@@ -36,6 +37,8 @@ var can_stair_step: bool = true # Disabled when jumping until jump coyote time g
 @export_range(0,1,.1) var jump_coyote_time: float = 0.5
 @export var gravity: float = -30
 @export_group("Combat")
+@export var max_health: float = 100.0
+var health: float 
 @export_range(.1, 3, .1) var bite_cooldown: float
 var can_bite: bool = true
 @export var bite_area: Area3D
@@ -69,7 +72,7 @@ var zoom_target: float
 const MOVE_DIRECTION_THRESHOLD: float = 0.2
 
 @export var player_ui: PlayerUI
-@export var _skin: Node3D
+@export var _skin: RexSkin
 
 var coyote_jump_available: bool = true
 var coyote_jump_timer: Timer = Timer.new()
@@ -103,6 +106,9 @@ func _ready():
 
 	grapple_controller.grapple_rope = _skin.tongue
 
+	health = max_health
+	player_ui.update_health(100)
+
 func on_bite_body_entered(intruder) -> void:
 	print(intruder)
 	intruder.take_damage(damage)
@@ -129,38 +135,39 @@ func _process(delta):
 			prev_interactable = null
 
 func _input(_event):
-	if Input.is_action_just_pressed("left_click"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if input_enabled:
+		if Input.is_action_just_pressed("left_click"):
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	if Input.is_action_just_pressed("escape"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if Input.is_action_just_pressed("escape"):
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	if Input.is_action_just_pressed("sprint"):
-		move_speed = move_speed_sprint
-		is_sprinting = true
-		# _skin.animation_tree.set("parameters/TimeScale/scale", 1.25)
+		if Input.is_action_just_pressed("sprint"):
+			move_speed = move_speed_sprint
+			is_sprinting = true
+			# _skin.animation_tree.set("parameters/TimeScale/scale", 1.25)
 
-	if Input.is_action_just_released("sprint"):
-		move_speed = move_speed_base
-		is_sprinting = false
-		_skin.animation_tree.set("parameters/TimeScale/scale", 1.0)
+		if Input.is_action_just_released("sprint"):
+			move_speed = move_speed_base
+			is_sprinting = false
+			_skin.animation_tree.set("parameters/TimeScale/scale", 1.0)
 
-	if Input.is_action_just_pressed("jump"):
-		jump()
-		can_stair_step = false
+		if Input.is_action_just_pressed("jump"):
+			jump()
+			can_stair_step = false
 
-	if Input.is_action_just_pressed("control"):
-		slide()
+		if Input.is_action_just_pressed("control"):
+			slide()
 
-	if Input.is_action_just_released("control"):
-		# Put in a func
-		is_sliding = false
-		slide_timer.start(slide_cooldown)
-		acceleration = 70.0
-		_skin.stop_slide()
+		if Input.is_action_just_released("control"):
+			# Put in a func
+			is_sliding = false
+			slide_timer.start(slide_cooldown)
+			acceleration = 70.0
+			_skin.stop_slide()
 
-	if Input.is_action_just_pressed("interact"):
-		interact()
+		if Input.is_action_just_pressed("interact"):
+			interact()
 
 func slide() -> void: 
 	# if not is_sliding and prev_floor_angle < 0.99 and get_real_velocity().y < 0: 
@@ -176,21 +183,22 @@ func slide() -> void:
 		var velocity_power_bonus: float = 23 + (floor_angle * 2)
 		velocity = velocity.normalized() * velocity_power_bonus
 
-		_skin.slide()
+		# _skin.slide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Check mouse has moved
-	var is_camera_motion: bool = (event is InputEventMouseMotion) and (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED)
-	if is_camera_motion:
-		_camera_input_direction = event.screen_relative * mouse_sensitivty
+	if input_enabled:
+		# Check mouse has moved
+		var is_camera_motion: bool = (event is InputEventMouseMotion) and (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED)
+		if is_camera_motion:
+			_camera_input_direction = event.screen_relative * mouse_sensitivty
 
-	if Input.is_action_just_pressed("scroll_up"):
-		zoom_target -= zoom_step
-	if Input.is_action_just_pressed("scroll_down"):
-		zoom_target += zoom_step
+		if Input.is_action_just_pressed("scroll_up"):
+			zoom_target -= zoom_step
+		if Input.is_action_just_pressed("scroll_down"):
+			zoom_target += zoom_step
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("left_click") and can_bite:
+	if Input.is_action_pressed("left_click") and can_bite and input_enabled:
 		can_bite = false
 		_skin.bite()
 
@@ -304,7 +312,19 @@ func on_bite_finished() -> void:
 func on_slide_timer_timeout() -> void:
 	can_slide = true
 
+func take_damage(_damage) -> void:
+	health = max(0, health - _damage)
+	player_ui.update_health((health/max_health) * 100)
+	if health <= 0:
+		die()
+	else:
+		_skin.hit()
 
+func die() -> void:
+	input_enabled = false
+	_skin.player_died = true
+	zoom_target = 1000
+	zoom_step = .25
 
 func stair_step_down():
 	if is_on_floor():

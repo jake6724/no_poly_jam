@@ -15,15 +15,10 @@ albedo_color = Color(0.84, 0, 0.070000134, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1e0c3"]
 radius = 0.4
-height = 1.95
+height = 1.4623047
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8q0s5"]
 radius = 10.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_8q0s5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74thq"]
-albedo_color = Color(1, 0.29870674, 0.24872321, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_74thq"]
 radius = 17.0
@@ -31,7 +26,15 @@ radius = 17.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0pthk"]
 radius = 11.0
 
-[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "navigation_agent", "skin")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7pdxr"]
+height = 1.375
+radius = 0.7480469
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0pthk"]
+radius = 0.375
+height = 0.9472656
+
+[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "attack_area", "attack_collider", "bite_area", "bite_collider", "navigation_agent", "skin")]
 transform = Transform3D(-0.9999999, 0, 1.17225106e-07, 0, 1, 0, -1.17225106e-07, 0, -0.9999999, 0, 0, 0)
 collision_layer = 2
 collision_mask = 7
@@ -45,6 +48,10 @@ chase_area = NodePath("ChaseArea")
 chase_area_collider = NodePath("ChaseArea/ChaseAreaCollider")
 alert_area = NodePath("AlertArea")
 alert_area_collider = NodePath("AlertArea/AlertAreaCollider")
+attack_area = NodePath("AttackArea")
+attack_collider = NodePath("AttackArea/AttackAreaCollider")
+bite_area = NodePath("BiteArea")
+bite_collider = NodePath("BiteArea/BiteCollider")
 navigation_agent = NodePath("NavigationAgent3D")
 skin = NodePath("ZombieSkin")
 move_speed_max = 12.0
@@ -61,7 +68,8 @@ mesh = SubResource("CapsuleMesh_jdbhd")
 surface_material_override/0 = SubResource("StandardMaterial3D_jdbhd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.001709, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7578613, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_1e0c3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -88,18 +96,14 @@ metadata/_custom_type_script = "uid://48vw3fdxm2mb"
 script = ExtResource("6_0pthk")
 
 [node name="SightAreaPlayer" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
+monitorable = false
 
 [node name="SightAreaPlayerCollider" type="CollisionShape3D" parent="SightAreaPlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_8q0s5")
-debug_color = Color(0.83354527, 0.3906207, 0, 0.41960785)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.7302172, 0, 0, 0, 0.19166106, 0, 0, 0, 0.4118384, 0.02327504, 1.6056006, -0.35392776)
-visible = false
-mesh = SubResource("BoxMesh_8q0s5")
-surface_material_override/0 = SubResource("StandardMaterial3D_74thq")
+debug_color = Color(1, 0.78070474, 0.666749, 0.41960785)
 
 [node name="RayCastSight" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5443815, 0)
@@ -107,7 +111,9 @@ collision_mask = 7
 hit_from_inside = true
 
 [node name="ChaseArea" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
+monitorable = false
 
 [node name="ChaseAreaCollider" type="CollisionShape3D" parent="ChaseArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -115,12 +121,32 @@ shape = SubResource("CylinderShape3D_74thq")
 debug_color = Color(0.45902508, 0.44709027, 1, 0.41960785)
 
 [node name="AlertArea" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="AlertAreaCollider" type="CollisionShape3D" parent="AlertArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_0pthk")
-debug_color = Color(0.9784439, 0, 0.3999081, 0.41960785)
+debug_color = Color(0.9115558, 0, 0.36974895, 0.41960785)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="AttackArea" type="Area3D" parent="."]
+visible = false
+collision_layer = 0
+monitorable = false
+
+[node name="AttackAreaCollider" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, 0)
+shape = SubResource("CylinderShape3D_7pdxr")
+debug_color = Color(0.7184898, 0, 0.052536882, 0.41960785)
+
+[node name="BiteArea" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="BiteCollider" type="CollisionShape3D" parent="BiteArea"]
+transform = Transform3D(1, 1.17225106e-07, -1.1722511e-07, -1.1722513e-07, 2.9802322e-08, -1, -1.1722513e-07, 0.99999994, 2.980234e-08, 5.552168e-08, 1, 0.47363296)
+shape = SubResource("CapsuleShape3D_0pthk")
+disabled = true
+debug_color = Color(0, 0.68521374, 0.49304086, 0.41960785)

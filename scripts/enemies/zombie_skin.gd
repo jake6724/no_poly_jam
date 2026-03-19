@@ -20,6 +20,9 @@ var zombie_is_patrolling: bool = true
 var zombie_velocity: Vector3
 var zombie_is_attacking: bool = false
 
+signal check_can_attack_requested
+signal bite_requested
+
 func _ready():
 	mesh_1.hide()
 	meshes.pick_random().show()
@@ -32,7 +35,10 @@ func _ready():
 	# animation_tree.active = true
 	
 func end_attack() -> void:
-	zombie_is_attacking = false
+	check_can_attack_requested.emit()
+
+func bite(_value: bool) -> void:
+	bite_requested.emit(_value)
 
 # func _physics_process(delta):
 # 	print("zombie_is_chasing: ", zombie_is_chasing)

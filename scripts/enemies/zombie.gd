@@ -13,6 +13,10 @@ var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
 @export var chase_area_collider: CollisionShape3D
 @export var alert_area: Area3D
 @export var alert_area_collider: CollisionShape3D
+@export var attack_area: Area3D
+@export var attack_collider: CollisionShape3D
+@export var bite_area: Area3D
+@export var bite_collider: CollisionShape3D
 @export var navigation_agent: NavigationAgent3D
 @export var skin: ZombieSkin
 
@@ -29,6 +33,7 @@ var chase_timer: Timer = Timer.new()
 @export var line_of_sight_angle: float = 70.0
 @export var rotation_speed: float = TAU * 2
 @export var gravity: float = -30
+@export var bite_damage: float = 10.0
 ## Min Duration after player has escaped zombie chase range that zombie will keep chasing
 @export_range(1,10,.5)var chase_duration_min: float = 5.0
 ## Max Duration after player has escaped zombie chase range that zombie will keep chasing
@@ -61,6 +66,12 @@ func _ready():
 	# Configure stats
 	health = max_health
 
+	skin.check_can_attack_requested.connect(on_check_can_attack_requested)
+	skin.bite_requested.connect(on_bite_requested)
+
+	attack_area.body_entered.connect(on_attack_area_body_entered)
+	bite_area.body_entered.connect(on_bite_area_entered)
+
 func configure_state_machine() -> void:
 	state_machine.initialize(self)
 	state_machine.update_velocity_requested.connect(on_state_machine_update_velocity_requested)
@@ -68,20 +79,6 @@ func configure_state_machine() -> void:
 	state_machine.update_patrol_position_requested.connect(update_patrol_position)
 	state_machine.update_move_target_to_patrol_position_requested.connect(set_move_target_to_patrol_position)
 	state_machine.attack_requested.connect(attack)
-
-# func _physics_process(delta):
-# 	# Gravity 
-# 	velocity.y = (velocity.y + (gravity * delta))
-# 	# Face move direction (maybe use this? -global_transform.basis.z.normalized())
-# 	var target_position: Vector3 = global_position + velocity
-# 	var _move_direction = target_position - global_position
-# 	if _move_direction:
-# 		rotation.y = rotate_toward(rotation.y, Vector2(_move_direction.x, -_move_direction.z).angle() - rotation_offset, rotation_speed * delta)
-
-# 	if is_player_in_sight_range and prey and not player_spotted:
-# 		look_for_player(prey)
-
-# 	move_and_slide()
 
 func child_physics_process(delta):
 	if not is_on_floor():
@@ -164,8 +161,24 @@ func alert_nearby_zombies() -> void:
 		if zombie:
 			zombie.start_chasing(prey)
 			
+func on_attack_area_body_entered(_player: Player) -> void:
+	attack()
+			
 func attack() -> void:
-	skin.zombie_is_attacking = true	
+	if state_machine.current_state.state_name != "stateenemyattack":
+		state_machine.force_transition("stateenemyattack")
+		skin.zombie_is_attacking = true
+
+func on_check_can_attack_requested() -> void:
+	if attack_area.get_overlapping_bodies().size() <= 0:
+		skin.zombie_is_attacking = false
+		state_machine.force_transition("stateenemychase")
+
+func on_bite_requested(_value: bool) -> void:
+	bite_collider.disabled = not _value
+
+func on_bite_area_entered(_player: Player) -> void:
+	_player.take_damage(bite_damage)
 
 func take_damage(_damage_amount: float) -> void:
 	# Start chasing if ambushed
