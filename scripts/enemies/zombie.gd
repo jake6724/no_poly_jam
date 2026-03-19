@@ -14,14 +14,12 @@ var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
 @export var alert_area: Area3D
 @export var alert_area_collider: CollisionShape3D
 @export var navigation_agent: NavigationAgent3D
-@export var skin: MeshInstance3D
+@export var skin: ZombieSkin
 
 var patrol_position: Vector3
 var is_player_in_sight_range: bool = false
 var player_spotted: bool = false
 var chase_timer: Timer = Timer.new()
-var chase_duration_min: float = 5.0 # Duration after player has escaped zombie chase range that zombie will keep chasing
-var chase_duration_max: float = 10.0
 @export_group("Stats")
 @export var max_health: float = 100.0
 @export var health: float
@@ -31,6 +29,10 @@ var chase_duration_max: float = 10.0
 @export var line_of_sight_angle: float = 70.0
 @export var rotation_speed: float = TAU * 2
 @export var gravity: float = -30
+## Min Duration after player has escaped zombie chase range that zombie will keep chasing
+@export_range(1,10,.5)var chase_duration_min: float = 5.0
+## Max Duration after player has escaped zombie chase range that zombie will keep chasing
+@export_range(1,10,.5)var chase_duration_max: float = 10.0
 var is_alive: bool = true
 
 func _ready():
@@ -65,24 +67,47 @@ func configure_state_machine() -> void:
 	state_machine.update_move_target_to_prey_requested.connect(set_move_target_to_prey)
 	state_machine.update_patrol_position_requested.connect(update_patrol_position)
 	state_machine.update_move_target_to_patrol_position_requested.connect(set_move_target_to_patrol_position)
+	state_machine.attack_requested.connect(attack)
 
-func _physics_process(delta):
-	# Gravity 
-	velocity.y = (velocity.y + (gravity * delta))
+# func _physics_process(delta):
+# 	# Gravity 
+# 	velocity.y = (velocity.y + (gravity * delta))
+# 	# Face move direction (maybe use this? -global_transform.basis.z.normalized())
+# 	var target_position: Vector3 = global_position + velocity
+# 	var _move_direction = target_position - global_position
+# 	if _move_direction:
+# 		rotation.y = rotate_toward(rotation.y, Vector2(_move_direction.x, -_move_direction.z).angle() - rotation_offset, rotation_speed * delta)
+
+# 	if is_player_in_sight_range and prey and not player_spotted:
+# 		look_for_player(prey)
+
+# 	move_and_slide()
+
+func child_physics_process(delta):
+	if not is_on_floor():
+		velocity.y = (velocity.y + (gravity * delta))
+
 	# Face move direction (maybe use this? -global_transform.basis.z.normalized())
 	var target_position: Vector3 = global_position + velocity
 	var _move_direction = target_position - global_position
 	if _move_direction:
-		rotation.y = rotate_toward(rotation.y, Vector2(_move_direction.x, -_move_direction.z).angle() - rotation_offset, rotation_speed * delta)
+		rotation.y = rotate_toward(rotation.y, (Vector2(_move_direction.x, -_move_direction.z).angle()) + PI/2, rotation_speed * delta)
 
 	if is_player_in_sight_range and prey and not player_spotted:
 		look_for_player(prey)
 
+	state_machine.child_physics_process(delta)
+
 	move_and_slide()
+
+# Update Skin Animation param
+	skin.zombie_is_chasing = player_spotted
+	skin.zombie_is_patrolling = not player_spotted
+	skin.zombie_velocity = velocity
 
 ## Can be requested by child States. Does not require the State to have access to Move Target
 func set_move_target_to_prey():
-	if prey:
+	if prey and state_machine.current_state.state_name == "stateenemychase":
 		navigation_agent.set_target_position(prey.global_position)
 
 func update_patrol_position(_patrol_position_offset):
@@ -120,10 +145,11 @@ func look_for_player(player: Player) -> void:
 			start_chasing(player)
 			alert_nearby_zombies()
 
-func start_chasing(_prey: Player) -> void:
-	player_spotted = true
-	state_machine.force_transition("stateenemychase")
-	prey = _prey # Set again here to ensure that alerted zombies (which may not have seen player yet) have a reference
+func start_chasing(_prey: Player, was_attacked: bool=false) -> void:
+	if ZombieManager.has_open_chase_limit() or was_attacked:
+		player_spotted = true
+		state_machine.force_transition("stateenemychase")
+		prey = _prey # Set again here to ensure that alerted zombies (which may not have seen player yet) have a reference
 
 func on_chase_timer_timeout() -> void:
 	player_spotted = false
@@ -131,17 +157,21 @@ func on_chase_timer_timeout() -> void:
 	prey = null
 
 func alert_nearby_zombies() -> void:
+
 	var bodies: Array[Node3D] = alert_area.get_overlapping_bodies()
 	for body: Node3D in bodies:
 		var zombie: Zombie = body as Zombie
 		if zombie:
 			zombie.start_chasing(prey)
+			
+func attack() -> void:
+	skin.zombie_is_attacking = true	
 
 func take_damage(_damage_amount: float) -> void:
 	# Start chasing if ambushed
 	if not player_spotted:
 		var bodies: Array = chase_area.get_overlapping_bodies()
-		start_chasing(bodies[0])
+		start_chasing(bodies[0], true)
 
 	flash_mesh()
 	health -= _damage_amount
@@ -149,15 +179,16 @@ func take_damage(_damage_amount: float) -> void:
 		die()
 
 func die() -> void:
-	queue_free()
+	ZombieManager.remove_zombie(self)
 
 func flash_mesh() -> void:
-	var mat = skin.get_surface_override_material(0)
-	var reset_color: Color = mat.albedo_color
+	pass
+	# var mat = skin.get_surface_override_material(0)
+	# var reset_color: Color = mat.albedo_color
 
-	var flash_tween: Tween = get_tree().create_tween()
-	flash_tween.set_parallel(true)
-	flash_tween.tween_property(mat, "albedo_color:s", 1, .3).from(15)
-	flash_tween.tween_property(mat, "albedo_color", reset_color, .3).from(Color.SALMON)
+	# var flash_tween: Tween = get_tree().create_tween()
+	# flash_tween.set_parallel(true)
+	# flash_tween.tween_property(mat, "albedo_color:s", 1, .3).from(15)
+	# flash_tween.tween_property(mat, "albedo_color", reset_color, .3).from(Color.SALMON)
 
-	# mat.albedo_color.s = 15
+	# # mat.albedo_color.s = 15

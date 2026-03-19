@@ -22,6 +22,7 @@ PlayerInventory="*res://scripts/singletons/player_inventory.gd"
 PickupManager="*res://scripts/singletons/pickup_manager.gd"
 AudioManager="*res://scenes/AudioManager.tscn"
 SceneTransition="*res://scenes/SceneTransition.tscn"
+ZombieManager="*res://scripts/singletons/zombie_manager.gd"
 
 [debug]
 
