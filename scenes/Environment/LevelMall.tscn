@@ -831,6 +831,16 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 47.8
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nc5sf")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7660444, -0.6348739, -0.10055415, -1.3675938e-08, -0.15643449, 0.98768836, -0.6427877, -0.75661314, -0.11983577, 0, 454.56116, 227.96664)
+light_energy = 2.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+directional_shadow_mode = 1
+sky_mode = 1
+
 [node name="Chests" type="Node" parent="."]
 
 [node name="Chest" parent="Chests" instance=ExtResource("10_q51kh")]
