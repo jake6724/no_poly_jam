@@ -1,14 +1,14 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cjagkrefo1218"]
 
-[ext_resource type="Material" uid="uid://dn3x5u8bq2ybl" path="res://assets/character/mat_gore.tres" id="1_ajk84"]
+[ext_resource type="Material" uid="uid://uh17s13np86h" path="res://assets/character/mat_char_zombie.tres" id="1_11js7"]
 [ext_resource type="Shader" uid="uid://cpn6h4x5vmdl" path="res://shaders/outline.gdshader" id="2_vq86l"]
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_ajk84")
+next_pass = ExtResource("1_11js7")
 shader = ExtResource("2_vq86l")
 shader_parameter/step_count = 3
-shader_parameter/thickness = 4.0000000447036
+shader_parameter/thickness = 2.0000000149012003
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 shader_parameter/fade_start = 100.0
 shader_parameter/fade_length = 200.0

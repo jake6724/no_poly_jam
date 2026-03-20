@@ -1,13 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dn3x5u8bq2ybl"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://nlqtflq6mppr"]
 
-[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_r58hu"]
-[ext_resource type="Texture2D" uid="uid://dtgh11g0vame1" path="res://assets/character/char_zombie_TEX_Zombie.png" id="2_0lbia"]
+[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_38etx"]
+[ext_resource type="Texture2D" uid="uid://b6g5vwh077lhg" path="res://assets/character/char_dentist_TEX_Dentist.png" id="2_38etx"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_r58hu")
+shader = ExtResource("1_38etx")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("2_0lbia")
+shader_parameter/albedo_texture = ExtResource("2_38etx")
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 1
 shader_parameter/wrap = 0.0

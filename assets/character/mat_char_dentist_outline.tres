@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://imc8nnc3vkt5"]
+
+[ext_resource type="Material" uid="uid://nlqtflq6mppr" path="res://assets/character/mat_char_dentist.tres" id="1_aehro"]
+[ext_resource type="Shader" uid="uid://cpn6h4x5vmdl" path="res://shaders/outline.gdshader" id="2_g7ou2"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_aehro")
+shader = ExtResource("2_g7ou2")
+shader_parameter/step_count = 3
+shader_parameter/thickness = 2.0000000149012003
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/fade_start = 100.0
+shader_parameter/fade_length = 200.0
