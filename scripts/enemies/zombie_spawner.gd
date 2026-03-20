@@ -22,4 +22,5 @@ func spawn_zombies(_amount: int=1):
 		new_zombie.prey = player
 		add_child(new_zombie)
 		new_zombie.global_position = global_position + spawn_offset
+		ZombieManager.add_zombie(new_zombie)
 		await get_tree().create_timer(spawn_delay).timeout
