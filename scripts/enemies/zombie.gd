@@ -243,7 +243,6 @@ func flash_mesh() -> void:
 
 func spawn_gore(_transform, impulse: Vector3, amount: int) -> void:
 	for i in range(amount):
-		print(i)
 		impulse += Vector3(randf_range(-30,30), randf_range(-30,30), 0)
 		var new_gore: Gore = gore.instantiate()
 

@@ -22,7 +22,7 @@ var input_enabled: bool = true
 @export var move_speed_sprint: float = 10.0
 var move_speed_base: float 
 var is_sprinting: bool = false
-var max_speed: float = 80
+var max_speed: float = 30
 @export var slide_timer: Timer
 @export_range(.1, 5, .1) var slide_cooldown: float
 var can_slide: bool = true
@@ -31,7 +31,7 @@ var prev_floor_angle: float
 var slide_multiplier: float
 @export var slide_bite_area: Area3D
 @export var slide_bite_collider: CollisionShape3D
-@export var slide_pierce_max: int = 100
+@export var slide_pierce_max: int = 10
 var slide_pierce_count: int = 0
 @export var slide_pierce_label: Label3D
 var slide_power: float = 23.0
@@ -194,7 +194,6 @@ func _process(delta):
 			prev_interactable = null
 
 func _physics_process(delta: float) -> void:
-	#print(get_real_velocity().length())
 	if Input.is_action_pressed("left_click") and can_bite and input_enabled:
 		can_bite = false
 		_skin.bite()
