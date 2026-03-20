@@ -1,13 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c06ri4cfofikf"]
+[gd_scene load_steps=4 format=3 uid="uid://c06ri4cfofikf"]
 
 [ext_resource type="Script" uid="uid://cj61yp1qq0a3u" path="res://scripts/player/player_ui.gd" id="1_f7lci"]
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("scrap_value", "steel_value", "titanium_value", "blood_value")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7lci"]
+bg_color = Color(0.10648077, 0.10747435, 0.110194184, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwui3"]
+bg_color = Color(0.95684546, 0.18801689, 0.15338618, 1)
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("scrap_value", "steel_value", "titanium_value", "blood_value", "healthbar")]
 script = ExtResource("1_f7lci")
 scrap_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/ScrapValue")
 steel_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/SteelValue")
 titanium_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/TitaniumValue")
 blood_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/BloodValue")
+healthbar = NodePath("Control/MarginContainer/PanelContainer/ProgressBar")
 metadata/_custom_type_script = "uid://cj61yp1qq0a3u"
 
 [node name="Control" type="Control" parent="."]
@@ -33,7 +40,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 2
 
@@ -88,3 +95,18 @@ vertical_alignment = 1
 layout_mode = 2
 text = "1000"
 vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_f7lci")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dwui3")
+step = 10.0
+value = 60.0
+show_percentage = false

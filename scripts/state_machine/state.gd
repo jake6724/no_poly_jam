@@ -13,6 +13,7 @@ signal update_velocity_requested
 signal update_move_target_to_prey_requested
 signal update_patrol_position_requested
 signal update_move_target_to_patrol_position_requested
+signal attack_requested
 
 func init_state():
 	pass

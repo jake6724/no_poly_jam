@@ -12,6 +12,7 @@ signal update_velocity_requested
 signal update_move_target_to_prey_requested
 signal update_patrol_position_requested
 signal update_move_target_to_patrol_position_requested
+signal attack_requested
 
 func initialize(_parent_character: CharacterBody3D):
 	parent_character = _parent_character
@@ -29,6 +30,7 @@ func initialize(_parent_character: CharacterBody3D):
 		_state.update_move_target_to_prey_requested.connect(on_update_move_target_to_prey_requested)
 		_state.update_patrol_position_requested.connect(on_update_patrol_position_requested)
 		_state.update_move_target_to_patrol_position_requested.connect(on_update_move_target_to_patrol_position_requested)
+		_state.attack_requested.connect(on_attack_requested)
 
 	# Configure current state
 	if initial_state:
@@ -37,7 +39,11 @@ func initialize(_parent_character: CharacterBody3D):
 	else:
 		push_error("initial_state not set; assign in the editor.")
 
-func _physics_process(delta: float) -> void:
+# func _physics_process(delta: float) -> void:
+# 	if current_state:
+# 		current_state.state_physics_process(delta, parent_character)
+
+func child_physics_process(delta: float) -> void:
 	if current_state:
 		current_state.state_physics_process(delta, parent_character)
 
@@ -65,3 +71,6 @@ func on_update_patrol_position_requested(_patrol_position_offset) -> void:
 
 func on_update_move_target_to_patrol_position_requested() -> void:
 	update_move_target_to_patrol_position_requested.emit()
+
+func on_attack_requested() -> void:
+	attack_requested.emit()

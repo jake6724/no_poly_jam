@@ -10,6 +10,7 @@ func _ready():
 	path_timer.timeout.connect(on_path_timer_timeout)
 
 func enter_state():
+	ZombieManager.chasers += 1
 	update_move_target_to_prey_requested.emit()
 	path_timer.start(randf_range(.17, .5))
 	ZombieManager.add_zombie_to_chase(owner)
@@ -19,6 +20,7 @@ func exit_state():
 
 func state_physics_process(_delta: float, _parent_character: CharacterBody3D):
 	if _parent_character.navigation_agent.is_navigation_finished():
+		# transition_state.emit(self, "stateenemyattack")
 		return
 		
 	# update_move_target_to_prey_requested.emit()

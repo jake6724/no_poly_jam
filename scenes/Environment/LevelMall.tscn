@@ -215,7 +215,7 @@ text = "Outdoor Park"
 [node name="ZombieSpawnerParent" type="Node" parent="."]
 
 [node name="ZombieSpawner" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2, 203)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.08799, 2, 209.74438)
 
 [node name="ZombieSpawner6" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2, 208)
@@ -813,6 +813,737 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.45828, 2, 186.1071)
 
 [node name="ZombieSpawner200" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.65399, 2, 174.85098)
+
+[node name="ZombieSpawner14" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.316177, 2, 229.4777)
+
+[node name="ZombieSpawner19" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.316177, 2, 243.81079)
+
+[node name="ZombieSpawner20" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.316177, 2, 240.9587)
+
+[node name="ZombieSpawner21" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.255436, 2, 240.9587)
+
+[node name="ZombieSpawner22" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.255436, 2, 244.74615)
+
+[node name="ZombieSpawner23" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.80158, 2, 243.81079)
+
+[node name="ZombieSpawner24" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.80158, 2, 240.9587)
+
+[node name="ZombieSpawner25" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.740837, 2, 240.9587)
+
+[node name="ZombieSpawner26" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.740837, 2, 244.74615)
+
+[node name="ZombieSpawner27" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.869923, 2, 243.81079)
+
+[node name="ZombieSpawner28" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.869923, 2, 240.9587)
+
+[node name="ZombieSpawner29" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.80918, 2, 240.9587)
+
+[node name="ZombieSpawner30" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.80918, 2, 244.74615)
+
+[node name="ZombieSpawner31" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.87033, 2, 243.81079)
+
+[node name="ZombieSpawner32" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.87033, 2, 240.9587)
+
+[node name="ZombieSpawner33" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.80959, 2, 240.9587)
+
+[node name="ZombieSpawner34" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.80959, 2, 244.74615)
+
+[node name="ZombieSpawner35" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.2725, 2, 243.81079)
+
+[node name="ZombieSpawner36" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.2725, 2, 240.9587)
+
+[node name="ZombieSpawner37" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.21176, 2, 240.9587)
+
+[node name="ZombieSpawner38" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.21176, 2, 244.74615)
+
+[node name="ZombieSpawner39" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.2725, 2, 243.81079)
+
+[node name="ZombieSpawner40" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.2725, 2, 240.9587)
+
+[node name="ZombieSpawner41" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.21176, 2, 240.9587)
+
+[node name="ZombieSpawner42" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.21176, 2, 244.74615)
+
+[node name="ZombieSpawner43" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.2725, 2, 237.2428)
+
+[node name="ZombieSpawner44" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.2725, 2, 234.3907)
+
+[node name="ZombieSpawner45" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.21176, 2, 234.3907)
+
+[node name="ZombieSpawner46" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.21176, 2, 238.17816)
+
+[node name="ZombieSpawner47" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 236.90178)
+
+[node name="ZombieSpawner48" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 234.04968)
+
+[node name="ZombieSpawner49" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 234.04968)
+
+[node name="ZombieSpawner50" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 237.83714)
+
+[node name="ZombieSpawner51" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 230.29593)
+
+[node name="ZombieSpawner52" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 227.44383)
+
+[node name="ZombieSpawner53" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 227.44383)
+
+[node name="ZombieSpawner54" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 231.2313)
+
+[node name="ZombieSpawner55" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 223.49176)
+
+[node name="ZombieSpawner56" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 220.63966)
+
+[node name="ZombieSpawner57" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 220.63966)
+
+[node name="ZombieSpawner58" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 224.42712)
+
+[node name="ZombieSpawner59" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 217.05878)
+enabled = false
+
+[node name="ZombieSpawner60" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 214.20668)
+enabled = false
+
+[node name="ZombieSpawner61" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 214.20668)
+enabled = false
+
+[node name="ZombieSpawner62" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 217.99414)
+enabled = false
+
+[node name="ZombieSpawner63" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 210.35643)
+enabled = false
+
+[node name="ZombieSpawner64" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.824356, 2, 207.50433)
+enabled = false
+
+[node name="ZombieSpawner65" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 207.50433)
+enabled = false
+
+[node name="ZombieSpawner66" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.76362, 2, 211.2918)
+enabled = false
+
+[node name="ZombieSpawner67" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.79725, 2, 202.30263)
+enabled = false
+
+[node name="ZombieSpawner68" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.79725, 2, 199.45053)
+enabled = false
+
+[node name="ZombieSpawner69" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.73651, 2, 199.45053)
+enabled = false
+
+[node name="ZombieSpawner70" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.73651, 2, 203.23799)
+enabled = false
+
+[node name="ZombieSpawner71" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.03901, 2, 202.30263)
+enabled = false
+
+[node name="ZombieSpawner72" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.03901, 2, 199.45053)
+enabled = false
+
+[node name="ZombieSpawner73" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.97827, 2, 199.45053)
+enabled = false
+
+[node name="ZombieSpawner74" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.97827, 2, 203.23799)
+enabled = false
+
+[node name="ZombieSpawner75" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.03901, 2, 195.48927)
+enabled = false
+
+[node name="ZombieSpawner76" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.03901, 2, 192.63718)
+enabled = false
+
+[node name="ZombieSpawner77" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.97827, 2, 192.63718)
+enabled = false
+
+[node name="ZombieSpawner78" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.97827, 2, 196.42464)
+enabled = false
+
+[node name="ZombieSpawner79" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.95729, 2, 203.12224)
+enabled = false
+
+[node name="ZombieSpawner80" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.95729, 2, 200.27014)
+enabled = false
+
+[node name="ZombieSpawner81" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.89655, 2, 200.27014)
+enabled = false
+
+[node name="ZombieSpawner82" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.89655, 2, 204.0576)
+enabled = false
+
+[node name="ZombieSpawner83" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.95729, 2, 196.56633)
+enabled = false
+
+[node name="ZombieSpawner84" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.95729, 2, 193.71423)
+enabled = false
+
+[node name="ZombieSpawner85" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.89655, 2, 193.71423)
+enabled = false
+
+[node name="ZombieSpawner86" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.89655, 2, 197.5017)
+enabled = false
+
+[node name="ZombieSpawner87" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.23942, 2, 196.56633)
+enabled = false
+
+[node name="ZombieSpawner88" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.23942, 2, 193.71423)
+enabled = false
+
+[node name="ZombieSpawner89" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.17868, 2, 193.71423)
+enabled = false
+
+[node name="ZombieSpawner90" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.17868, 2, 197.5017)
+enabled = false
+
+[node name="ZombieSpawner91" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.23942, 2, 202.94743)
+enabled = false
+
+[node name="ZombieSpawner92" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.23942, 2, 200.09534)
+enabled = false
+
+[node name="ZombieSpawner93" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.17868, 2, 200.09534)
+enabled = false
+
+[node name="ZombieSpawner94" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.17868, 2, 203.8828)
+enabled = false
+
+[node name="ZombieSpawner95" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.21413, 2, 202.94743)
+enabled = false
+
+[node name="ZombieSpawner96" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.21413, 2, 200.09534)
+enabled = false
+
+[node name="ZombieSpawner97" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.153393, 2, 200.09534)
+enabled = false
+
+[node name="ZombieSpawner98" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.153393, 2, 203.8828)
+enabled = false
+
+[node name="ZombieSpawner99" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.21413, 2, 196.61104)
+enabled = false
+
+[node name="ZombieSpawner100" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.21413, 2, 193.75894)
+enabled = false
+
+[node name="ZombieSpawner101" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.153393, 2, 193.75894)
+enabled = false
+
+[node name="ZombieSpawner102" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.153393, 2, 197.5464)
+enabled = false
+
+[node name="ZombieSpawner103" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.05775, 2, 196.61104)
+enabled = false
+
+[node name="ZombieSpawner104" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.05775, 2, 193.75894)
+enabled = false
+
+[node name="ZombieSpawner105" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.997013, 2, 193.75894)
+enabled = false
+
+[node name="ZombieSpawner106" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.997013, 2, 197.5464)
+enabled = false
+
+[node name="ZombieSpawner107" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.05775, 2, 203.48477)
+enabled = false
+
+[node name="ZombieSpawner108" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.05775, 2, 200.63268)
+enabled = false
+
+[node name="ZombieSpawner109" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.997013, 2, 200.63268)
+enabled = false
+
+[node name="ZombieSpawner110" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.997013, 2, 204.42014)
+enabled = false
+
+[node name="ZombieSpawner111" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.354202, 2, 203.48477)
+enabled = false
+
+[node name="ZombieSpawner112" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.354202, 2, 200.63268)
+enabled = false
+
+[node name="ZombieSpawner113" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.293465, 2, 200.63268)
+enabled = false
+
+[node name="ZombieSpawner114" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.293465, 2, 204.42014)
+enabled = false
+
+[node name="ZombieSpawner115" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.354202, 2, 197.4891)
+enabled = false
+
+[node name="ZombieSpawner116" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.354202, 2, 194.63701)
+enabled = false
+
+[node name="ZombieSpawner117" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.293465, 2, 194.63701)
+enabled = false
+
+[node name="ZombieSpawner118" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.293465, 2, 198.42447)
+enabled = false
+
+[node name="ZombieSpawner119" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.511215, 2, 199.38116)
+enabled = false
+
+[node name="ZombieSpawner120" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.511215, 2, 196.52907)
+enabled = false
+
+[node name="ZombieSpawner121" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.450478, 2, 196.52907)
+enabled = false
+
+[node name="ZombieSpawner122" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.450478, 2, 200.31653)
+enabled = false
+
+[node name="ZombieSpawner123" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.91104, 2, 236.7287)
+enabled = false
+
+[node name="ZombieSpawner124" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.91104, 2, 233.8766)
+enabled = false
+
+[node name="ZombieSpawner125" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.850304, 2, 233.8766)
+enabled = false
+
+[node name="ZombieSpawner126" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.850304, 2, 237.66406)
+enabled = false
+
+[node name="ZombieSpawner127" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.457436, 2, 236.7287)
+enabled = false
+
+[node name="ZombieSpawner128" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.457436, 2, 233.8766)
+enabled = false
+
+[node name="ZombieSpawner129" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.396698, 2, 233.8766)
+enabled = false
+
+[node name="ZombieSpawner130" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.396698, 2, 237.66406)
+enabled = false
+
+[node name="ZombieSpawner131" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.307915, 2, 235.3451)
+enabled = false
+
+[node name="ZombieSpawner132" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.307915, 2, 232.493)
+enabled = false
+
+[node name="ZombieSpawner133" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.24718, 2, 232.493)
+enabled = false
+
+[node name="ZombieSpawner134" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.24718, 2, 236.28046)
+enabled = false
+
+[node name="ZombieSpawner135" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.22774, 2, 235.3451)
+enabled = false
+
+[node name="ZombieSpawner136" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.22774, 2, 232.493)
+enabled = false
+
+[node name="ZombieSpawner137" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.167, 2, 232.493)
+enabled = false
+
+[node name="ZombieSpawner138" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.167, 2, 236.28046)
+enabled = false
+
+[node name="ZombieSpawner139" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.79071, 2, 218.93118)
+enabled = false
+
+[node name="ZombieSpawner140" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.79071, 2, 216.07909)
+enabled = false
+
+[node name="ZombieSpawner141" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.72997, 2, 216.07909)
+enabled = false
+
+[node name="ZombieSpawner142" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.72997, 2, 219.86655)
+enabled = false
+
+[node name="ZombieSpawner143" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.79071, 2, 208.08836)
+enabled = false
+
+[node name="ZombieSpawner144" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.79071, 2, 205.23627)
+enabled = false
+
+[node name="ZombieSpawner145" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.72997, 2, 205.23627)
+enabled = false
+
+[node name="ZombieSpawner146" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.72997, 2, 209.02373)
+enabled = false
+
+[node name="ZombieSpawner147" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.61447, 2, 209.80507)
+enabled = false
+
+[node name="ZombieSpawner148" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.61447, 2, 206.95297)
+enabled = false
+
+[node name="ZombieSpawner149" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.553734, 2, 206.95297)
+enabled = false
+
+[node name="ZombieSpawner150" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.546814, 2, 212.3871)
+enabled = false
+
+[node name="ZombieSpawner151" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.55327, 2.000001, 185.41566)
+enabled = false
+
+[node name="ZombieSpawner152" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.55327, 2.000001, 182.56357)
+enabled = false
+
+[node name="ZombieSpawner153" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.49253, 2.000001, 182.56357)
+enabled = false
+
+[node name="ZombieSpawner154" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.56709, 2.000001, 185.31863)
+enabled = false
+
+[node name="ZombieSpawner155" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.90508, 2.000001, 185.41566)
+enabled = false
+
+[node name="ZombieSpawner156" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.90508, 2.000001, 182.56357)
+enabled = false
+
+[node name="ZombieSpawner157" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.844345, 2.000001, 182.56357)
+enabled = false
+
+[node name="ZombieSpawner158" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.91891, 2.000001, 185.31863)
+enabled = false
+
+[node name="ZombieSpawner159" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.90508, 2.000001, 177.45491)
+enabled = false
+
+[node name="ZombieSpawner160" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.90508, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner161" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.844345, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner162" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.91891, 2.000001, 177.35788)
+enabled = false
+
+[node name="ZombieSpawner163" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.2696, 2.000001, 177.45491)
+enabled = false
+
+[node name="ZombieSpawner164" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.2696, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner165" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.20886, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner166" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.283424, 2.000001, 177.35788)
+enabled = false
+
+[node name="ZombieSpawner167" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.88411, 2.000001, 177.45491)
+enabled = false
+
+[node name="ZombieSpawner168" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.88411, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner169" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.82337, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner170" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.897934, 2.000001, 177.35788)
+enabled = false
+
+[node name="ZombieSpawner171" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.08752, 2.000001, 177.45491)
+enabled = false
+
+[node name="ZombieSpawner172" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.08752, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner173" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.026783, 2.000001, 174.60281)
+enabled = false
+
+[node name="ZombieSpawner174" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.101345, 2.000001, 177.35788)
+enabled = false
+
+[node name="ZombieSpawner175" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.08752, 2.000001, 184.87341)
+enabled = false
+
+[node name="ZombieSpawner176" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.08752, 2.000001, 182.02132)
+enabled = false
+
+[node name="ZombieSpawner177" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.026783, 2.000001, 182.02132)
+enabled = false
+
+[node name="ZombieSpawner178" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.101345, 2.000001, 184.77638)
+enabled = false
+
+[node name="ZombieSpawner179" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.785698, 2.000001, 184.87341)
+enabled = false
+
+[node name="ZombieSpawner180" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.785698, 2.000001, 182.02132)
+enabled = false
+
+[node name="ZombieSpawner181" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.72496, 2.000001, 182.02132)
+enabled = false
+
+[node name="ZombieSpawner182" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.799522, 2.000001, 184.77638)
+enabled = false
+
+[node name="ZombieSpawner183" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.785698, 2.000001, 177.31639)
+enabled = false
+
+[node name="ZombieSpawner184" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.785698, 2.000001, 174.4643)
+enabled = false
+
+[node name="ZombieSpawner185" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.72496, 2.000001, 174.4643)
+enabled = false
+
+[node name="ZombieSpawner186" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.799522, 2.000001, 177.21936)
+enabled = false
+
+[node name="ZombieSpawner187" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.407047, 2.000001, 171.71252)
+enabled = false
+
+[node name="ZombieSpawner188" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.407047, 2.000001, 168.86043)
+enabled = false
+
+[node name="ZombieSpawner189" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.34631, 2.000001, 168.86043)
+enabled = false
+
+[node name="ZombieSpawner190" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.42087, 2.000001, 171.6155)
+enabled = false
+
+[node name="ZombieSpawner191" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.81193, 2.000001, 171.71252)
+enabled = false
+
+[node name="ZombieSpawner192" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.81193, 2.000001, 168.86043)
+enabled = false
+
+[node name="ZombieSpawner193" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.751194, 2.000001, 168.86043)
+enabled = false
+
+[node name="ZombieSpawner194" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.825756, 2.000001, 171.6155)
+enabled = false
+
+[node name="ZombieSpawner195" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.5479, 2.000001, 171.71252)
+enabled = false
+
+[node name="ZombieSpawner196" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.5479, 2.000001, 168.86043)
+enabled = false
+
+[node name="ZombieSpawner197" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.48715, 2.000001, 168.86043)
+enabled = false
+
+[node name="ZombieSpawner198" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.56172, 2.000001, 171.6155)
+enabled = false
+
+[node name="ZombieSpawner199" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.5479, 2.000001, 166.21234)
+enabled = false
+
+[node name="ZombieSpawner200" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.5479, 2.000001, 163.36024)
+enabled = false
+
+[node name="ZombieSpawner201" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.48715, 2.000001, 163.36024)
+enabled = false
+
+[node name="ZombieSpawner202" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.56172, 2.000001, 166.11531)
+enabled = false
+
+[node name="ZombieSpawner203" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.94706, 2.000001, 166.21234)
+enabled = false
+
+[node name="ZombieSpawner204" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.94706, 2.000001, 163.36024)
+enabled = false
+
+[node name="ZombieSpawner205" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.886314, 2.000001, 163.36024)
+enabled = false
+
+[node name="ZombieSpawner206" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.960884, 2.000001, 166.11531)
+enabled = false
+
+[node name="ZombieSpawner15" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.316177, 2, 231.4777)
+enabled = false
+
+[node name="ZombieSpawner16" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.316177, 2, 234.4777)
+enabled = false
+
+[node name="ZombieSpawner17" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.316177, 2, 237.4777)
+enabled = false
+
+[node name="ZombieSpawner18" parent="ZombieSpawnerParent" instance=ExtResource("3_7efw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.316177, 2, 238.4777)
+enabled = false
 
 [node name="PlayerSpawnPoint" type="Node3D" parent="."]
 script = ExtResource("5_oy6l1")
