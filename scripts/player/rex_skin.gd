@@ -12,7 +12,6 @@ var player_input: Vector2
 var player_is_grounded: bool
 var player_is_sliding: bool = false
 var player_is_sprinting: bool = false
-var player_died
 var vector_3_zero: Vector3 = Vector3.ZERO
 
 signal bite_finished
@@ -30,11 +29,8 @@ func _process(_delta):
 func bite():
 	animation_tree["parameters/BiteOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-func hit():
-	animation_tree["parameters/HitOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-
-# func slide():
-# 	animation_tree["parameters/SlideOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+func slide():
+	animation_tree["parameters/SlideOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 func stop_slide():
 	animation_tree.set("parameters/SlideOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)

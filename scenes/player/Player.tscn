@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvr2kvvvboiwv"]
+[gd_scene load_steps=10 format=3 uid="uid://dvr2kvvvboiwv"]
 
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://scenes/SophiaSkin.tscn" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://dt7jxbev3kpcq" path="res://scripts/player/player.gd" id="1_v6fml"]
@@ -6,14 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dk2mbyl6bue78" path="res://scenes/GrappleRope.tscn" id="3_mdl7e"]
 [ext_resource type="PackedScene" uid="uid://c06ri4cfofikf" path="res://scenes/player/PlayerUI.tscn" id="5_qu4a1"]
 [ext_resource type="PackedScene" uid="uid://c6gatrsuipp0y" path="res://scenes/player/RexSkin.tscn" id="7_khinc"]
-[ext_resource type="FontFile" uid="uid://dfm5opvmc0u6e" path="res://fonts/Domine-VariableFont_wght.ttf" id="7_npwbq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c3xxp"]
 radius = 0.5083008
 height = 2.1870117
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_npwbq"]
-radius = 0.62890625
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p0vlq"]
 radius = 0.34765625
@@ -22,14 +18,7 @@ height = 1.53125
 [sub_resource type="SphereShape3D" id="SphereShape3D_qu4a1"]
 radius = 0.7536849
 
-[sub_resource type="SphereMesh" id="SphereMesh_c3xxp"]
-radius = 0.1
-height = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3xxp"]
-albedo_color = Color(0.88553053, 0.4003296, 0.5824798, 1)
-
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("slide_timer", "slide_bite_area", "slide_bite_collider", "slide_pierce_label", "bite_area", "bite_collider", "_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "grapple_cursor", "interact_raycast", "pickup_collect_area", "pickup_collect_collider", "body_collider", "player_ui", "_skin")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("slide_timer", "bite_area", "bite_collider", "_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "interact_raycast", "pickup_collect_area", "pickup_collect_collider", "player_ui", "_skin")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
 collision_mask = 6
 script = ExtResource("1_v6fml")
@@ -39,9 +28,6 @@ move_speed = 5.0
 move_speed_sprint = 12.0
 slide_timer = NodePath("SliderTimer")
 slide_cooldown = 0.5
-slide_bite_area = NodePath("RexSkin/SlideBiteArea")
-slide_bite_collider = NodePath("RexSkin/SlideBiteArea/SlideBiteCollider")
-slide_pierce_label = NodePath("SlidePierceLabel")
 acceleration = 70.0
 jump_coyote_time = 0.3
 bite_cooldown = 0.9
@@ -50,14 +36,12 @@ bite_collider = NodePath("RexSkin/BiteArea/BiteCollider")
 _camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
 _camera_pivot = NodePath("CameraPivot")
 _spring_arm = NodePath("CameraPivot/SpringArm3D")
-_capsule_collider = NodePath("BodyCollider")
+_capsule_collider = NodePath("CapsuleCollider")
 grapple_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/GrappleRaycast")
 grapple_controller = NodePath("GrappleController")
-grapple_cursor = NodePath("GrappleCursor")
 interact_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/InteractRaycast")
 pickup_collect_area = NodePath("PickupCollectArea")
 pickup_collect_collider = NodePath("PickupCollectArea/PickupCollectCollider")
-body_collider = NodePath("BodyCollider")
 player_ui = NodePath("PlayerUI")
 _skin = NodePath("RexSkin")
 
@@ -72,16 +56,6 @@ transform = Transform3D(1, -1.292183e-07, 1.5346797e-07, 1.2921831e-07, -0.17031
 shape = SubResource("CapsuleShape3D_c3xxp")
 debug_color = Color(0.8296005, 0.00044261038, 0.80815893, 0.41960785)
 
-[node name="SlideBiteArea" type="Area3D" parent="RexSkin"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="SlideBiteCollider" type="CollisionShape3D" parent="RexSkin/SlideBiteArea"]
-transform = Transform3D(1, -1.3113416e-07, 1.3113416e-07, 1.3113416e-07, -4.371139e-08, -1, 1.3113416e-07, 1, -4.371137e-08, -0.0051054214, 0.65479004, 1.7064358)
-shape = SubResource("CapsuleShape3D_npwbq")
-disabled = true
-debug_color = Color(0.66029346, 0.10269485, 0.99999994, 0.41960785)
-
 [node name="SophiaSkin" parent="." instance=ExtResource("1_p0vlq")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
 visible = false
@@ -89,23 +63,26 @@ visible = false
 [node name="GrappleRope" parent="SophiaSkin" instance=ExtResource("3_mdl7e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.684342e-14, 0.6414819, -0.1482873)
 
-[node name="BodyCollider" type="CollisionShape3D" parent="."]
+[node name="CapsuleCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765625, 0)
 shape = SubResource("CapsuleShape3D_p0vlq")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(-4.3711378e-08, 0, 0.99999976, 0, 0.9999999, 0, -0.99999976, 0, -4.3711378e-08, 0, 1.1704572, 0)
+visible = false
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5912963, 0, 1.0338554e-07)
+visible = false
 collision_mask = 4
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+visible = false
 current = true
 
 [node name="GrappleRaycast" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1, -0.59, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 target_position = Vector3(0, -1, -30)
 collision_mask = 4
@@ -120,11 +97,10 @@ collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0, 0.8345436, 0.5228345, 1)
 
-[node name="GrappleController" type="Node" parent="." node_paths=PackedStringArray("player", "grapple_raycast", "grapple_cursor")]
+[node name="GrappleController" type="Node" parent="." node_paths=PackedStringArray("player", "grapple_raycast")]
 script = ExtResource("3_3li8b")
 player = NodePath("..")
 grapple_raycast = NodePath("../CameraPivot/SpringArm3D/Camera3D/GrappleRaycast")
-grapple_cursor = NodePath("../GrappleCursor")
 metadata/_custom_type_script = "uid://b8lo4pmy8o03"
 
 [node name="PlayerUI" parent="." instance=ExtResource("5_qu4a1")]
@@ -144,17 +120,3 @@ debug_color = Color(0.8817232, 0.32950577, 0.018827017, 0.41960785)
 [node name="SliderTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
-
-[node name="GrappleCursor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.159755, 0)
-visible = false
-mesh = SubResource("SphereMesh_c3xxp")
-surface_material_override/0 = SubResource("StandardMaterial3D_c3xxp")
-
-[node name="SlidePierceLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4434388, 0)
-billboard = 1
-text = "x30"
-font = ExtResource("7_npwbq")
-font_size = 64
-outline_size = 24

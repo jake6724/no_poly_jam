@@ -1,34 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqjq02mntnjn8"]
+[gd_scene load_steps=2 format=3 uid="uid://dqjq02mntnjn8"]
 
 [ext_resource type="Script" uid="uid://bi2ygwocv1qgy" path="res://scripts/ui/main_menu.gd" id="1_vjtqc"]
-[ext_resource type="FontFile" uid="uid://dfm5opvmc0u6e" path="res://fonts/Domine-VariableFont_wght.ttf" id="2_6jbdy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2per"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mi0g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqjyj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vr37"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kncl5"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jbdy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwbf0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ysvc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpiny"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhu4a"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jbdy"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("button_new_game", "button_settings")]
 layout_mode = 3
@@ -44,7 +16,6 @@ button_settings = NodePath("VBoxContainer/ButtonSettings")
 metadata/_custom_type_script = "uid://bi2ygwocv1qgy"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,56 +32,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 224.0
-offset_top = -72.0
-offset_right = 475.0
-offset_bottom = 44.0
+offset_left = -46.5
+offset_top = -33.0
+offset_right = 46.5
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="ButtonNewGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6jbdy")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxEmpty_e2per")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_7mi0g")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_nqjyj")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_7vr37")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_kncl5")
 text = "New Game"
 
 [node name="ButtonSettings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6jbdy")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxEmpty_6jbdy")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_iwbf0")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_2ysvc")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_xpiny")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bhu4a")
 text = "Settings"
-
-[node name="Panel" type="Panel" parent="."]
-visible = false
-custom_minimum_size = Vector2(168.84, 239.705)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 144.0
-offset_top = -120.0
-offset_right = 435.0
-offset_bottom = 119.70502
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6jbdy")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 33.0
-theme_override_constants/outline_size = 8
-text = "123"
