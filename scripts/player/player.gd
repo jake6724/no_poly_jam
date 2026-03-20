@@ -22,7 +22,7 @@ var input_enabled: bool = true
 @export var move_speed_sprint: float = 10.0
 var move_speed_base: float 
 var is_sprinting: bool = false
-var max_speed: float = 200
+var max_speed: float = 80
 @export var slide_timer: Timer
 @export_range(.1, 5, .1) var slide_cooldown: float
 var can_slide: bool = true
