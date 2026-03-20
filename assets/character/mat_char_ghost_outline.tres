@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bhlntqddrwbb6"]
+
+[ext_resource type="Material" uid="uid://cw6y52rps0n7" path="res://assets/character/mat_char_ghost.tres" id="1_g4ukc"]
+[ext_resource type="Shader" uid="uid://cpn6h4x5vmdl" path="res://shaders/outline.gdshader" id="2_xb0t6"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_g4ukc")
+shader = ExtResource("2_xb0t6")
+shader_parameter/step_count = 3
+shader_parameter/thickness = 3.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/fade_start = 100.0
+shader_parameter/fade_length = 200.0

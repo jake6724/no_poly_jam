@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c2twpwh545pam"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cw6y52rps0n7"]
 
-[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_175it"]
-[ext_resource type="Texture2D" uid="uid://d4nqf6pgshp52" path="res://assets/character/char_rex_TEX_Rex.png" id="2_3er6w"]
+[ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_mbby5"]
+[ext_resource type="Texture2D" uid="uid://cm1v6gkbcdcfj" path="res://assets/character/char_ghost_Ghost.png" id="2_mbby5"]
 
 [sub_resource type="Gradient" id="Gradient_8wefp"]
 interpolation_mode = 1
@@ -13,19 +13,19 @@ gradient = SubResource("Gradient_8wefp")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_175it")
+shader = ExtResource("1_mbby5")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("2_3er6w")
+shader_parameter/albedo_texture = ExtResource("2_mbby5")
 shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 2
+shader_parameter/cuts = 1
 shader_parameter/wrap = 0.0
 shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = false
+shader_parameter/use_attenuation = true
 shader_parameter/use_specular = true
-shader_parameter/specular_strength = 0.010000000475
-shader_parameter/specular_shininess = 2.000000095
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 9.678000459705
+shader_parameter/specular_strength = 0.0450000021375
+shader_parameter/specular_shininess = 9.182000436145
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 4.00000019
 shader_parameter/rim_color = Color(1, 1, 1, 1)
 shader_parameter/use_ramp = false
 shader_parameter/ramp = SubResource("GradientTexture1D_7l5nm")
