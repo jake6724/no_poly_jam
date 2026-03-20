@@ -31,15 +31,16 @@ height = 1.375
 radius = 0.7480469
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0pthk"]
-radius = 0.375
-height = 0.9472656
+radius = 0.48779297
+height = 1.2810059
 
-[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "attack_area", "attack_collider", "bite_area", "bite_collider", "navigation_agent", "skin")]
+[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("body_collider", "state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "attack_area", "attack_collider", "bite_area", "bite_collider", "navigation_agent", "skin")]
 transform = Transform3D(-0.9999999, 0, 1.17225106e-07, 0, 1, 0, -1.17225106e-07, 0, -0.9999999, 0, 0, 0)
 collision_layer = 2
 collision_mask = 7
 safe_margin = 0.01
 script = ExtResource("1_1e0c3")
+body_collider = NodePath("BodyCollider")
 state_machine = NodePath("StateMachine")
 sight_area_player = NodePath("SightAreaPlayer")
 sight_area_player_collider = NodePath("SightAreaPlayer/SightAreaPlayerCollider")
@@ -67,7 +68,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_jdbhd")
 surface_material_override/0 = SubResource("StandardMaterial3D_jdbhd")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="BodyCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7578613, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_1e0c3")
@@ -146,7 +147,7 @@ collision_layer = 0
 monitorable = false
 
 [node name="BiteCollider" type="CollisionShape3D" parent="BiteArea"]
-transform = Transform3D(1, 1.17225106e-07, -1.1722511e-07, -1.1722513e-07, 2.9802322e-08, -1, -1.1722513e-07, 0.99999994, 2.980234e-08, 5.552168e-08, 1, 0.47363296)
+transform = Transform3D(1, 1.17225106e-07, -1.1722511e-07, -1.1722513e-07, 2.9802322e-08, -1, -1.1722513e-07, 0.99999994, 2.980234e-08, 7.508306e-08, 1, 0.64050305)
 shape = SubResource("CapsuleShape3D_0pthk")
 disabled = true
 debug_color = Color(0, 0.68521374, 0.49304086, 0.41960785)

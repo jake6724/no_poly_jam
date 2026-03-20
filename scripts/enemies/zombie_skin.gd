@@ -7,6 +7,9 @@ extends Node3D
 @export var mesh_3: MeshInstance3D
 @export var mesh_4: MeshInstance3D
 
+@export var skeleton: Skeleton3D
+@export var skeleton_physical: PhysicalBoneSimulator3D
+
 @onready var meshes: Array[MeshInstance3D] = [mesh_1, mesh_2, mesh_3, mesh_4]
 
 @export var animation_tree_1: AnimationTree
@@ -26,7 +29,7 @@ signal bite_requested
 func _ready():
 	mesh_1.hide()
 	meshes.pick_random().show()
-
+	animation_tree = animation_tree_1
 	animation_tree_1.active = true
 
 	# for _anim_tree: AnimationTree in animation_trees:

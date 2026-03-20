@@ -22,12 +22,20 @@ var input_enabled: bool = true
 @export var move_speed_sprint: float = 10.0
 var move_speed_base: float 
 var is_sprinting: bool = false
+var max_speed: float = 200
 @export var slide_timer: Timer
 @export_range(.1, 5, .1) var slide_cooldown: float
 var can_slide: bool = true
 var is_sliding: bool = false
 var prev_floor_angle: float 
 var slide_multiplier: float
+@export var slide_bite_area: Area3D
+@export var slide_bite_collider: CollisionShape3D
+@export var slide_pierce_max: int = 100
+var slide_pierce_count: int = 0
+@export var slide_pierce_label: Label3D
+var slide_power: float = 23.0
+
 var is_grounded: bool = false
 var was_grounded: bool = false
 var move_direction: Vector3
@@ -43,8 +51,9 @@ var health: float
 var can_bite: bool = true
 @export var bite_area: Area3D
 @export var bite_collider: CollisionShape3D
-@export var base_damage: float = 50
+@export var base_damage: float = 25
 var damage: float
+var damage_divider: float = 20
 
 @export_group("Nodes")
 @export var _camera: Camera3D
@@ -53,14 +62,16 @@ var damage: float
 @export var _capsule_collider: CollisionShape3D
 var _camera_input_direction: Vector2 = Vector2.ZERO
 var _rotate_camera: bool = false
-
 @export var grapple_raycast: RayCast3D
 @export var grapple_controller: GrappleController
-
+var grapple_distance: float = 30
+@export var grapple_cursor: MeshInstance3D
 @export var interact_raycast: RayCast3D
-
 @export var pickup_collect_area: Area3D
 @export var pickup_collect_collider: CollisionShape3D
+@export var body_collider: CollisionShape3D
+
+var respawn_timer: Timer = Timer.new()
 
 # Stairs
 const MAX_STEP_DOWN = -.5
@@ -96,6 +107,7 @@ func _ready():
 
 	# BiteArea
 	bite_area.body_entered.connect(on_bite_body_entered)
+	slide_bite_area.body_entered.connect(on_bite_body_entered)
 
 	# SlideTimer
 	slide_timer.timeout.connect(on_slide_timer_timeout)
@@ -105,34 +117,20 @@ func _ready():
 	damage = base_damage
 
 	grapple_controller.grapple_rope = _skin.tongue
+	grapple_raycast.target_position = Vector3(0, -1.0, -grapple_distance)
 
 	health = max_health
 	player_ui.update_health(100)
 
-func on_bite_body_entered(intruder) -> void:
-	print(intruder)
-	intruder.take_damage(damage)
+	respawn_timer.one_shot = true
+	respawn_timer.autostart = false
+	add_child(respawn_timer)
+	respawn_timer.timeout.connect(on_respawn_timer_timeout)
 
-func on_bite_collider_requested(_value: bool) -> void:
-	bite_collider.set_deferred("disabled", _value)
+	slide_pierce_label.text = ""
 
-func _process(delta):
-	if not is_equal_approx(_spring_arm.spring_length, zoom_target):
-		zoom_target = clamp(zoom_target, zoom_min, zoom_max)
-		_spring_arm.spring_length = lerp(_spring_arm.spring_length, zoom_target, zoom_sensitivity * delta)
-
-	if interact_raycast.is_colliding():
-
-		# TODO: Put a lil mesh where it is colliding so I can see how it looks
-
-		var interactable: Interactable = interact_raycast.get_collider().owner as Interactable
-		if interactable:
-			interactable.show_interact_hint()
-			prev_interactable = interactable
-	else:
-		if prev_interactable:
-			prev_interactable.hide_interact_hint()
-			prev_interactable = null
+func on_respawn_timer_timeout() -> void:
+	pass
 
 func _input(_event):
 	if input_enabled:
@@ -160,30 +158,10 @@ func _input(_event):
 			slide()
 
 		if Input.is_action_just_released("control"):
-			# Put in a func
-			is_sliding = false
-			slide_timer.start(slide_cooldown)
-			acceleration = 70.0
-			_skin.stop_slide()
+			stop_slide()
 
 		if Input.is_action_just_pressed("interact"):
 			interact()
-
-func slide() -> void: 
-	# if not is_sliding and prev_floor_angle < 0.99 and get_real_velocity().y < 0: 
-	# old code idk this doesnt necessarily go on this line here
-	if can_slide:
-		can_slide = false
-		is_sliding = true
-		_skin.player_is_sliding = true
-
-		acceleration = 3.0
-		var floor_angle: float = get_floor_angle()
-		print("Floor angle: ", floor_angle)
-		var velocity_power_bonus: float = 23 + (floor_angle * 2)
-		velocity = velocity.normalized() * velocity_power_bonus
-
-		# _skin.slide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if input_enabled:
@@ -197,7 +175,26 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("scroll_down"):
 			zoom_target += zoom_step
 
+func _process(delta):
+	if not is_equal_approx(_spring_arm.spring_length, zoom_target):
+		zoom_target = clamp(zoom_target, zoom_min, zoom_max)
+		_spring_arm.spring_length = lerp(_spring_arm.spring_length, zoom_target, zoom_sensitivity * delta)
+
+	if interact_raycast.is_colliding():
+
+		# TODO: Put a lil mesh where it is colliding so I can see how it looks
+
+		var interactable: Interactable = interact_raycast.get_collider().owner as Interactable
+		if interactable:
+			interactable.show_interact_hint()
+			prev_interactable = interactable
+	else:
+		if prev_interactable:
+			prev_interactable.hide_interact_hint()
+			prev_interactable = null
+
 func _physics_process(delta: float) -> void:
+	#print(get_real_velocity().length())
 	if Input.is_action_pressed("left_click") and can_bite and input_enabled:
 		can_bite = false
 		_skin.bite()
@@ -215,7 +212,7 @@ func _physics_process(delta: float) -> void:
 	# If this is not reset, the camera will keep rotating until new input comes in
 	_camera_input_direction = Vector2.ZERO
 	var raw_input: Vector2 = Vector2.ZERO
-	if not is_sliding:
+	if not is_sliding and input_enabled:
 		# Get the raw 2-axis input data, forward direction of camera, and right direction of camera
 		# Forward direction is used to move back-and-forth, right direction is used to move left-and-right
 		raw_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -234,6 +231,9 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.move_toward((move_direction * move_speed), acceleration * delta)
 	velocity.y = (y_velocity + (gravity * delta))
 
+	if velocity.length() > max_speed:
+		velocity = velocity.normalized() * max_speed
+
 	if prev_is_on_floor != is_on_floor() and not is_on_floor():
 		coyote_jump_timer.start(jump_coyote_time)
 
@@ -242,15 +242,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	# stair_step_down()
-
-	# # Handle sliding
-	# prev_floor_angle = get_floor_angle()
-	# if prev_floor_angle == 0.0:
-	# 	acceleration = 70.0
-
-	# # Stop slide if moving up
-	# if get_real_velocity().y >= 0:
-	# 	acceleration = 70.0
 
 	_skin.global_rotation.y = lerp_angle(_skin.global_rotation.y, _camera.global_rotation.y + PI , rotation_speed * delta)
 
@@ -281,6 +272,51 @@ func _physics_process(delta: float) -> void:
 
 	_skin.player_input.y = lerp(_skin.player_input.y, raw_input.y, delta * 10)
 	_skin.player_input.x = lerp(_skin.player_input.x, raw_input.x, delta * 8)
+
+func slide() -> void: 
+	# if not is_sliding and prev_floor_angle < 0.99 and get_real_velocity().y < 0: 
+	# old code idk this doesnt necessarily go on this line here
+	if can_slide:
+		
+		can_slide = false
+		is_sliding = true
+		_skin.player_is_sliding = true
+
+		acceleration = 3.0
+		var floor_angle: float = get_floor_angle()
+		var velocity_power_bonus: float = slide_power + (floor_angle * 2)
+		velocity = velocity.normalized() * velocity_power_bonus
+
+		slide_bite_collider.disabled = false
+		set_collision_mask_value(2, false)
+		
+		slide_pierce_label.show()
+
+func stop_slide() -> void:
+	is_sliding = false
+	slide_timer.start(slide_cooldown)
+	acceleration = 70.0
+	slide_bite_collider.disabled = true
+	_skin.stop_slide()
+	set_collision_mask_value(2, true)
+	slide_pierce_count = 0
+	slide_pierce_label.text = ""
+	slide_pierce_label.scale = Vector3(1,1,1)
+	slide_pierce_label.hide()
+
+func on_bite_body_entered(intruder) -> void:
+	var final_damage = damage * get_real_velocity().length()/damage_divider
+	intruder.take_damage(int(final_damage), self)
+	
+	if is_sliding:
+		slide_pierce_count += 1
+		scale_slide_label()
+		slide_pierce_label.text = "x" + str(slide_pierce_count)
+		if slide_pierce_count >= slide_pierce_max:
+			stop_slide()
+
+func on_bite_collider_requested(_value: bool) -> void:
+	bite_collider.set_deferred("disabled", _value)
 
 func jump() -> void:
 	if is_on_floor() or grapple_controller.launched or coyote_jump_available:
@@ -325,6 +361,12 @@ func die() -> void:
 	_skin.player_died = true
 	zoom_target = 1000
 	zoom_step = .25
+
+func scale_slide_label() -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(slide_pierce_label, "scale", slide_pierce_label.scale + Vector3(.05,.05,.05), .1)
+	tween.tween_interval(.1)
+	tween.tween_property(slide_pierce_label, "scale", slide_pierce_label.scale - Vector3(.025,.025,.025), .1)
 
 func stair_step_down():
 	if is_on_floor():

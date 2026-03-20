@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://nltiwrv4h342"]
+
+[ext_resource type="Script" uid="uid://1t6acel1tvth" path="res://scripts/ui/main_menu_scene.gd" id="1_l72w3"]
+[ext_resource type="PackedScene" uid="uid://dpcw566iv1ogb" path="res://assets/environment/mall/env_mall.glb" id="1_yqorp"]
+[ext_resource type="PackedScene" uid="uid://c6gatrsuipp0y" path="res://scenes/player/RexSkin.tscn" id="2_2wh52"]
+[ext_resource type="Texture2D" uid="uid://bt213508s4cqg" path="res://assets/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="3_ow34m"]
+[ext_resource type="PackedScene" uid="uid://dqjq02mntnjn8" path="res://scenes/ui/MainMenu.tscn" id="4_ow34m"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l72w3"]
+panorama = ExtResource("3_ow34m")
+
+[sub_resource type="Sky" id="Sky_8xg12"]
+sky_material = SubResource("PanoramaSkyMaterial_l72w3")
+
+[sub_resource type="Environment" id="Environment_826wr"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_8xg12")
+ambient_light_source = 2
+ambient_light_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
+ambient_light_energy = 1.5
+reflected_light_source = 2
+glow_enabled = true
+glow_intensity = 0.4
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("rex_skin")]
+script = ExtResource("1_l72w3")
+rex_skin = NodePath("RexSkin")
+metadata/_custom_type_script = "uid://1t6acel1tvth"
+
+[node name="env_mall" parent="." instance=ExtResource("1_yqorp")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1444092e-05, 0, 0)
+
+[node name="RexSkin" parent="." instance=ExtResource("2_2wh52")]
+transform = Transform3D(0.35967112, 0, 0.9330792, 0, 1, 0, -0.9330792, 0, 0.35967112, 59.019722, 15.002046, 191.44922)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_826wr")
+
+[node name="MainMenu" parent="." instance=ExtResource("4_ow34m")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9862856, -0.1650476, 0, 0.1650476, 0.9862856, 60.784275, 16.093716, 194.4548)
+current = true

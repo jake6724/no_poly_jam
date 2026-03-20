@@ -5,6 +5,7 @@ var movement_target_position: Vector3
 var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
 @export var prey: Node3D 
 @export_group("Nodes")
+@export var body_collider: CollisionShape3D
 @export var state_machine: StateMachine
 @export var sight_area_player: Area3D
 @export var sight_area_player_collider: CollisionShape3D
@@ -39,6 +40,12 @@ var chase_timer: Timer = Timer.new()
 ## Max Duration after player has escaped zombie chase range that zombie will keep chasing
 @export_range(1,10,.5)var chase_duration_max: float = 10.0
 var is_alive: bool = true
+
+var on_hit_velocity_bonus: Vector3
+
+var prev_state: String
+
+var can_process: bool = true
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
@@ -81,21 +88,25 @@ func configure_state_machine() -> void:
 	state_machine.attack_requested.connect(attack)
 
 func child_physics_process(delta):
-	if not is_on_floor():
-		velocity.y = (velocity.y + (gravity * delta))
+	if can_process:
+		if not is_on_floor():
+			velocity.y = (velocity.y + (gravity * delta))
 
-	# Face move direction (maybe use this? -global_transform.basis.z.normalized())
-	var target_position: Vector3 = global_position + velocity
-	var _move_direction = target_position - global_position
-	if _move_direction:
-		rotation.y = rotate_toward(rotation.y, (Vector2(_move_direction.x, -_move_direction.z).angle()) + PI/2, rotation_speed * delta)
+		# Face move direction (maybe use this? -global_transform.basis.z.normalized())
+		var target_position: Vector3 = global_position + velocity
+		var _move_direction = target_position - global_position
+		if _move_direction:
+			rotation.y = rotate_toward(rotation.y, (Vector2(_move_direction.x, -_move_direction.z).angle()) + PI/2, rotation_speed * delta)
 
-	if is_player_in_sight_range and prey and not player_spotted:
-		look_for_player(prey)
+		if is_player_in_sight_range and prey and not player_spotted:
+			look_for_player(prey)
 
-	state_machine.child_physics_process(delta)
+		state_machine.child_physics_process(delta)
 
-	move_and_slide()
+		velocity += on_hit_velocity_bonus
+		on_hit_velocity_bonus.move_toward(Vector3.ZERO, delta * 10)
+
+		move_and_slide()
 
 # Update Skin Animation param
 	skin.zombie_is_chasing = player_spotted
@@ -128,8 +139,9 @@ func on_body_exited_sight_area_player(_body) -> void:
 		is_player_in_sight_range = false
 
 func on_chase_area_body_exited(_body) -> void:
-	if player_spotted:
-		chase_timer.start(randf_range(chase_duration_min, chase_duration_max))
+	if is_alive:
+		if player_spotted:
+			chase_timer.start(randf_range(chase_duration_min, chase_duration_max))
 
 func look_for_player(player: Player) -> void:
 	var forward_vector: Vector3 = -global_transform.basis.z.normalized()
@@ -180,18 +192,33 @@ func on_bite_requested(_value: bool) -> void:
 func on_bite_area_entered(_player: Player) -> void:
 	_player.take_damage(bite_damage)
 
-func take_damage(_damage_amount: float) -> void:
+func take_damage(_damage_amount: float, player: Player) -> void:
+	# can_process = false
+	# skin.animation_tree_1.active = false
+	# body_collider.disabled = true
+	# skin.skeleton_physical.physical_bones_start_simulation()
+
 	# Start chasing if ambushed
 	if not player_spotted:
 		var bodies: Array = chase_area.get_overlapping_bodies()
-		start_chasing(bodies[0], true)
+		if bodies.size() > 0:
+			start_chasing(bodies[0], true)
 
-	flash_mesh()
+	# flash_mesh()
+	skin.animation_tree["parameters/HitOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	health -= _damage_amount
+	AudioManager.create_3d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_HIT)
+	PopupManager.spawn_popup(global_position + Vector3(0,1,0), _damage_amount)
 	if health < 0:
 		die()
 
+	# on_hit_velocity_bonus = -(global_position.direction_to(player.global_position)) * 200
+	# prev_state = state_machine.current_state.state_name
+	# velocity = velocity + -(global_position.direction_to(player.global_position)) * 300
+
+
 func die() -> void:
+	is_alive = false
 	ZombieManager.remove_zombie(self)
 
 func flash_mesh() -> void:

@@ -3,7 +3,7 @@ extends State
 
 
 func enter_state():
-	print("Attack entered")
+
 	attack_requested.emit()
 
 # func exit_state():
