@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddymwhtk1yl3j"]
+
+[ext_resource type="Script" uid="uid://rnibepbbbvic" path="res://scripts/environment/doorway.gd" id="1_lghea"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hk5wj"]
+size = Vector3(11.065, 5, 8.445)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk5wj"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hk5wj"]
+size = Vector3(11.065, 5, 8.445)
+
+[node name="Doorway" type="Node3D" node_paths=PackedStringArray("area")]
+script = ExtResource("1_lghea")
+area = NodePath("Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053581476, 2.5208826, 0.15007687)
+mesh = SubResource("BoxMesh_hk5wj")
+surface_material_override/0 = SubResource("StandardMaterial3D_hk5wj")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5296254, 0.13795328)
+shape = SubResource("BoxShape3D_hk5wj")

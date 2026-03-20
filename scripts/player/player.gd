@@ -70,6 +70,7 @@ var grapple_distance: float = 30
 @export var pickup_collect_area: Area3D
 @export var pickup_collect_collider: CollisionShape3D
 @export var body_collider: CollisionShape3D
+@export var popup_parent: Node3D
 
 var respawn_timer: Timer = Timer.new()
 
@@ -128,6 +129,7 @@ func _ready():
 	respawn_timer.timeout.connect(on_respawn_timer_timeout)
 
 	slide_pierce_label.text = ""
+
 
 func on_respawn_timer_timeout() -> void:
 	pass
@@ -304,7 +306,7 @@ func stop_slide() -> void:
 	slide_pierce_label.hide()
 
 func on_bite_body_entered(intruder) -> void:
-	var final_damage = damage * get_real_velocity().length()/damage_divider
+	var final_damage = max(damage, damage * get_real_velocity().length()/damage_divider)
 	intruder.take_damage(int(final_damage), self)
 	
 	if is_sliding:
@@ -312,7 +314,10 @@ func on_bite_body_entered(intruder) -> void:
 		scale_slide_label()
 		slide_pierce_label.text = "x" + str(slide_pierce_count)
 		if slide_pierce_count >= slide_pierce_max:
+			PopupManager.spawn_popup(global_position + Vector3(0,3, 0), "Mouth Full!", true, 48, popup_parent)
 			stop_slide()
+			velocity.y += 100
+			jump()
 
 func on_bite_collider_requested(_value: bool) -> void:
 	bite_collider.set_deferred("disabled", _value)

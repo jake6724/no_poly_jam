@@ -29,8 +29,8 @@ height = 0.2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3xxp"]
 albedo_color = Color(0.88553053, 0.4003296, 0.5824798, 1)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("slide_timer", "slide_bite_area", "slide_bite_collider", "slide_pierce_label", "bite_area", "bite_collider", "_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "grapple_cursor", "interact_raycast", "pickup_collect_area", "pickup_collect_collider", "body_collider", "player_ui", "_skin")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("slide_timer", "slide_bite_area", "slide_bite_collider", "slide_pierce_label", "bite_area", "bite_collider", "_camera", "_camera_pivot", "_spring_arm", "_capsule_collider", "grapple_raycast", "grapple_controller", "grapple_cursor", "interact_raycast", "pickup_collect_area", "pickup_collect_collider", "body_collider", "popup_parent", "player_ui", "_skin")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0.037672043, 0)
 collision_mask = 6
 script = ExtResource("1_v6fml")
 zoom_sensitivity = 6.0
@@ -58,6 +58,7 @@ interact_raycast = NodePath("CameraPivot/SpringArm3D/Camera3D/InteractRaycast")
 pickup_collect_area = NodePath("PickupCollectArea")
 pickup_collect_collider = NodePath("PickupCollectArea/PickupCollectCollider")
 body_collider = NodePath("BodyCollider")
+popup_parent = NodePath("PopupParent")
 player_ui = NodePath("PlayerUI")
 _skin = NodePath("RexSkin")
 
@@ -158,3 +159,6 @@ text = "x30"
 font = ExtResource("7_npwbq")
 font_size = 64
 outline_size = 24
+
+[node name="PopupParent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7102728, 0)
