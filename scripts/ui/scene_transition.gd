@@ -11,7 +11,10 @@ const PROGRESS_SPEED_MULTIPLIER: float = 1.5
 
 var is_transit_out: bool = false
 
-var MALL_LEVEL: PackedScene = preload("res://scenes/Environment/LevelMall.tscn")
+const MALL_LEVEL: PackedScene = preload("res://scenes/Environment/LevelMall.tscn")
+const DENTIST_LEVEL: PackedScene = preload("res://scenes/Environment/LevelDentist.tscn")
+const MAIN_MENU_LEVEL: PackedScene = preload("res://scenes/MainMenu.tscn")
+var target_scene = MALL_LEVEL
 
 # func _input(event):
 #     if Input.is_action_just_pressed("x"):
@@ -29,13 +32,14 @@ func _process(delta):
 
 	if is_transit_out and shader_progress >= shader_progress_target:
 		set_process(false)
-		get_tree().change_scene_to_packed(MALL_LEVEL)
+		get_tree().change_scene_to_packed(target_scene)
 		transition_in()
 
 	elif not is_transit_out and shader_progress <= shader_progress_target:
 		set_process(false)
 	
 func transition_out() -> void:
+	ZombieManager.clear_all_zombies()
 	is_transit_out = true
 	progress_sign = 1.0
 	shader_progress_target = 3.0

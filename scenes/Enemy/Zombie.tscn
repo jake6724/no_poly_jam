@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b5al85djmhb8a" path="res://scripts/state_machine/state_machine.gd" id="2_uuhgg"]
 [ext_resource type="Script" uid="uid://ca1m0bp8fje4i" path="res://scripts/enemies/states/state_enemy_chase.gd" id="3_0hohf"]
 [ext_resource type="Script" uid="uid://48vw3fdxm2mb" path="res://scripts/enemies/states/state_enemy_patrol.gd" id="4_8q0s5"]
-[ext_resource type="PackedScene" uid="uid://bvrjh1qxixyxo" path="res://scenes/Enemy/ZombieSkin.tscn" id="5_74thq"]
+[ext_resource type="PackedScene" uid="uid://bydm64m5dugsp" path="res://scenes/Enemy/ZombieSkin.tscn" id="5_74thq"]
 [ext_resource type="Script" uid="uid://dco3iuwuu3q5k" path="res://scripts/enemies/states/state_enemy_attack.gd" id="6_0pthk"]
 [ext_resource type="Script" uid="uid://lr1javxc0b5j" path="res://scripts/enemies/states/state_enemy_chase_basic.gd" id="7_7pdxr"]
 
@@ -35,7 +35,7 @@ radius = 0.7480469
 radius = 0.48779297
 height = 1.2810059
 
-[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("body_collider", "state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "attack_area", "attack_collider", "bite_area", "bite_collider", "navigation_agent", "skin")]
+[node name="Zombie" type="CharacterBody3D" node_paths=PackedStringArray("body_collider", "state_machine", "sight_area_player", "sight_area_player_collider", "raycast_sight", "chase_area", "chase_area_collider", "alert_area", "alert_area_collider", "attack_area", "attack_collider", "bite_area", "bite_collider", "navigation_agent", "skin", "growl_timer")]
 transform = Transform3D(-0.9999999, 0, 1.17225106e-07, 0, 1, 0, -1.17225106e-07, 0, -0.9999999, 0, 0, 0)
 collision_layer = 2
 collision_mask = 7
@@ -56,6 +56,7 @@ bite_area = NodePath("BiteArea")
 bite_collider = NodePath("BiteArea/BiteCollider")
 navigation_agent = NodePath("NavigationAgent3D")
 skin = NodePath("ZombieSkin")
+growl_timer = NodePath("GrowlTimer")
 move_speed_max = 12.0
 chase_duration_min = 2.5
 metadata/_custom_type_script = "uid://b4lnl1hrp1tlh"
@@ -156,3 +157,6 @@ transform = Transform3D(1, 1.17225106e-07, -1.1722511e-07, -1.1722513e-07, 2.980
 shape = SubResource("CapsuleShape3D_0pthk")
 disabled = true
 debug_color = Color(0, 0.68521374, 0.49304086, 0.41960785)
+
+[node name="GrowlTimer" type="Timer" parent="."]
+one_shot = true

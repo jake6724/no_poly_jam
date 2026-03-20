@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=12 format=3 uid="uid://cpfencbf4k2eq"]
+
+[ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="1_1ukws"]
+[ext_resource type="AudioStream" uid="uid://dcdurb81acvi3" path="res://assets/audio/zombie/zombie_noise_1.mp3" id="2_5w50j"]
+[ext_resource type="AudioStream" uid="uid://c8y1wp65cjp64" path="res://assets/audio/zombie/zombie_noise_2.mp3" id="3_6huuq"]
+[ext_resource type="AudioStream" uid="uid://bycc72mtx7hia" path="res://assets/audio/zombie/zombie_noise_3.mp3" id="4_g1ko8"]
+[ext_resource type="AudioStream" uid="uid://qcua4c5vpctu" path="res://assets/audio/zombie/zombie_noise_4.mp3" id="5_bgt5x"]
+[ext_resource type="AudioStream" uid="uid://cofb43gon3egc" path="res://assets/audio/zombie/zombie_noise_5.mp3" id="6_q3df4"]
+[ext_resource type="AudioStream" uid="uid://b6soeeuldmkq7" path="res://assets/audio/zombie/zombie_noise_6.mp3" id="7_mrn5n"]
+[ext_resource type="AudioStream" uid="uid://cwlre07y6kc87" path="res://assets/audio/zombie/zombie_noise_7.mp3" id="8_6mi1a"]
+[ext_resource type="AudioStream" uid="uid://d5gocm4b5h8k" path="res://assets/audio/zombie/zombie_noise_8.mp3" id="9_7excf"]
+[ext_resource type="AudioStream" uid="uid://obu6pyg0fn44" path="res://assets/audio/zombie/zombie_noise_9.mp3" id="10_k7nef"]
+[ext_resource type="AudioStream" uid="uid://v5yid6sjclnr" path="res://assets/audio/zombie/zombie_noise_10.mp3" id="11_thxb6"]
+
+[resource]
+script = ExtResource("1_1ukws")
+limit = 8
+type = 4
+sounds = Array[AudioStreamMP3]([ExtResource("2_5w50j"), ExtResource("3_6huuq"), ExtResource("4_g1ko8"), ExtResource("5_bgt5x"), ExtResource("6_q3df4"), ExtResource("7_mrn5n"), ExtResource("8_6mi1a"), ExtResource("9_7excf"), ExtResource("10_k7nef"), ExtResource("11_thxb6")])
+volume = -8.0
+select_mode = 2
+metadata/_custom_type_script = "uid://kppg6mfv2dlh"

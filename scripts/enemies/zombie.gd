@@ -20,6 +20,7 @@ var rotation_offset: float = PI/2 #https://www.youtube.com/watch?v=WgR4QMlFVvI
 @export var bite_collider: CollisionShape3D
 @export var navigation_agent: NavigationAgent3D
 @export var skin: ZombieSkin
+@export var growl_timer: Timer
 
 var patrol_position: Vector3
 var is_player_in_sight_range: bool = false
@@ -80,6 +81,9 @@ func _ready():
 
 	attack_area.body_entered.connect(on_attack_area_body_entered)
 	bite_area.body_entered.connect(on_bite_area_entered)
+
+	growl_timer.timeout.connect(on_growl_timer_timeout)
+	growl_timer.start(randf_range(0,8))
 
 func configure_state_machine() -> void:
 	state_machine.initialize(self)
@@ -249,3 +253,7 @@ func spawn_gore(_transform, impulse: Vector3, amount: int) -> void:
 		ZombieManager.add_child(new_gore)
 		new_gore.global_position = _transform
 		new_gore.apply_impulse(impulse)
+
+func on_growl_timer_timeout() -> void:
+	AudioManager.create_3d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_NOISE)
+	growl_timer.start(randf_range(3, 60))

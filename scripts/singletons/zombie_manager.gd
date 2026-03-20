@@ -3,10 +3,13 @@ extends Node
 var zombies: Array[Zombie] = []
 
 var chasers: int = 0
-var chase_limit: int = 2000
+var chase_limit: int = 60
 
 func add_zombie(_zombie: Zombie) -> void:
 	zombies.append(_zombie)
+
+func clear_all_zombies() -> void:
+	zombies = []
 
 func remove_zombie(_zombie: Zombie) -> void:
 	zombies.erase(_zombie)

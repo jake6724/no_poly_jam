@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cw6y52rps0n7"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://w5nymuvu0mb2"]
 
 [ext_resource type="Shader" uid="uid://dq1q54c6ata4c" path="res://shaders/flexible_toon.gdshader" id="1_mbby5"]
 [ext_resource type="Texture2D" uid="uid://cm1v6gkbcdcfj" path="res://assets/character/char_ghost_Ghost.png" id="2_mbby5"]

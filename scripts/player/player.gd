@@ -45,6 +45,7 @@ var can_stair_step: bool = true # Disabled when jumping until jump coyote time g
 @export_range(0,1,.1) var jump_coyote_time: float = 0.5
 @export var gravity: float = -30
 @export_group("Combat")
+var is_alive: bool = true
 @export var max_health: float = 100.0
 var health: float 
 @export_range(.1, 3, .1) var bite_cooldown: float
@@ -129,11 +130,7 @@ func _ready():
 	respawn_timer.timeout.connect(on_respawn_timer_timeout)
 
 	slide_pierce_label.text = ""
-
-
-func on_respawn_timer_timeout() -> void:
-	pass
-
+	
 func _input(_event):
 	if input_enabled:
 		if Input.is_action_just_pressed("left_click"):
@@ -353,18 +350,27 @@ func on_slide_timer_timeout() -> void:
 	can_slide = true
 
 func take_damage(_damage) -> void:
-	health = max(0, health - _damage)
-	player_ui.update_health((health/max_health) * 100)
-	if health <= 0:
-		die()
-	else:
-		_skin.hit()
+	if is_alive:
+		health = max(0, health - _damage)
+		player_ui.update_health((health/max_health) * 100)
+		if health <= 0:
+			die()
+		else:
+			_skin.hit()
 
 func die() -> void:
+	is_alive = false
 	input_enabled = false
 	_skin.player_died = true
 	zoom_target = 1000
 	zoom_step = .25
+	print("Start timer here ? ")
+	respawn_timer.start(2)
+
+func on_respawn_timer_timeout() -> void:
+	print("Respawn called")
+	SceneTransition.target_scene = SceneTransition.DENTIST_LEVEL
+	SceneTransition.transition_out()
 
 func scale_slide_label() -> void:
 	var tween: Tween = get_tree().create_tween()

@@ -5,6 +5,7 @@ extends Node3D
 var can_interact: bool = true
 
 func show_interact_hint() -> void:
+    print("Test")
     if not interact_hint.visible and can_interact:
         interact_hint.show()
 
