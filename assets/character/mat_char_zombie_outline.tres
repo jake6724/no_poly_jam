@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dcphhhk85c4mx"]
+
+[ext_resource type="Material" uid="uid://deulq03g1gq1c" path="res://assets/character/mat_char_zombie.tres" id="1_354v6"]
+[ext_resource type="Shader" uid="uid://cpn6h4x5vmdl" path="res://shaders/outline.gdshader" id="2_dhy18"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_354v6")
+shader = ExtResource("2_dhy18")
+shader_parameter/scale = 6.0
+shader_parameter/outline_spread = 1.0
+shader_parameter/_Color = Color(0, 0, 0, 1)
+shader_parameter/_DepthNormalThreshold = 0.1
+shader_parameter/_DepthNormalThresholdScale = 3.0
+shader_parameter/_DepthThreshold = 1.5
+shader_parameter/_NormalThreshold = 2.0
