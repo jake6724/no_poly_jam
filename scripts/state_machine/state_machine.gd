@@ -9,6 +9,7 @@ var states: Dictionary[String, State] = {}
 var parent_character: CharacterBody3D
 
 signal update_velocity_requested
+signal update_velocity_to_player_requested
 signal update_move_target_to_prey_requested
 signal update_patrol_position_requested
 signal update_move_target_to_patrol_position_requested
@@ -31,6 +32,7 @@ func initialize(_parent_character: CharacterBody3D):
 		_state.update_patrol_position_requested.connect(on_update_patrol_position_requested)
 		_state.update_move_target_to_patrol_position_requested.connect(on_update_move_target_to_patrol_position_requested)
 		_state.attack_requested.connect(on_attack_requested)
+		_state.update_velocity_to_player_requested.connect(func sig(): update_velocity_to_player_requested.emit())
 
 	# Configure current state
 	if initial_state:

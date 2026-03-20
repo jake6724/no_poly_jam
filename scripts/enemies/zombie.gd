@@ -88,6 +88,7 @@ func configure_state_machine() -> void:
 	state_machine.update_patrol_position_requested.connect(update_patrol_position)
 	state_machine.update_move_target_to_patrol_position_requested.connect(set_move_target_to_patrol_position)
 	state_machine.attack_requested.connect(attack)
+	state_machine.update_velocity_to_player_requested.connect(on_state_machine_update_velocity_to_player_requested)
 
 func child_physics_process(delta):
 	if can_process:
@@ -117,7 +118,7 @@ func child_physics_process(delta):
 
 ## Can be requested by child States. Does not require the State to have access to Move Target
 func set_move_target_to_prey():
-	if prey and state_machine.current_state.state_name == "stateenemychase":
+	if prey and state_machine.current_state.state_name == "stateenemychasebasic":
 		navigation_agent.set_target_position(prey.global_position)
 
 func update_patrol_position(_patrol_position_offset):
@@ -129,6 +130,12 @@ func set_move_target_to_patrol_position():
 
 func on_state_machine_update_velocity_requested(_new_velocity) -> void:
 	velocity = _new_velocity
+
+func on_state_machine_update_velocity_to_player_requested() -> void:
+	if prey:
+		var direction = global_position.direction_to(prey.global_position)
+		direction.y = 0
+		velocity = move_speed * direction
 
 func on_body_entered_sight_area_player(_body) -> void:
 	if _body is Player:
@@ -159,7 +166,7 @@ func look_for_player(player: Player) -> void:
 func start_chasing(_prey: Player, was_attacked: bool=false) -> void:
 	if ZombieManager.has_open_chase_limit() or was_attacked:
 		player_spotted = true
-		state_machine.force_transition("stateenemychase")
+		state_machine.force_transition("stateenemychasebasic")
 		prey = _prey # Set again here to ensure that alerted zombies (which may not have seen player yet) have a reference
 
 func on_chase_timer_timeout() -> void:
@@ -168,7 +175,6 @@ func on_chase_timer_timeout() -> void:
 	prey = null
 
 func alert_nearby_zombies() -> void:
-
 	var bodies: Array[Node3D] = alert_area.get_overlapping_bodies()
 	for body: Node3D in bodies:
 		var zombie: Zombie = body as Zombie
@@ -186,7 +192,7 @@ func attack() -> void:
 func on_check_can_attack_requested() -> void:
 	if attack_area.get_overlapping_bodies().size() <= 0:
 		skin.zombie_is_attacking = false
-		state_machine.force_transition("stateenemychase")
+		state_machine.force_transition("stateenemychasebasic")
 
 func on_bite_requested(_value: bool) -> void:
 	bite_collider.disabled = not _value
@@ -212,7 +218,7 @@ func take_damage(_damage_amount: float, player: Player) -> void:
 	AudioManager.create_3d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_HIT)
 	PopupManager.spawn_popup(global_position + Vector3(0,1,0), _damage_amount)
 	if health < 0:
-		var impulse = -(global_position.direction_to(player.global_position)) * 1
+		var impulse = -(global_position.direction_to(player.global_position)) * 30
 		die(impulse)
 
 	# on_hit_velocity_bonus = -(global_position.direction_to(player.global_position)) * 200
@@ -221,7 +227,7 @@ func take_damage(_damage_amount: float, player: Player) -> void:
 func die(impulse) -> void:
 	is_alive = false
 	ZombieManager.remove_zombie(self)
-	spawn_gore(impulse, global_position + Vector3(0, 1, 0))
+	spawn_gore(global_position + Vector3(0, 1, 0), impulse, 3)
 
 func flash_mesh() -> void:
 	pass
@@ -235,9 +241,12 @@ func flash_mesh() -> void:
 
 	# # mat.albedo_color.s = 15
 
-func spawn_gore(spawn_location: Vector3, impulse: Vector3) -> void:
-	print("Spawn gore")
-	var new_gore: RigidBody3D = gore.instantiate()
-	call_deferred("add_child", gore)
-	new_gore.global_position = spawn_location
-	new_gore.apply_impulse(impulse)
+func spawn_gore(_transform, impulse: Vector3, amount: int) -> void:
+	for i in range(amount):
+		print(i)
+		impulse += Vector3(randf_range(-30,30), randf_range(-30,30), 0)
+		var new_gore: Gore = gore.instantiate()
+
+		ZombieManager.add_child(new_gore)
+		new_gore.global_position = _transform
+		new_gore.apply_impulse(impulse)

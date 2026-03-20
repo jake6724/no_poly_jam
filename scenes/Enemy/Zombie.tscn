@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cini2lae5ub2n"]
+[gd_scene load_steps=16 format=3 uid="uid://cini2lae5ub2n"]
 
 [ext_resource type="Script" uid="uid://b4lnl1hrp1tlh" path="res://scripts/enemies/zombie.gd" id="1_1e0c3"]
 [ext_resource type="Script" uid="uid://b5al85djmhb8a" path="res://scripts/state_machine/state_machine.gd" id="2_uuhgg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://48vw3fdxm2mb" path="res://scripts/enemies/states/state_enemy_patrol.gd" id="4_8q0s5"]
 [ext_resource type="PackedScene" uid="uid://bvrjh1qxixyxo" path="res://scenes/Enemy/ZombieSkin.tscn" id="5_74thq"]
 [ext_resource type="Script" uid="uid://dco3iuwuu3q5k" path="res://scripts/enemies/states/state_enemy_attack.gd" id="6_0pthk"]
+[ext_resource type="Script" uid="uid://lr1javxc0b5j" path="res://scripts/enemies/states/state_enemy_chase_basic.gd" id="7_7pdxr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jdbhd"]
 
@@ -95,6 +96,10 @@ metadata/_custom_type_script = "uid://48vw3fdxm2mb"
 
 [node name="StateEnemyAttack" type="Node" parent="StateMachine"]
 script = ExtResource("6_0pthk")
+
+[node name="StateEnemyChaseBasic" type="Node" parent="StateMachine"]
+script = ExtResource("7_7pdxr")
+metadata/_custom_type_script = "uid://lr1javxc0b5j"
 
 [node name="SightAreaPlayer" type="Area3D" parent="."]
 visible = false
