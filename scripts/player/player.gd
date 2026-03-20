@@ -51,7 +51,7 @@ var health: float
 var can_bite: bool = true
 @export var bite_area: Area3D
 @export var bite_collider: CollisionShape3D
-@export var base_damage: float = 25
+@export var base_damage: float = 10000
 var damage: float
 var damage_divider: float = 20
 

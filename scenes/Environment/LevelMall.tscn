@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://b3j3f5opa3pcm"]
+[gd_scene load_steps=53 format=4 uid="uid://b3j3f5opa3pcm"]
 
 [ext_resource type="Texture2D" uid="uid://dkw8u4jf51hsj" path="res://assets/environment/mall/env_mall_TEX_Environment.png" id="1_7vuu1"]
 [ext_resource type="Script" uid="uid://dwcx4g5mgvbd4" path="res://scripts/level.gd" id="1_an2w3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bt213508s4cqg" path="res://assets/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="9_miff6"]
 [ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/player/Player.tscn" id="10_nc5sf"]
 [ext_resource type="PackedScene" uid="uid://bqn01a3vepfqw" path="res://scenes/Environment/Chest.tscn" id="10_q51kh"]
+[ext_resource type="PackedScene" uid="uid://btlqpvxq7psb5" path="res://scenes/Gore.tscn" id="12_yb2w4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0138"]
 resource_name = "Environment"
@@ -1554,3 +1555,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 15.499997, 247)
 [node name="Player" parent="." instance=ExtResource("10_nc5sf")]
 
 [node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Node3D" parent="." instance=ExtResource("12_yb2w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.452724, 17.866022, 243.73749)
+
+[node name="Node3D2" parent="." instance=ExtResource("12_yb2w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.452724, 17.866022, 240.5674)

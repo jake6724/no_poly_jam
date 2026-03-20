@@ -47,6 +47,8 @@ var prev_state: String
 
 var can_process: bool = true
 
+var gore: PackedScene = preload("res://scenes/Gore.tscn")
+
 func _ready():
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
@@ -210,16 +212,16 @@ func take_damage(_damage_amount: float, player: Player) -> void:
 	AudioManager.create_3d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_HIT)
 	PopupManager.spawn_popup(global_position + Vector3(0,1,0), _damage_amount)
 	if health < 0:
-		die()
+		var impulse = -(global_position.direction_to(player.global_position)) * 1
+		die(impulse)
 
 	# on_hit_velocity_bonus = -(global_position.direction_to(player.global_position)) * 200
 	# prev_state = state_machine.current_state.state_name
-	# velocity = velocity + -(global_position.direction_to(player.global_position)) * 300
 
-
-func die() -> void:
+func die(impulse) -> void:
 	is_alive = false
 	ZombieManager.remove_zombie(self)
+	spawn_gore(impulse, global_position + Vector3(0, 1, 0))
 
 func flash_mesh() -> void:
 	pass
@@ -232,3 +234,10 @@ func flash_mesh() -> void:
 	# flash_tween.tween_property(mat, "albedo_color", reset_color, .3).from(Color.SALMON)
 
 	# # mat.albedo_color.s = 15
+
+func spawn_gore(spawn_location: Vector3, impulse: Vector3) -> void:
+	print("Spawn gore")
+	var new_gore: RigidBody3D = gore.instantiate()
+	call_deferred("add_child", gore)
+	new_gore.global_position = spawn_location
+	new_gore.apply_impulse(impulse)
