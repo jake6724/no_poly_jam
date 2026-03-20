@@ -364,11 +364,9 @@ func die() -> void:
 	_skin.player_died = true
 	zoom_target = 1000
 	zoom_step = .25
-	print("Start timer here ? ")
 	respawn_timer.start(2)
 
 func on_respawn_timer_timeout() -> void:
-	print("Respawn called")
 	SceneTransition.target_scene = SceneTransition.DENTIST_LEVEL
 	SceneTransition.transition_out()
 

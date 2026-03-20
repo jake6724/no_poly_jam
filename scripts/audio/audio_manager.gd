@@ -56,7 +56,7 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 		if sound_effect.has_open_limit():
 			var selected_sound: AudioStreamMP3 = select_sound(sound_effect)
 			sound_effect.change_audio_count(1)
-			var new_audio: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+			var new_audio: AudioStreamPlayer = AudioStreamPlayer.new()
 			add_child(new_audio)
 			new_audio.stream = selected_sound
 			new_audio.volume_db = sound_effect.volume

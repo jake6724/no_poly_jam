@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://dgi2animnlixe"]
+
+[ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="1_aswbx"]
+[ext_resource type="AudioStream" uid="uid://76ummhmnlchh" path="res://assets/audio/music/BestTeethInTheGame.mp3" id="2_bpqss"]
+
+[resource]
+script = ExtResource("1_aswbx")
+limit = 1
+type = 5
+sounds = Array[AudioStreamMP3]([ExtResource("2_bpqss")])
+bus = 1
+metadata/_custom_type_script = "uid://kppg6mfv2dlh"

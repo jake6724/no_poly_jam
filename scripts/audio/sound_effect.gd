@@ -9,6 +9,7 @@ enum SOUND_EFFECT_TYPE {
 	FOOTSTEP,
 	ZOMBIE_HIT,
 	ZOMBIE_NOISE,
+	MUSIC_MAIN,
 }
 
 enum Bus {

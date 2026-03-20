@@ -36,7 +36,7 @@ rex_skin = NodePath("RexSkin")
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1444092e-05, 0, 0)
 
 [node name="RexSkin" parent="." instance=ExtResource("2_2wh52")]
-transform = Transform3D(0.35967112, 0, 0.9330792, 0, 1, 0, -0.9330792, 0, 0.35967112, 59.019722, 15.002046, 191.44922)
+transform = Transform3D(-0.24874058, 0, 0.96857, 0, 1, 0, -0.96857, 0, -0.24874058, 59.019722, 15.002046, 191.44922)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_826wr")
@@ -44,5 +44,5 @@ environment = SubResource("Environment_826wr")
 [node name="MainMenu" parent="." instance=ExtResource("4_ow34m")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9862856, -0.1650476, 0, 0.1650476, 0.9862856, 60.784275, 16.093716, 194.4548)
+transform = Transform3D(-0.99725276, 0.012225693, 0.07305786, 0, 0.98628557, -0.1650476, -0.07407374, -0.16459417, -0.98357606, 61.434277, 16.709524, 187.44472)
 current = true
