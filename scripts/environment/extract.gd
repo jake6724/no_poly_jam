@@ -34,7 +34,7 @@ func interact() -> void:
 		countdown_timer.start(COUNTDOWN_DURATION)
 		set_process(true)
 
-	elif extract_ready:
+	elif is_extract_ready:
 		AudioManager.change_music_track(SoundEffect.SOUND_EFFECT_TYPE.MUSIC_LOBBY)
 		SceneTransition.target_scene = SceneTransition.DENTIST_LEVEL
 		SceneTransition.transition_out()

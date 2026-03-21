@@ -11,3 +11,4 @@ func _ready():
 func on_new_game_pressed() -> void:
     AudioManager.change_music_track(SoundEffect.SOUND_EFFECT_TYPE.MUSIC_LOBBY)
     SceneTransition.transition_out()
+    HowToGlobal.go()

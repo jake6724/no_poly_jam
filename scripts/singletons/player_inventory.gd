@@ -3,6 +3,8 @@ extends Node
 enum Currency {SCRAP, STEEL, TITANIUM, BLOOD}
 enum Stat {MOVE_SPEED, MAX_SPEED, SLIDE_PIERCE_MAX, GRAPPLE_DISTANCE, DAMAGE, JUMP_POWER, SLIDE_POWER}
 
+var is_first_time: bool = true
+
 var player_currency: Dictionary[Currency, int] = {
 	Currency.SCRAP: 0,
 	Currency.STEEL: 0,

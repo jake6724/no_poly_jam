@@ -4,7 +4,9 @@ extends CanvasLayer
 @export var resume_button: Button
 @export var settings_button: Button
 @export var exit_button: Button
-
+@export var back_button: Button
+@export var how_to_play_button: Button
+@export var how_to: TextureRect
 var can_pause: bool = false
 
 func _ready():
@@ -13,6 +15,8 @@ func _ready():
 
 	resume_button.pressed.connect(on_resume_button_pressed)
 	exit_button.pressed.connect(on_exit_button_pressed)
+	back_button.pressed.connect(on_back_button_pressed)
+	how_to_play_button.pressed.connect(on_how_to_play_button_pressed)
 
 func _input(_event):
 	if can_pause:
@@ -28,5 +32,11 @@ func on_resume_button_pressed() -> void:
 	get_tree().paused = false
 	hide()
 
+func on_back_button_pressed() -> void:
+	how_to.hide()
+
 func on_exit_button_pressed() -> void:
 	pass
+
+func on_how_to_play_button_pressed() -> void:
+	how_to.show()

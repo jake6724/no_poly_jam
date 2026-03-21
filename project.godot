@@ -25,6 +25,7 @@ SceneTransition="*res://scenes/SceneTransition.tscn"
 ZombieManager="*res://scripts/singletons/zombie_manager.gd"
 PopupManager="*res://scripts/singletons/popup_manager.gd"
 PauseMenu="*res://scenes/PauseMenu.tscn"
+HowToGlobal="*res://scenes/HowToGlobal.tscn"
 
 [debug]
 

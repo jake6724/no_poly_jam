@@ -6,7 +6,7 @@ extends Node3D
 @export var chest_parent: Node
 @export var zombie_spawner_parent: Node
 
-var chests_to_spawn: int = 5
+var chests_to_spawn: int = 8
 var zombie_spawner_enable_max: int = 125
 
 func _ready():

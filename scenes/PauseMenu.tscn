@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ox2owaagx47c"]
+[gd_scene load_steps=15 format=3 uid="uid://ox2owaagx47c"]
 
 [ext_resource type="Script" uid="uid://b3ygfsj4w4x7r" path="res://scripts/singletons/pause_menu.gd" id="1_jvnd5"]
 [ext_resource type="FontFile" uid="uid://dfm5opvmc0u6e" path="res://fonts/Domine-VariableFont_wght.ttf" id="2_g4jo0"]
 [ext_resource type="PackedScene" uid="uid://75dc1cdqbtn2" path="res://scenes/ui/SettingsMenu.tscn" id="3_komsw"]
+[ext_resource type="Texture2D" uid="uid://btyjy4la1c585" path="res://assets/ui/UI_HowToPlay.png" id="4_5w6ei"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jvnd5"]
 
@@ -14,11 +15,24 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jiu6o"]
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("resume_button", "exit_button")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40atx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yx35g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vd2mf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_abn1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ti4s"]
+
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("resume_button", "exit_button", "back_button", "how_to_play_button", "how_to")]
 layer = 6
 script = ExtResource("1_jvnd5")
 resume_button = NodePath("VBoxContainer/Resume")
 exit_button = NodePath("VBoxContainer/Exit")
+back_button = NodePath("TextureRect/Button")
+how_to_play_button = NodePath("VBoxContainer/HowToPlay")
+how_to = NodePath("TextureRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -97,6 +111,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_jiu6o")
 text = "How To Play"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 12
@@ -108,3 +123,34 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_komsw")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_5w6ei")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jiu6o")
 text = "Exit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -635.0
+offset_top = -357.0
+offset_right = 635.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5w6ei")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1043.0
+offset_top = 645.0
+offset_right = 1212.0
+offset_bottom = 728.0
+theme_override_fonts/font = ExtResource("2_g4jo0")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxEmpty_40atx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yx35g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vd2mf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_abn1t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8ti4s")
+text = "Back"

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dubvcgugexj0c"]
+
+[ext_resource type="Texture2D" uid="uid://btyjy4la1c585" path="res://assets/ui/UI_HowToPlay.png" id="1_8yc0n"]
+[ext_resource type="Script" uid="uid://cupui8l0cftiy" path="res://scripts/singletons/how_to_global.gd" id="1_rdrun"]
+[ext_resource type="Shader" uid="uid://cx6xpd3igxbeu" path="res://shaders/textwiggle.gdshader" id="2_ulrom"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rdrun"]
+shader = ExtResource("2_ulrom")
+shader_parameter/jiggle = 1.5
+shader_parameter/speed = 1.5
+
+[node name="HowToGlobal" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rdrun")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_8yc0n")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_rdrun")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -64.0
+offset_right = 184.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Press Spacebar to Continue"
