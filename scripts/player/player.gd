@@ -368,6 +368,7 @@ func die() -> void:
 	zoom_target = 1000
 	zoom_step = .25
 	respawn_timer.start(2)
+	AudioManager.create_3d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.REX_DEATH)
 	AudioManager.change_music_track(SoundEffect.SOUND_EFFECT_TYPE.MUSIC_LOBBY)
 
 func on_respawn_timer_timeout() -> void:

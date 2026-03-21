@@ -7,7 +7,7 @@ extends Node3D
 @export var zombie_spawner_parent: Node
 
 var chests_to_spawn: int = 5
-var zombie_spawner_enable_max: int = 200
+var zombie_spawner_enable_max: int = 125
 
 func _ready():
 	# Spawn player at a random spawn point
@@ -51,3 +51,6 @@ func _ready():
 		spawner.enabled = true # doesnt really do anything now 
 		spawner.spawn_zombies()
 		zombie_spawners.erase(spawner)
+
+
+	player.player_ui.fade_banner()

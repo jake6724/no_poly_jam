@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://0w8ci7lwj5np"]
+
+[ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="1_guyfk"]
+[ext_resource type="AudioStream" uid="uid://c3w4uq21kun8p" path="res://assets/audio/rex_death.mp3" id="2_6u64n"]
+
+[resource]
+script = ExtResource("1_guyfk")
+limit = 1
+type = 10
+sounds = Array[AudioStreamMP3]([ExtResource("2_6u64n")])
+volume = 8.0
+pitch_scale = 0.9
+metadata/_custom_type_script = "uid://kppg6mfv2dlh"

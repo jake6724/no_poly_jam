@@ -1,13 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://chau0up8pre2u"]
+[gd_scene load_steps=13 format=3 uid="uid://chau0up8pre2u"]
 
 [ext_resource type="Script" uid="uid://c2lgntcnsie8u" path="res://scripts/environment/extract.gd" id="1_t6634"]
+[ext_resource type="Shader" uid="uid://cpn6h4x5vmdl" path="res://shaders/outline.gdshader" id="2_gqjri"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_t6634"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqjri"]
+render_priority = 0
+shader = ExtResource("2_gqjri")
+shader_parameter/step_count = 3
+shader_parameter/thickness = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/fade_start = 100.0
+shader_parameter/fade_length = 200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqjri"]
+next_pass = SubResource("ShaderMaterial_gqjri")
+albedo_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xjnt"]
 size = Vector3(2, 0.2, 2)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbwr7"]
+render_priority = 0
+shader = ExtResource("2_gqjri")
+shader_parameter/step_count = 3
+shader_parameter/thickness = 3.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/fade_start = 100.0
+shader_parameter/fade_length = 200.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xjnt"]
+next_pass = SubResource("ShaderMaterial_mbwr7")
 albedo_color = Color(0.18270051, 0.04740318, 0.0039584776, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t6634"]
@@ -33,20 +57,24 @@ interact_hint = NodePath("InteractSprite")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.113354445, 0, 0, 0, 0.36720732, 0, 0, 0, -0.10022005, 0, 0.1597345, -0.28879568)
 mesh = SubResource("BoxMesh_t6634")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqjri")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.113354445, 0, 0, 0, 0.36720732, 0, 0, 0, -0.10022005, 0, 0.1597345, 0.3479941)
 mesh = SubResource("BoxMesh_t6634")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqjri")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.113354445, 0, 0, 0, -2.7706987e-08, 0.10022005, 0, 0.633862, 4.3807575e-09, 0, 0.2936782, 0.057822064)
+transform = Transform3D(0.113354445, 0, 0, 0, -3.9454285e-08, 0.10022005, 0, 0.90260893, 4.3807575e-09, 0, 0.2936782, 0.034921274)
 mesh = SubResource("BoxMesh_t6634")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqjri")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_0xjnt")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xjnt")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="MeshInstance3D"]
+visible = false
 collision_layer = 4
 collision_mask = 0
 
@@ -54,6 +82,7 @@ collision_mask = 0
 shape = SubResource("ConcavePolygonShape3D_t6634")
 
 [node name="Area3D" type="Area3D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
