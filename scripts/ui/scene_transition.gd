@@ -39,6 +39,7 @@ func _process(delta):
 		set_process(false)
 	
 func transition_out() -> void:
+	ZombieManager.set_physics_process(false)
 	ZombieManager.clear_all_zombies()
 	is_transit_out = true
 	progress_sign = 1.0
