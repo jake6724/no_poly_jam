@@ -74,7 +74,7 @@ material = SubResource("ShaderMaterial_hl6yw")
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/outline_size = 12
-text = "Scrap -"
+text = "Coins -"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -82,7 +82,7 @@ material = SubResource("ShaderMaterial_hl6yw")
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/outline_size = 12
-text = "Steel -"
+text = "Gems -"
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -90,7 +90,7 @@ material = SubResource("ShaderMaterial_hl6yw")
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/outline_size = 12
-text = "Titanium -"
+text = "Crystals -"
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]

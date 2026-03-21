@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqd6kfmnsy3la"]
+[gd_scene load_steps=10 format=3 uid="uid://cqd6kfmnsy3la"]
 
 [ext_resource type="Script" uid="uid://1t6acel1tvth" path="res://scripts/ui/main_menu_scene.gd" id="1_l72w3"]
 [ext_resource type="PackedScene" uid="uid://dpcw566iv1ogb" path="res://assets/environment/mall/env_mall.glb" id="1_yqorp"]
 [ext_resource type="PackedScene" uid="uid://c6gatrsuipp0y" path="res://scenes/player/RexSkin.tscn" id="2_2wh52"]
 [ext_resource type="PackedScene" uid="uid://dqjq02mntnjn8" path="res://scenes/ui/MainMenu.tscn" id="4_ow34m"]
 [ext_resource type="Texture2D" uid="uid://8aompe7ci6yj" path="res://assets/environment/SkyRed.png" id="5_l72w3"]
+[ext_resource type="PackedScene" uid="uid://chpxk1c6bnokl" path="res://assets/environment/church/env_church.glb" id="6_826wr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_826wr"]
 panorama = ExtResource("5_l72w3")
@@ -36,13 +37,16 @@ rex_skin = NodePath("RexSkin")
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1444092e-05, 0, 0)
 
 [node name="RexSkin" parent="." instance=ExtResource("2_2wh52")]
-transform = Transform3D(-0.24874058, 0, 0.96857, 0, 1, 0, -0.96857, 0, -0.24874058, 40.213013, 10.477092, 144.87961)
+transform = Transform3D(0.82633424, 0, 0.56317997, 0, 1, 0, -0.56317997, 0, 0.82633424, -2.8016102, -0.0038182735, 261.6399)
 
 [node name="MainMenu" parent="." instance=ExtResource("4_ow34m")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.99725276, 0.012225693, 0.07305786, 0, 0.98628557, -0.1650476, -0.07407374, -0.16459417, -0.98357606, 42.59409, 11.825159, 141.91122)
+transform = Transform3D(-0.15084478, 0.47952193, 0.86446786, 0.052780762, 0.8771334, -0.47733763, -0.98714745, -0.026376618, -0.15762053, 0.7996979, 0.24549949, 263.1077)
 current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ucygd")
+
+[node name="env_church" parent="." instance=ExtResource("6_826wr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 256.8385)

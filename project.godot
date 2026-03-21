@@ -13,6 +13,8 @@ config_version=5
 config/name="no_poly_jam"
 run/main_scene="uid://cqd6kfmnsy3la"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://bishqqli8mymk"
 config/icon="uid://bex6b6c1ov7sf"
 
 [autoload]

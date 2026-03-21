@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqjq02mntnjn8"]
+[gd_scene load_steps=15 format=3 uid="uid://dqjq02mntnjn8"]
 
 [ext_resource type="Script" uid="uid://bi2ygwocv1qgy" path="res://scripts/ui/main_menu.gd" id="1_vjtqc"]
 [ext_resource type="FontFile" uid="uid://dfm5opvmc0u6e" path="res://fonts/Domine-VariableFont_wght.ttf" id="2_6jbdy"]
+[ext_resource type="Texture2D" uid="uid://ducfjqeb2o5bt" path="res://assets/ui/UI_Logo.png" id="3_iwbf0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2per"]
 
@@ -61,18 +62,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -392.0
-offset_top = 8.0
-offset_right = -141.0
-offset_bottom = 124.0
+offset_left = 232.0
+offset_top = -240.0
+offset_right = 483.0
+offset_bottom = -124.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="ButtonNewGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 24
 theme_override_fonts/font = ExtResource("2_6jbdy")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 72
 theme_override_styles/normal = SubResource("StyleBoxEmpty_e2per")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_7mi0g")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_nqjyj")
@@ -108,3 +110,14 @@ offset_bottom = 119.70502
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jbdy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_iwbf0")
+stretch_mode = 2

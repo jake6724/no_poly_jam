@@ -60,9 +60,9 @@ var upgrade_path_3: Array = [
 ]
 
 var upgrade_hint = [
-	"[E] x10 Scrap",
-	"[E] x2 Scrap, x3 Steel",
-	"[E] x1 Scrap, x2 Steel, x3 Titanium"
+	"[E] x10 Coins",
+	"[E] x2 Coins, x3 Gems",
+	"[E] x1 Coin, x2 Gems, x3 Crystals"
 ]
 
 var upgrade_cost = [
