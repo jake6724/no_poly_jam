@@ -9,5 +9,6 @@ func _ready():
 func on_area_body_entered(player: Player) -> void:
     player.hide()
     player.input_enabled = false
+    AudioManager.change_music_track(SoundEffect.SOUND_EFFECT_TYPE.MUSIC_MAIN)
     SceneTransition.target_scene = SceneTransition.MALL_LEVEL
     SceneTransition.transition_out()

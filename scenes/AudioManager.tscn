@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c82mdc7dnhx0d"]
+[gd_scene load_steps=11 format=3 uid="uid://c82mdc7dnhx0d"]
 
 [ext_resource type="Script" uid="uid://g28dta5dt1g3" path="res://scripts/audio/audio_manager.gd" id="1_hux41"]
 [ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="2_v6v0x"]
@@ -8,7 +8,9 @@
 [ext_resource type="Resource" uid="uid://d06jsw632h7vw" path="res://data/audio/sfx_zombie_hit.tres" id="6_qb6qo"]
 [ext_resource type="Resource" uid="uid://cpfencbf4k2eq" path="res://data/audio/sfx_zombie_noise.tres" id="7_v5v75"]
 [ext_resource type="Resource" uid="uid://dgi2animnlixe" path="res://data/audio/music_main.tres" id="8_hmi33"]
+[ext_resource type="Resource" uid="uid://bfewyc1e07avj" path="res://data/audio/music_lobby.tres" id="9_muqnj"]
+[ext_resource type="Resource" uid="uid://b2alw1sm10x3i" path="res://data/audio/sfx_ghost_spawn.tres" id="10_5jw7j"]
 
 [node name="AudioManager" type="Node3D"]
 script = ExtResource("1_hux41")
-sound_effects = Array[ExtResource("2_v6v0x")]([ExtResource("3_4tesi"), ExtResource("4_3dgps"), ExtResource("5_151wy"), ExtResource("6_qb6qo"), ExtResource("7_v5v75"), ExtResource("8_hmi33")])
+sound_effects = Array[ExtResource("2_v6v0x")]([ExtResource("3_4tesi"), ExtResource("4_3dgps"), ExtResource("5_151wy"), ExtResource("6_qb6qo"), ExtResource("7_v5v75"), ExtResource("8_hmi33"), ExtResource("9_muqnj"), ExtResource("10_5jw7j")])

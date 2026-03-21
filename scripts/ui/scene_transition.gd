@@ -46,7 +46,6 @@ func transition_out() -> void:
 	set_process(true)
 
 func transition_in() -> void:
-	print("TRANS IT")
 	is_transit_out = false
 	progress_sign = -1.0
 	shader_progress_target = 0.0

@@ -11,5 +11,5 @@
 script = ExtResource("1_sgam0")
 type = 1
 sounds = Array[AudioStreamMP3]([ExtResource("2_dgmht"), ExtResource("3_77ci3"), ExtResource("4_lkats"), ExtResource("5_qxwi1"), ExtResource("6_xt2l1")])
-volume = -7.0
+volume = -9.0
 metadata/_custom_type_script = "uid://kppg6mfv2dlh"

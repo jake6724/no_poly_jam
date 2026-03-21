@@ -6,7 +6,7 @@ extends Control
 
 func _ready():
     button_new_game.pressed.connect(on_new_game_pressed)
-    AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.MUSIC_MAIN)
+    # AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.MUSIC_MAIN)
 
 func on_new_game_pressed() -> void:
     SceneTransition.transition_out()

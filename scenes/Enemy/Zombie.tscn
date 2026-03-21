@@ -14,9 +14,8 @@
 resource_local_to_scene = true
 albedo_color = Color(0.84, 0, 0.070000134, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1e0c3"]
-radius = 0.4
-height = 1.4623047
+[sub_resource type="SphereShape3D" id="SphereShape3D_7pdxr"]
+radius = 0.4417495
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8q0s5"]
 radius = 10.0
@@ -71,9 +70,8 @@ mesh = SubResource("CapsuleMesh_jdbhd")
 surface_material_override/0 = SubResource("StandardMaterial3D_jdbhd")
 
 [node name="BodyCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7578613, 0)
-visible = false
-shape = SubResource("CapsuleShape3D_1e0c3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43450755, 0)
+shape = SubResource("SphereShape3D_7pdxr")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 2.0

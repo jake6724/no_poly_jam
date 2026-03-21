@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://bfewyc1e07avj"]
+
+[ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="1_iqsbs"]
+[ext_resource type="AudioStream" uid="uid://bihhu0fddlcfa" path="res://assets/audio/music/FeelLikeALeaf.mp3" id="2_74j23"]
+
+[resource]
+script = ExtResource("1_iqsbs")
+limit = 1
+type = 6
+sounds = Array[AudioStreamMP3]([ExtResource("2_74j23")])
+volume = -20.0
+bus = 1
+metadata/_custom_type_script = "uid://kppg6mfv2dlh"

@@ -8,5 +8,6 @@ script = ExtResource("1_aswbx")
 limit = 1
 type = 5
 sounds = Array[AudioStreamMP3]([ExtResource("2_bpqss")])
+volume = -2.0
 bus = 1
 metadata/_custom_type_script = "uid://kppg6mfv2dlh"

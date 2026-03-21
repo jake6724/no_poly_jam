@@ -9,6 +9,7 @@ extends CanvasLayer
 
 func _ready():
 	update()
+	PlayerInventory.update_path_index_updated.connect(update)
 
 func update() -> void:
 	scrap_value.text = str(PlayerInventory.player_currency[PlayerInventory.Currency.SCRAP])

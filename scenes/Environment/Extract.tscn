@@ -1,18 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://chau0up8pre2u"]
+[gd_scene load_steps=9 format=3 uid="uid://chau0up8pre2u"]
 
 [ext_resource type="Script" uid="uid://c2lgntcnsie8u" path="res://scripts/environment/extract.gd" id="1_t6634"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_t6634"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_0xjnt"]
-size = Vector3(3, 1, 1)
+size = Vector3(2, 0.2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xjnt"]
-albedo_color = Color(9.024516e-07, 0.37237853, 0.06447441, 1)
+albedo_color = Color(0.18270051, 0.04740318, 0.0039584776, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t6634"]
-data = PackedVector3Array(-1.5, 0.5, 0.5, 1.5, 0.5, 0.5, -1.5, -0.5, 0.5, 1.5, 0.5, 0.5, 1.5, -0.5, 0.5, -1.5, -0.5, 0.5, 1.5, 0.5, -0.5, -1.5, 0.5, -0.5, 1.5, -0.5, -0.5, -1.5, 0.5, -0.5, -1.5, -0.5, -0.5, 1.5, -0.5, -0.5, 1.5, 0.5, 0.5, 1.5, 0.5, -0.5, 1.5, -0.5, 0.5, 1.5, 0.5, -0.5, 1.5, -0.5, -0.5, 1.5, -0.5, 0.5, -1.5, 0.5, -0.5, -1.5, 0.5, 0.5, -1.5, -0.5, -0.5, -1.5, 0.5, 0.5, -1.5, -0.5, 0.5, -1.5, -0.5, -0.5, 1.5, 0.5, 0.5, -1.5, 0.5, 0.5, 1.5, 0.5, -0.5, -1.5, 0.5, 0.5, -1.5, 0.5, -0.5, 1.5, 0.5, -0.5, -1.5, -0.5, 0.5, 1.5, -0.5, 0.5, -1.5, -0.5, -0.5, 1.5, -0.5, 0.5, 1.5, -0.5, -0.5, -1.5, -0.5, -0.5)
+data = PackedVector3Array(-1, 0.099999994, 1, 1, 0.099999994, 1, -1, -0.099999994, 1, 1, 0.099999994, 1, 1, -0.099999994, 1, -1, -0.099999994, 1, 1, 0.099999994, -1, -1, 0.099999994, -1, 1, -0.099999994, -1, -1, 0.099999994, -1, -1, -0.099999994, -1, 1, -0.099999994, -1, 1, 0.099999994, 1, 1, 0.099999994, -1, 1, -0.099999994, 1, 1, 0.099999994, -1, 1, -0.099999994, -1, 1, -0.099999994, 1, -1, 0.099999994, -1, -1, 0.099999994, 1, -1, -0.099999994, -1, -1, 0.099999994, 1, -1, -0.099999994, 1, -1, -0.099999994, -1, 1, 0.099999994, 1, -1, 0.099999994, 1, 1, 0.099999994, -1, -1, 0.099999994, 1, -1, 0.099999994, -1, 1, 0.099999994, -1, -1, -0.099999994, 1, 1, -0.099999994, 1, -1, -0.099999994, -1, 1, -0.099999994, 1, 1, -0.099999994, -1, -1, -0.099999994, -1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6634"]
-size = Vector3(3.0917053, 1.3352051, 1.6777344)
+size = Vector3(3.0917053, 1.3352051, 2.545166)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_t6634"]
 viewport_path = NodePath("InteractSprite/SubViewport")
@@ -20,22 +22,35 @@ viewport_path = NodePath("InteractSprite/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_gqjri"]
 viewport_path = NodePath("CountdownSprite/SubViewport")
 
-[node name="Extract" type="Node3D" node_paths=PackedStringArray("countdown_sprite", "countdown_label", "interact_sprite", "interact_hint")]
+[node name="Extract" type="Node3D" node_paths=PackedStringArray("countdown_sprite", "countdown_label", "interact_sprite", "hint_label", "interact_hint")]
 script = ExtResource("1_t6634")
 countdown_sprite = NodePath("CountdownSprite")
 countdown_label = NodePath("CountdownSprite/SubViewport/Control/CountdownLabel")
 interact_sprite = NodePath("InteractSprite")
+hint_label = NodePath("InteractSprite/SubViewport/Control/Label")
 interact_hint = NodePath("InteractSprite")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.113354445, 0, 0, 0, 0.36720732, 0, 0, 0, -0.10022005, 0, 0.1597345, -0.28879568)
+mesh = SubResource("BoxMesh_t6634")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.113354445, 0, 0, 0, 0.36720732, 0, 0, 0, -0.10022005, 0, 0.1597345, 0.3479941)
+mesh = SubResource("BoxMesh_t6634")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.113354445, 0, 0, 0, -2.7706987e-08, 0.10022005, 0, 0.633862, 4.3807575e-09, 0, 0.2936782, 0.057822064)
+mesh = SubResource("BoxMesh_t6634")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_0xjnt")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xjnt")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="MeshInstance3D"]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D2"]
 shape = SubResource("ConcavePolygonShape3D_t6634")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -43,7 +58,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00843811, 0.20202637, 0.033203125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00843811, 0.20202637, 0.07873535)
 shape = SubResource("BoxShape3D_t6634")
 
 [node name="InteractSprite" type="Sprite3D" parent="."]
@@ -54,7 +69,7 @@ texture = SubResource("ViewportTexture_t6634")
 
 [node name="SubViewport" type="SubViewport" parent="InteractSprite"]
 transparent_bg = true
-size = Vector2i(166, 33)
+size = Vector2i(236, 58)
 
 [node name="Control" type="Control" parent="InteractSprite/SubViewport"]
 layout_mode = 3
@@ -66,17 +81,20 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="InteractSprite/SubViewport/Control"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -23.0
-offset_right = 60.0
+anchor_bottom = 0.5
+offset_left = -106.5
+offset_top = -16.5
+offset_right = 106.5
+offset_bottom = 16.5
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 text = "[E] Start Extract"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CountdownSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4249213, 0)

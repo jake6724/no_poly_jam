@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://78whwb7nb5fa" path="res://scenes/Environment/Dentist.tscn" id="1_8wcjs"]
 [ext_resource type="Texture2D" uid="uid://dfra6alwepg07" path="res://assets/environment/church/env_church_TEX_Environment.png" id="2_8wcjs"]
 [ext_resource type="PackedScene" uid="uid://dvr2kvvvboiwv" path="res://scenes/player/Player.tscn" id="2_56yr6"]
-[ext_resource type="Material" uid="uid://b7a183uwf3y5x" path="res://assets/environment/environment2.tres" id="3_cr2s7"]
+[ext_resource type="Material" path="res://assets/environment/environment2.tres" id="3_cr2s7"]
 [ext_resource type="Material" uid="uid://cjsnejeqav5af" path="res://assets/environment/environment.tres" id="3_egd30"]
 [ext_resource type="PackedScene" uid="uid://ddymwhtk1yl3j" path="res://scenes/Environment/Doorway.tscn" id="4_exajw"]
 [ext_resource type="PackedScene" uid="uid://b7gk0j04u4d1d" path="res://scenes/Environment/Upgrade.tscn" id="6_o62oj"]
@@ -997,9 +997,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5463446, 1.559721, 1.56321
 
 [node name="Upgrade2" parent="." instance=ExtResource("6_o62oj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2802721, 1.529085, 1.471096)
+index = 1
 
 [node name="Upgrade3" parent="." instance=ExtResource("6_o62oj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.980507, 1.7158065, 3.5276914)
+index = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_15le3")

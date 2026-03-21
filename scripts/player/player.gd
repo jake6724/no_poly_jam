@@ -18,11 +18,11 @@ extends CharacterBody3D
 @export var right_click_to_rotate_camera: bool = false
 var input_enabled: bool = true
 @export_group("Movement")
-@export var move_speed: float = 8.0
-@export var move_speed_sprint: float = 10.0
+@export var move_speed: float
+# @export var move_speed_sprint: float = 10.0
 var move_speed_base: float 
-var is_sprinting: bool = false
-var max_speed: float = 30
+var is_sprinting: bool = true
+# var max_speed: float = 30
 @export var slide_timer: Timer
 @export_range(.1, 5, .1) var slide_cooldown: float
 var can_slide: bool = true
@@ -31,16 +31,16 @@ var prev_floor_angle: float
 var slide_multiplier: float
 @export var slide_bite_area: Area3D
 @export var slide_bite_collider: CollisionShape3D
-@export var slide_pierce_max: int = 10
+# @export var slide_pierce_max: int = 10
 var slide_pierce_count: int = 0
 @export var slide_pierce_label: Label3D
-var slide_power: float = 23.0
+# var slide_power: float = 23.0
 
 var is_grounded: bool = false
 var was_grounded: bool = false
 var move_direction: Vector3
 @export_range(20,100,1) var acceleration: float = 20.0
-@export var jump_power: float = 12.0
+# @export var jump_power: float = 12.0
 var can_stair_step: bool = true # Disabled when jumping until jump coyote time goes off, or grounded. Prevents player from snapping back to ground when jumping
 @export_range(0,1,.1) var jump_coyote_time: float = 0.5
 @export var gravity: float = -30
@@ -52,7 +52,7 @@ var health: float
 var can_bite: bool = true
 @export var bite_area: Area3D
 @export var bite_collider: CollisionShape3D
-@export var base_damage: float = 10000
+# @export var base_damage: float = 10000
 var damage: float
 var damage_divider: float = 20
 
@@ -65,7 +65,7 @@ var _camera_input_direction: Vector2 = Vector2.ZERO
 var _rotate_camera: bool = false
 @export var grapple_raycast: RayCast3D
 @export var grapple_controller: GrappleController
-var grapple_distance: float = 30
+# var grapple_distance: float = 30
 @export var grapple_cursor: MeshInstance3D
 @export var interact_raycast: RayCast3D
 @export var pickup_collect_area: Area3D
@@ -94,8 +94,7 @@ var prev_is_on_floor: bool = true
 var prev_interactable: Node3D
 
 func _ready():
-	zoom_target = _spring_arm.spring_length 
-	move_speed_base = move_speed
+	zoom_target = _spring_arm.spring_length
 	coyote_jump_timer.one_shot = true
 	coyote_jump_timer.autostart = false
 	add_child(coyote_jump_timer)
@@ -116,10 +115,10 @@ func _ready():
 
 	bite_collider.disabled = true
 	
-	damage = base_damage
+	damage = PlayerInventory.damage
 
 	grapple_controller.grapple_rope = _skin.tongue
-	grapple_raycast.target_position = Vector3(0, -1.0, -grapple_distance)
+	grapple_raycast.target_position = Vector3(0, -1.0, -PlayerInventory.grapple_distance)
 
 	health = max_health
 	player_ui.update_health(100)
@@ -131,6 +130,8 @@ func _ready():
 
 	slide_pierce_label.text = ""
 	
+	move_speed = PlayerInventory.move_speed_sprint
+
 func _input(_event):
 	if input_enabled:
 		if Input.is_action_just_pressed("left_click"):
@@ -139,24 +140,24 @@ func _input(_event):
 		if Input.is_action_just_pressed("escape"):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-		if Input.is_action_just_pressed("sprint"):
-			move_speed = move_speed_sprint
-			is_sprinting = true
+		if Input.is_action_just_pressed("control"):
+			move_speed = PlayerInventory.move_speed_walk
+			is_sprinting = false
 			# _skin.animation_tree.set("parameters/TimeScale/scale", 1.25)
 
-		if Input.is_action_just_released("sprint"):
-			move_speed = move_speed_base
-			is_sprinting = false
-			_skin.animation_tree.set("parameters/TimeScale/scale", 1.0)
+		if Input.is_action_just_released("control"):
+			move_speed = PlayerInventory.move_speed_sprint
+			is_sprinting = true
+			# _skin.animation_tree.set("parameters/TimeScale/scale", 1.0)
 
 		if Input.is_action_just_pressed("jump"):
 			jump()
 			can_stair_step = false
 
-		if Input.is_action_just_pressed("control"):
+		if Input.is_action_just_pressed("shift"):
 			slide()
 
-		if Input.is_action_just_released("control"):
+		if Input.is_action_just_released("shift"):
 			stop_slide()
 
 		if Input.is_action_just_pressed("interact"):
@@ -229,8 +230,8 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.move_toward((move_direction * move_speed), acceleration * delta)
 	velocity.y = (y_velocity + (gravity * delta))
 
-	if velocity.length() > max_speed:
-		velocity = velocity.normalized() * max_speed
+	if velocity.length() > PlayerInventory.max_speed:
+		velocity = velocity.normalized() * PlayerInventory.max_speed
 
 	if prev_is_on_floor != is_on_floor() and not is_on_floor():
 		coyote_jump_timer.start(jump_coyote_time)
@@ -282,7 +283,7 @@ func slide() -> void:
 
 		acceleration = 3.0
 		var floor_angle: float = get_floor_angle()
-		var velocity_power_bonus: float = slide_power + (floor_angle * 2)
+		var velocity_power_bonus: float = PlayerInventory.slide_power + (floor_angle * 2)
 		velocity = velocity.normalized() * velocity_power_bonus
 
 		slide_bite_collider.disabled = false
@@ -310,7 +311,7 @@ func on_bite_body_entered(intruder) -> void:
 		slide_pierce_count += 1
 		scale_slide_label()
 		slide_pierce_label.text = "x" + str(slide_pierce_count)
-		if slide_pierce_count >= slide_pierce_max:
+		if slide_pierce_count >= PlayerInventory.slide_pierce_max:
 			PopupManager.spawn_popup(global_position + Vector3(0,3, 0), "Mouth Full!", true, 48, popup_parent)
 			stop_slide()
 			velocity.y += 100
@@ -323,7 +324,7 @@ func jump() -> void:
 	if is_on_floor() or grapple_controller.launched or coyote_jump_available:
 		grapple_controller.launched = false
 		coyote_jump_available = false
-		velocity.y = jump_power
+		velocity.y = PlayerInventory.jump_power
 		_skin.jump()
 
 func on_coyote_jump_timer_timeout() -> void:
@@ -365,6 +366,7 @@ func die() -> void:
 	zoom_target = 1000
 	zoom_step = .25
 	respawn_timer.start(2)
+	AudioManager.change_music_track(SoundEffect.SOUND_EFFECT_TYPE.MUSIC_LOBBY)
 
 func on_respawn_timer_timeout() -> void:
 	SceneTransition.target_scene = SceneTransition.DENTIST_LEVEL

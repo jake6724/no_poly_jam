@@ -81,6 +81,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kncl5")
 text = "New Game"
 
 [node name="ButtonSettings" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6jbdy")
 theme_override_font_sizes/font_size = 48

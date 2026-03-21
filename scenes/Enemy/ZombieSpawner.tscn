@@ -9,12 +9,18 @@ height = 2.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjr7x"]
 albedo_color = Color(0.7573987, 0, 0.11058595, 1)
 
-[node name="ZombieSpawner" type="Node3D" node_paths=PackedStringArray("editor_mesh")]
+[node name="ZombieSpawner" type="Node3D" node_paths=PackedStringArray("editor_mesh", "respawn_timer")]
 script = ExtResource("1_nj58e")
 spawn_amount = 1
 editor_mesh = NodePath("MeshInstance3D")
+respawn_timer = NodePath("RespawnTimer")
+min_respawn_time = 30.0
+max_respawn_time = 60.0
 metadata/_custom_type_script = "uid://csqil2ksl4gs2"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_nj58e")
 surface_material_override/0 = SubResource("StandardMaterial3D_yjr7x")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+one_shot = true

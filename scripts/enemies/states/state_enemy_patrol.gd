@@ -26,7 +26,6 @@ func enter_state():
 func state_physics_process(_delta: float, _parent_character: CharacterBody3D):
 	if patrol_started:
 		if _parent_character.navigation_agent.is_navigation_finished() and not waiting_at_patrol:
-
 			waiting_at_patrol = true
 			var _patrol_delay: float = randf_range(patrol_delay_min, patrol_delay_max)
 			patrol_timer.start(_patrol_delay)

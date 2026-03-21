@@ -1,7 +1,9 @@
 class_name Chest
 extends Interactable
 
-var opened: bool = false
+@export var collider: CollisionShape3D
+
+var opened: bool = true
 
 func interact() -> void:
     if not opened:

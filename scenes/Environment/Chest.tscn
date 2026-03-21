@@ -17,8 +17,9 @@ size = Vector3(2.4074707, 1.3696289, 1.6777344)
 [sub_resource type="ViewportTexture" id="ViewportTexture_425qx"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
-[node name="Chest" type="Node3D" node_paths=PackedStringArray("interact_hint")]
+[node name="Chest" type="Node3D" node_paths=PackedStringArray("collider", "interact_hint")]
 script = ExtResource("1_8e8pc")
+collider = NodePath("MeshInstance3D/StaticBody3D/CollisionShape3D")
 interact_hint = NodePath("Sprite3D")
 metadata/_custom_type_script = "uid://djlx0abcno1ti"
 
@@ -49,7 +50,7 @@ texture = SubResource("ViewportTexture_425qx")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
 transparent_bg = true
-size = Vector2i(72, 28)
+size = Vector2i(172, 73)
 
 [node name="Control" type="Control" parent="Sprite3D/SubViewport"]
 layout_mode = 3

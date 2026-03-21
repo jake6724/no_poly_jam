@@ -50,6 +50,8 @@ var can_process: bool = true
 
 var gore: PackedScene = preload("res://scenes/Gore.tscn")
 
+signal died
+
 func _ready():
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
@@ -96,8 +98,8 @@ func configure_state_machine() -> void:
 
 func child_physics_process(delta):
 	if can_process:
-		if not is_on_floor():
-			velocity.y = (velocity.y + (gravity * delta))
+		# if not is_on_floor():
+		velocity.y = (velocity.y + (gravity * delta))
 
 		# Face move direction (maybe use this? -global_transform.basis.z.normalized())
 		var target_position: Vector3 = global_position + velocity
@@ -139,7 +141,9 @@ func on_state_machine_update_velocity_to_player_requested() -> void:
 	if prey:
 		var direction = global_position.direction_to(prey.global_position)
 		direction.y = 0
+		var velocity_y = velocity.y
 		velocity = move_speed * direction
+		velocity.y = velocity_y
 
 func on_body_entered_sight_area_player(_body) -> void:
 	if _body is Player:
@@ -232,18 +236,7 @@ func die(impulse) -> void:
 	is_alive = false
 	ZombieManager.remove_zombie(self)
 	spawn_gore(global_position + Vector3(0, 1, 0), impulse, 3)
-
-func flash_mesh() -> void:
-	pass
-	# var mat = skin.get_surface_override_material(0)
-	# var reset_color: Color = mat.albedo_color
-
-	# var flash_tween: Tween = get_tree().create_tween()
-	# flash_tween.set_parallel(true)
-	# flash_tween.tween_property(mat, "albedo_color:s", 1, .3).from(15)
-	# flash_tween.tween_property(mat, "albedo_color", reset_color, .3).from(Color.SALMON)
-
-	# # mat.albedo_color.s = 15
+	died.emit()
 
 func spawn_gore(_transform, impulse: Vector3, amount: int) -> void:
 	for i in range(amount):

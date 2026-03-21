@@ -5,7 +5,7 @@ extends Node3D
 
 var bite_timer: Timer = Timer.new()
 
-var anim_options: Array[String] = ["bite", "slide"]
+var anim_options: Array[String] = ["bite"]
 
 var min_delay: float = 2
 var max_delay: float = 5
@@ -16,6 +16,7 @@ func _ready():
     add_child(bite_timer)
     bite_timer.timeout.connect(on_bite_timer_timeout)
     bite_timer.start(randf_range(min_delay, min_delay))
+    PauseMenu.can_pause = false
 
 func on_bite_timer_timeout() -> void:
     var anim = anim_options.pick_random()

@@ -6,7 +6,7 @@ extends Node
 @export var grapple_cursor: MeshInstance3D
 @export var rest_length: float = 2.0
 @export var stiffness: float = 10.0 # higher the stiffness, faster spring will retract
-@export var damping_power: float = -1.0 
+var damping_power: float = 1.0 
 var grapple_rope
 
 var launched: bool = false
@@ -20,12 +20,6 @@ func _physics_process(delta) -> void:
 
     if launched:
         handle_grapple(delta)
-
-    # if grapple_raycast.is_colliding():
-    #     grapple_cursor.show()
-    #     grapple_cursor.global_position = grapple_raycast.get_collision_point()
-    # else:
-    #     grapple_cursor.hide()
 
     update_rope()
 
@@ -54,16 +48,10 @@ func handle_grapple(delta: float) -> void:
         var spring_force: Vector3 = target_direction * spring_force_magnitude
 
         var velocity_dot: float = player.velocity.dot(target_direction)
-        var damping = -damping_power * velocity_dot * target_direction
+        var damping = damping_power * velocity_dot * target_direction
 
-
-        # print("spring_force: ", spring_force)  
-        # print("damping: ", damping)
         force = spring_force + damping
 
-    # print("force: ", force)
-
-    # print("force * delta = ", (force * delta))
     player.velocity += (force * delta)
 
 func update_rope() -> void:

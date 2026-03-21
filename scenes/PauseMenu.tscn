@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://ox2owaagx47c"]
+
+[ext_resource type="Script" uid="uid://b3ygfsj4w4x7r" path="res://scripts/singletons/pause_menu.gd" id="1_jvnd5"]
+[ext_resource type="FontFile" uid="uid://dfm5opvmc0u6e" path="res://fonts/Domine-VariableFont_wght.ttf" id="2_g4jo0"]
+[ext_resource type="PackedScene" uid="uid://75dc1cdqbtn2" path="res://scenes/ui/SettingsMenu.tscn" id="3_komsw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jvnd5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4jo0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_komsw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w6ei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jiu6o"]
+
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("settings_menu", "resume_button", "settings_button", "exit_button")]
+script = ExtResource("1_jvnd5")
+settings_menu = NodePath("MarginContainer/SettingsMenu")
+resume_button = NodePath("MarginContainer/VBoxContainer/Resume")
+settings_button = NodePath("MarginContainer/VBoxContainer/Settings")
+exit_button = NodePath("MarginContainer/VBoxContainer/Exit")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 72
+text = "Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_g4jo0")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jvnd5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_g4jo0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_komsw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5w6ei")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jiu6o")
+text = "Resume"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_g4jo0")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jvnd5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_g4jo0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_komsw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5w6ei")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jiu6o")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_g4jo0")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jvnd5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_g4jo0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_komsw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5w6ei")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jiu6o")
+text = "Exit"
+
+[node name="SettingsMenu" parent="MarginContainer" instance=ExtResource("3_komsw")]
+z_index = 1
+layout_mode = 2
