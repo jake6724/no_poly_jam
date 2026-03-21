@@ -14,7 +14,7 @@ var is_transit_out: bool = false
 const MALL_LEVEL: PackedScene = preload("res://scenes/Environment/LevelMall.tscn")
 const DENTIST_LEVEL: PackedScene = preload("res://scenes/Environment/LevelDentist.tscn")
 const MAIN_MENU_LEVEL: PackedScene = preload("res://scenes/MainMenu.tscn")
-var target_scene = MALL_LEVEL
+var target_scene = DENTIST_LEVEL
 
 # func _input(event):
 #     if Input.is_action_just_pressed("x"):

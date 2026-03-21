@@ -7,16 +7,14 @@ extends CanvasLayer
 
 var can_pause: bool = false
 
-
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 
 	resume_button.pressed.connect(on_resume_button_pressed)
-	settings_button.pressed.connect(on_settings_button_pressed)
 	exit_button.pressed.connect(on_exit_button_pressed)
 
-func _input(event):
+func _input(_event):
 	if can_pause:
 		if Input.is_action_just_pressed("escape"):
 			if get_tree().paused:
@@ -27,10 +25,8 @@ func _input(event):
 				show()
 
 func on_resume_button_pressed() -> void:
-	pass
-	
-func on_settings_button_pressed() -> void:
-	settings_menu.show()
+	get_tree().paused = false
+	hide()
 
 func on_exit_button_pressed() -> void:
 	pass

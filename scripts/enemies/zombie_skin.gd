@@ -8,8 +8,6 @@ extends Node3D
 @export var mesh_4: MeshInstance3D
 
 @export var skeleton: Skeleton3D
-@export var skeleton_physical: PhysicalBoneSimulator3D
-
 @onready var meshes: Array[MeshInstance3D] = [mesh_1, mesh_2, mesh_3, mesh_4]
 
 @export var animation_tree_1: AnimationTree

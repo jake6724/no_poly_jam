@@ -15,8 +15,8 @@ var spawn_delay: float = .2
 const ZOMBIE_SCENE: PackedScene = preload("res://scenes/Enemy/Zombie.tscn")
 
 func _ready():
-	if enabled:
-		spawn_zombies(spawn_amount)
+	# if enabled:
+	# 	spawn_zombies(spawn_amount)
 	editor_mesh.hide()
 	respawn_timer.timeout.connect(on_respawn_timer_timeout)
 

@@ -9,4 +9,5 @@ limit = 1
 sounds = Array[AudioStreamMP3]([ExtResource("2_yoxf0")])
 volume = -20.0
 select_mode = 0
+bus = 3
 metadata/_custom_type_script = "uid://kppg6mfv2dlh"

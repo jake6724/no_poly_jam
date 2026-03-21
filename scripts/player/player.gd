@@ -39,14 +39,14 @@ var slide_pierce_count: int = 0
 var is_grounded: bool = false
 var was_grounded: bool = false
 var move_direction: Vector3
-@export_range(20,100,1) var acceleration: float = 20.0
+@export_range(20,100,1) var acceleration: float
 # @export var jump_power: float = 12.0
 var can_stair_step: bool = true # Disabled when jumping until jump coyote time goes off, or grounded. Prevents player from snapping back to ground when jumping
 @export_range(0,1,.1) var jump_coyote_time: float = 0.5
 @export var gravity: float = -30
 @export_group("Combat")
 var is_alive: bool = true
-@export var max_health: float = 100.0
+@export var max_health: float = 100
 var health: float 
 @export_range(.1, 3, .1) var bite_cooldown: float
 var can_bite: bool = true
@@ -131,6 +131,7 @@ func _ready():
 	slide_pierce_label.text = ""
 	
 	move_speed = PlayerInventory.move_speed_sprint
+	acceleration = PlayerInventory.move_speed_sprint * 7
 
 func _input(_event):
 	if input_enabled:
@@ -294,7 +295,7 @@ func slide() -> void:
 func stop_slide() -> void:
 	is_sliding = false
 	slide_timer.start(slide_cooldown)
-	acceleration = 70.0
+	acceleration = PlayerInventory.move_speed_sprint * 7
 	slide_bite_collider.disabled = true
 	_skin.stop_slide()
 	set_collision_mask_value(2, true)
@@ -312,7 +313,7 @@ func on_bite_body_entered(intruder) -> void:
 		scale_slide_label()
 		slide_pierce_label.text = "x" + str(slide_pierce_count)
 		if slide_pierce_count >= PlayerInventory.slide_pierce_max:
-			PopupManager.spawn_popup(global_position + Vector3(0,3, 0), "Mouth Full!", true, 48, popup_parent)
+			PopupManager.spawn_popup(global_position + Vector3(0,3, 0), "Max Combo!", true, 48, popup_parent)
 			stop_slide()
 			velocity.y += 100
 			jump()
@@ -343,6 +344,7 @@ func on_pickup_collect_area_entered(_intruder) -> void:
 		PlayerInventory.add_currency(pickup.currency)
 		PickupManager.remove_pickup(pickup)
 		player_ui.update()
+		AudioManager.create_3d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.PICKUP)
 
 func on_bite_finished() -> void:
 	can_bite = true

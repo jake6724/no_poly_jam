@@ -36,6 +36,7 @@ var chase_timer: Timer = Timer.new()
 @export var rotation_speed: float = TAU * 2
 @export var gravity: float = -30
 @export var bite_damage: float = 10.0
+@export var pickup_spawn_chance: float = 0.3
 ## Min Duration after player has escaped zombie chase range that zombie will keep chasing
 @export_range(1,10,.5)var chase_duration_min: float = 5.0
 ## Max Duration after player has escaped zombie chase range that zombie will keep chasing
@@ -98,11 +99,14 @@ func configure_state_machine() -> void:
 
 func child_physics_process(delta):
 	if can_process:
-		# if not is_on_floor():
-		velocity.y = (velocity.y + (gravity * delta))
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		else:
+			velocity.y = 0
 
 		# Face move direction (maybe use this? -global_transform.basis.z.normalized())
-		var target_position: Vector3 = global_position + velocity
+		var velocity_without_y = Vector3(velocity.x, 0, velocity.z)
+		var target_position: Vector3 = global_position + velocity_without_y
 		var _move_direction = target_position - global_position
 		if _move_direction:
 			rotation.y = rotate_toward(rotation.y, (Vector2(_move_direction.x, -_move_direction.z).angle()) + PI/2, rotation_speed * delta)
@@ -112,7 +116,6 @@ func child_physics_process(delta):
 
 		state_machine.child_physics_process(delta)
 
-		velocity += on_hit_velocity_bonus
 		on_hit_velocity_bonus.move_toward(Vector3.ZERO, delta * 10)
 
 		move_and_slide()
@@ -236,6 +239,9 @@ func die(impulse) -> void:
 	is_alive = false
 	ZombieManager.remove_zombie(self)
 	spawn_gore(global_position + Vector3(0, 1, 0), impulse, 3)
+	var forward_direction: Vector3 = -global_transform.basis.z.normalized()
+	if randf() < pickup_spawn_chance:
+		PickupManager.spawn_pickup(1, global_position + Vector3(0, 0, 0), forward_direction)
 	died.emit()
 
 func spawn_gore(_transform, impulse: Vector3, amount: int) -> void:

@@ -24,7 +24,7 @@ var currency_materials: Dictionary[Currency, StandardMaterial3D] = {
 
 var move_speed_walk: float = 5
 var move_speed_sprint: float = 10.0
-var max_speed: float = 30.0
+var max_speed: float = 50.0
 var slide_pierce_max: int = 20.0
 var slide_power: float = 23.0
 var jump_power: float = 12.0
@@ -46,7 +46,7 @@ var upgrade_path_1: Array = [
 ]
 
 var upgrade_path_2: Array = [
-	[Stat.SLIDE_PIERCE_MAX, 1.0, "Increase mouth capacity by +100%"],
+	[Stat.SLIDE_PIERCE_MAX, 1.0, "Increase max slide combo by +100%"],
 	[Stat.GRAPPLE_DISTANCE, 1.0, "Increase grapple range by +100%"],
 	[Stat.DAMAGE, 0.5, "Increase damage by +50%"],
 	]
@@ -54,19 +54,19 @@ var upgrade_path_2: Array = [
 var upgrade_path_3: Array = [
 	[Stat.MAX_SPEED, 1.0, "Increase max speed by +100%"],
 	[Stat.DAMAGE, 0.5, "Increase damage by +50%"],
-	[Stat.SLIDE_PIERCE_MAX, 1.0, "Increase mouth capacity by +100%"],
+	[Stat.SLIDE_PIERCE_MAX, 1.0, "Increase max slide combo by +100%"],
 ]
 
 var upgrade_hint = [
 	"[E] x10 Scrap",
 	"[E] x2 Scrap, x3 Steel",
-	"[E] x1 Scrap, x1 Steel, x1 Titanium"
+	"[E] x1 Scrap, x2 Steel, x3 Titanium"
 ]
 
 var upgrade_cost = [
 	[10, 0, 0],
 	[2, 3, 0],
-	[1, 1, 1],
+	[1, 2, 3],
 ]
 
 signal update_path_index_updated
@@ -92,6 +92,8 @@ func purchase_upgrade(_index: int) -> void:
 
 	upgrade_path_indexes[_index] += 1
 	update_path_index_updated.emit()
+
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PURCHASE)
 
 func _ready():
 	upgrade_paths = [upgrade_path_1, upgrade_path_2, upgrade_path_3]

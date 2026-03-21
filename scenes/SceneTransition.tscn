@@ -32,7 +32,7 @@ shader_parameter/progress = -0.22
 shader_parameter/progress_bias = Vector2(0, 0)
 
 [node name="SceneTransition" type="CanvasLayer" node_paths=PackedStringArray("transition")]
-layer = 100
+layer = 5
 script = ExtResource("1_0vbk2")
 transition = NodePath("Transition")
 

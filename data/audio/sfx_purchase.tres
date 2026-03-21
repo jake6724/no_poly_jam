@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=5 format=3 uid="uid://bmr1ompnba44g"]
+
+[ext_resource type="Script" uid="uid://kppg6mfv2dlh" path="res://scripts/audio/sound_effect.gd" id="1_y1hcy"]
+[ext_resource type="AudioStream" uid="uid://4rsx4lxn0bm8" path="res://assets/audio/purchase_1.mp3" id="2_br4bv"]
+[ext_resource type="AudioStream" uid="uid://cvpqejmb8wqm6" path="res://assets/audio/purchase_2.mp3" id="3_05jr4"]
+[ext_resource type="AudioStream" uid="uid://d1r5jqktb8xhv" path="res://assets/audio/purchase_3.mp3" id="4_6uqiq"]
+
+[resource]
+script = ExtResource("1_y1hcy")
+limit = 3
+type = 8
+sounds = Array[AudioStreamMP3]([ExtResource("2_br4bv"), ExtResource("3_05jr4"), ExtResource("4_6uqiq")])
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://kppg6mfv2dlh"

@@ -16,7 +16,7 @@ func _ready():
     add_child(bite_timer)
     bite_timer.timeout.connect(on_bite_timer_timeout)
     bite_timer.start(randf_range(min_delay, min_delay))
-    PauseMenu.can_pause = false
+    PauseMenu.can_pause = true
 
 func on_bite_timer_timeout() -> void:
     var anim = anim_options.pick_random()

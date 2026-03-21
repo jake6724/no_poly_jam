@@ -1,20 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://c06ri4cfofikf"]
+[gd_scene load_steps=8 format=3 uid="uid://c06ri4cfofikf"]
 
 [ext_resource type="Script" uid="uid://cj61yp1qq0a3u" path="res://scripts/player/player_ui.gd" id="1_f7lci"]
+[ext_resource type="Shader" uid="uid://cx6xpd3igxbeu" path="res://shaders/textwiggle.gdshader" id="2_dwui3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hl6yw"]
+shader = ExtResource("2_dwui3")
+shader_parameter/jiggle = 1.5
+shader_parameter/speed = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgoom"]
+shader = ExtResource("2_dwui3")
+shader_parameter/jiggle = 1.5
+shader_parameter/speed = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl6yw"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7lci"]
-bg_color = Color(0.10648077, 0.10747435, 0.110194184, 1)
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwui3"]
 bg_color = Color(0.95684546, 0.18801689, 0.15338618, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("scrap_value", "steel_value", "titanium_value", "blood_value", "healthbar")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("scrap_value", "steel_value", "titanium_value", "healthbar")]
 script = ExtResource("1_f7lci")
 scrap_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/ScrapValue")
 steel_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/SteelValue")
 titanium_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/TitaniumValue")
-blood_value = NodePath("Control/MarginContainer/HBoxContainer/VBoxContainer2/BloodValue")
-healthbar = NodePath("Control/MarginContainer/PanelContainer/ProgressBar")
+healthbar = NodePath("Control/VBoxContainer/PanelContainer/ProgressBar")
 metadata/_custom_type_script = "uid://cj61yp1qq0a3u"
 
 [node name="Control" type="Control" parent="."]
@@ -50,27 +64,27 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_hl6yw")
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/outline_size = 12
 text = "Scrap -"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_hl6yw")
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/outline_size = 12
 text = "Steel -"
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_hl6yw")
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/outline_size = 12
 text = "Titanium -"
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Blood -"
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
@@ -78,34 +92,57 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="ScrapValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_pgoom")
 layout_mode = 2
+theme_override_constants/outline_size = 12
 text = "1000"
 vertical_alignment = 1
 
 [node name="SteelValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_pgoom")
 layout_mode = 2
+theme_override_constants/outline_size = 12
 text = "1000"
 vertical_alignment = 1
 
 [node name="TitaniumValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_pgoom")
 layout_mode = 2
+theme_override_constants/outline_size = 12
 text = "1000"
 vertical_alignment = 1
 
-[node name="BloodValue" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -48.0
+offset_right = 232.0
+offset_bottom = -8.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
-text = "1000"
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 24
+text = "Health"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer"]
-custom_minimum_size = Vector2(200, 32)
+[node name="PanelContainer" type="PanelContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(199, 36)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_hl6yw")
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/MarginContainer/PanelContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(180, 18)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_f7lci")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dwui3")
 step = 10.0
